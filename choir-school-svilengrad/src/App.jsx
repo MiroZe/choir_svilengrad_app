@@ -1,12 +1,23 @@
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import Header from './components/Header'
+import Home from './components/Home'
+import RegisterForm from './components/RegisterForm'
+import Test from './components/Test';
 
 function App() {
   
 
   return (
     <>
-     <h1>Hello</h1>
+     <Header />
+     <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/auth/register' element={<RegisterForm/>} />
+      <Route path='/test' element={<Test/>} />
+      <Route path='/formations' element={<Test/>} />
+     </Routes>
     </>
   )
 }
