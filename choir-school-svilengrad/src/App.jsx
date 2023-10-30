@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Home from './components/Home'
 import RegisterForm from './components/RegisterForm'
 import Test from './components/Test';
+import DownloadButton from './components/TestDownload';
 
 function App() {
   
@@ -18,6 +19,8 @@ function App() {
       <Route path='/test' element={<Test/>} />
       <Route path='/formations' element={<Test/>} />
      </Routes>
+
+     <DownloadButton />
     </>
   )
 }

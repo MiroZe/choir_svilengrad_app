@@ -10,6 +10,7 @@ const Test = () => {
   const handleUpload = () => {
     const formData = new FormData();
     formData.append('file', file);
+   
 
     fetch('http://localhost:3000/uploads', {
       method: 'POST',
@@ -24,27 +25,14 @@ const Test = () => {
       });
   };
 
-
-  const handleTExtTest = (e) => {
-    console.log(e.target.value);
-  }
-
-  const handleUser = () => {
-    fetch('')
-  }
-
   return (
     <>
     <div>
       <h2>File Upload</h2>
-      <input type="file" onChange={handleFileChange} />
+      <input type="file" onChange={handleFileChange} name='file' />
       <button onClick={handleUpload}>Upload File</button>
     </div>
-    <div>
-      <h2>TEst</h2>
-      <input type="test" onChange={handleTExtTest} />
-      <button onClick={handleUser}>Teste</button>
-    </div>
+  
     </>
   );
 };
