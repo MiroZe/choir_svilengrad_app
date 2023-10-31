@@ -1,0 +1,33 @@
+.form-container {
+    max-width: 40em;
+    margin : 0 auto;
+    padding: 5em
+}
+
+.choristerForm {
+
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+    padding:0
+}
+
+.form-container select {
+    padding:1em
+}
+
+.checkboxContainer {
+    display: flex;
+    gap: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em;
+    border-radius: 1.5em;
+}
+
+.form-container button {
+    border:none;
+    background-color: #778ca3;
+    display: block;
+    margin: 0 auto;
+}

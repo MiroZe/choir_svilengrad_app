@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import styles from '../styles/RegisterForm.module.css' 
+import styles from '../styles/CreateChorister.module.css' 
 import Button from 'react-bootstrap/Button';
 import { errorCheck } from '../utils/utils';
 
@@ -18,10 +18,15 @@ const CreateChoristerForm = ()=> {
         gender: '',
         schoolName: '',
         grade: '',
-        formation : '',
         vocalRanges :''
 
       });
+
+      const [formations, setFormations] = useState( {
+        littleOnes: false,
+        childrensChoir: false,
+        burdenis: false
+      })
     
     
       const[errors,setErrors] = useState({
@@ -44,8 +49,10 @@ const CreateChoristerForm = ()=> {
       } 
     
     
-       const createChoristerHandler = async (e,formValues)=> {
+       const createChoristerHandler = async (e,formValues, formations)=> {
          e.preventDefault();
+         console.log(formations);
+      
          
        
     
@@ -56,6 +63,12 @@ const CreateChoristerForm = ()=> {
     
     
       }
+
+      const onChangeFormationHandler = (e) => {
+        setFormations(state => ({...state ,[e.target.name]: e.target.checked}));
+       
+        
+      }
    
 
     return (
@@ -63,7 +76,7 @@ const CreateChoristerForm = ()=> {
       <div className={styles['form-container']}>
     
       <h2>Add Chorister Form</h2>
-        <form action="" onSubmit={(e) => createChoristerHandler(e,formValues)}>
+        <form className={styles.choristerForm} onSubmit={(e) => createChoristerHandler(e,formValues,formations)}>
         <FloatingLabel
           controlId="floatingfirstName"
           label="First Name"
@@ -97,6 +110,7 @@ const CreateChoristerForm = ()=> {
            {errors.surName && <p className="error">Last name should be 3 characters at least</p>}
         </FloatingLabel>
 
+            <div className="mb-3">
 
           <Form.Select aria-label="Default select example"
           name="gender"
@@ -107,6 +121,7 @@ const CreateChoristerForm = ()=> {
             <option value="male">Male</option>
              <option value="female">Female</option>
             </Form.Select> 
+            </div>
 
 
             <Form.Select aria-label="Default select example"
@@ -137,7 +152,7 @@ const CreateChoristerForm = ()=> {
              <option value="V">V</option>
              <option value="VI">VI</option>
              <option value="VII">VII</option>
-             <option value="VII">VIII</option>
+             <option value="VIII">VIII</option>
              <option value="IX">IX</option>
              <option value="X">X</option>
              <option value="XI">XI</option>
@@ -146,16 +161,45 @@ const CreateChoristerForm = ()=> {
             </Form.Select> 
 
             <Form.Select aria-label="Default select example"
-          name="formation"
+          name="vocalRanges"
            onChange={onChangeCreateChoristerFormHandler}
-           value={formValues.formation}
+           value={formValues.vocalRanges}
            >
-             <option>Please choose the formation</option>
-            <option value="male">Male</option>
-             <option value="female">Female</option>
+             <option>Please choose vocal range</option>
+            <option value="soprano">Soprano</option>
+             <option value="alto">Alto</option>
+             <option value="tenor">Tenor</option>
+             <option value="baritone">Baritone</option>
+             <option value="bass">Bass</option>
             </Form.Select> 
-    
-        <Button variant="success" type='submit'>Log in</Button>
+
+            
+
+            <div className={styles.checkboxContainer}>
+
+          
+            <input type="checkbox" id="littleOnes" name='littleOnes' 
+            checked={formations['littleOnes']}
+            value={formations.littleOnes}
+            onChange={onChangeFormationHandler}
+            />
+            <label htmlFor="littleOnes">Choir of littles ones</label>
+
+            <input type="checkbox" id="childrensChoir" name='childrensChoir' 
+            checked={formations['childrensChoir']}
+            value={formations.childrensChoir} 
+            onChange={onChangeFormationHandler} 
+            />
+            <label htmlFor="childrensChoir">Children`s choir</label>
+            <input type="checkbox" id="burdenis" name='burdenis'
+            
+             value={formations.burdenis}
+            onChange={onChangeFormationHandler} 
+             checked={formations['burdenis']}
+             />
+            <label htmlFor="burdenis">Formation Burdenis</label>
+            </div>
+        <Button variant="success" type='submit'>Add Chorister</Button>
         </form>
         </div> 
     )
