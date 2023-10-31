@@ -107,12 +107,7 @@ return (
       {errors.rePassword && <p className="error">Passwords mismatch!</p>}
     </FloatingLabel>
 
-    {/* <Form.Select aria-label="Default select example">
-      <option>Please choose your gender</option>
-      <option value="1">Male</option>
-      <option value="2">Female</option>
-      
-    </Form.Select> */}
+   
  
     <Button variant="success" type='submit'>Submit</Button>
     </form>
