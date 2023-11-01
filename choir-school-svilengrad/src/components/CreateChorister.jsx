@@ -26,7 +26,7 @@ const CreateChoristerForm = ()=> {
         littleOnes: false,
         childrensChoir: false,
         burdenis: false
-      })
+      });
     
     
       const[errors,setErrors] = useState({
@@ -39,7 +39,10 @@ const CreateChoristerForm = ()=> {
         formation : '',
         vocalRanges :''
         
-    })
+    });
+
+    const[pictureName,setPictureName] = useState('')
+    const[attachedPictureUrl,setAttachedPictureUrl] = useState(null)
     
     
       const onChangeCreateChoristerFormHandler = (e) => {
@@ -47,8 +50,7 @@ const CreateChoristerForm = ()=> {
         setFormValues(state =>({...state, [e.target.name] : e.target.value}));
     
       } 
-    
-    
+
        const createChoristerHandler = async (e,formValues, formations)=> {
          e.preventDefault();
          console.log(formations);
@@ -68,6 +70,18 @@ const CreateChoristerForm = ()=> {
         setFormations(state => ({...state ,[e.target.name]: e.target.checked}));
        
         
+      }
+
+      const attachPictureHandler = () => {
+
+        const pictureName = `${formValues.firstName}_${formValues.lastName}.jpg`;
+        const directory = Object.keys(formations).filter(r => formations[r] === true)
+        console.log(directory);
+
+      }
+
+      const pictureNameHandler = (e) => {
+        console.log(e.target.value);
       }
    
 
@@ -173,7 +187,7 @@ const CreateChoristerForm = ()=> {
              <option value="bass">Bass</option>
             </Form.Select> 
 
-            
+        
 
             <div className={styles.checkboxContainer}>
 
@@ -199,6 +213,16 @@ const CreateChoristerForm = ()=> {
              />
             <label htmlFor="burdenis">Formation Burdenis</label>
             </div>
+
+
+            <label htmlFor="picture">Choose picture</label>
+            <input type="file" name='file' id='picture' value={pictureName.value} onChange={pictureNameHandler} />
+            <button type="button" onClick={ attachPictureHandler}>Attach picture</button>
+
+
+            <label htmlFor="pictureUrl">Choose picture</label>
+            <input type="text" name='pictureUrl' id='pictureUrl' disabled />
+
         <Button variant="success" type='submit'>Add Chorister</Button>
         </form>
         </div> 
