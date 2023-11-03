@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import styles from '../styles/CreateChorister.module.css' 
 import Button from 'react-bootstrap/Button';
 import { errorCheck } from '../utils/utils';
+import { uploadPictureService } from '../services/uploadServices';
 
 
 
@@ -18,7 +19,8 @@ const CreateChoristerForm = ()=> {
         gender: '',
         schoolName: '',
         grade: '',
-        vocalRanges :''
+        vocalRanges :'',
+        
 
       });
 
@@ -27,6 +29,8 @@ const CreateChoristerForm = ()=> {
         childrensChoir: false,
         burdenis: false
       });
+
+      const[imageUrl, setImageUrl] = useState({imageUrl:''})
     
     
       const[errors,setErrors] = useState({
@@ -42,7 +46,8 @@ const CreateChoristerForm = ()=> {
     });
 
     const[pictureName,setPictureName] = useState('')
-    const[attachedPictureUrl,setAttachedPictureUrl] = useState(null)
+    
+    const [file, setFile] = useState(null);
     
     
       const onChangeCreateChoristerFormHandler = (e) => {
@@ -72,17 +77,36 @@ const CreateChoristerForm = ()=> {
         
       }
 
-      const attachPictureHandler = () => {
+      const attachPictureHandler = async () => {
 
-        const pictureName = `${formValues.firstName}_${formValues.lastName}.jpg`;
-        const directory = Object.keys(formations).filter(r => formations[r] === true)
-        console.log(directory);
+        setPictureName(`${formValues.firstName}_${formValues.lastName}.jpg`);
+        const directory = Object.keys(formations).filter(r => formations[r] === true)[0];
+        const formData = new FormData();
+        console.log(pictureName);
+        formData.append('file', file);
+        formData.append('directory', JSON.stringify(directory));
+        formData.append('pictureName', pictureName);
+        
+        const url = await uploadPictureService(formData);
+        setImageUrl(state => ({...state, imageUrl:url.imageUrl}));
+     
+        
+   
+    }
 
-      }
 
-      const pictureNameHandler = (e) => {
+    
+    const handleUpload = (e) => {
+        setFile(e.target.files[0])
+       
+
+    }
+
+
+    const onChangeImageUrlHandler = (e) => {
         console.log(e.target.value);
-      }
+        console.log(imageUrl);
+    }
    
 
     return (
@@ -216,12 +240,18 @@ const CreateChoristerForm = ()=> {
 
 
             <label htmlFor="picture">Choose picture</label>
-            <input type="file" name='file' id='picture' value={pictureName.value} onChange={pictureNameHandler} />
+            <input type="file" name="file" id='picture' value={pictureName.value} onChange={handleUpload} />
             <button type="button" onClick={ attachPictureHandler}>Attach picture</button>
 
 
-            <label htmlFor="pictureUrl">Choose picture</label>
-            <input type="text" name='pictureUrl' id='pictureUrl' disabled />
+            <label htmlFor="imageUrl">Choose picture</label>
+            <input type="text" 
+            name='imageUrl' 
+            id='imageUrl'
+             
+             onChange={onChangeImageUrlHandler}
+             value={imageUrl.imageUrl}
+             disabled />
 
         <Button variant="success" type='submit'>Add Chorister</Button>
         </form>
