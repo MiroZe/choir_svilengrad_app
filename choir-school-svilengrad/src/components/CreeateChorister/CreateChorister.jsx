@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import styles from '../styles/CreateChorister.module.css' 
+import styles from './CreateChorister.module.css' 
 import Button from 'react-bootstrap/Button';
-import { errorCheck } from '../utils/utils';
-import { uploadPictureService } from '../services/uploadServices';
+import { errorCheck } from '../../utils/utils';
+import { uploadPictureService } from '../../services/uploadServices';
+import { createChorister } from '../../services/choristersServices';
 
 
 
@@ -19,7 +20,7 @@ const CreateChoristerForm = ()=> {
         gender: '',
         schoolName: '',
         grade: '',
-        vocalRanges :'',
+        vocalRange :'',
         
 
       });
@@ -41,7 +42,7 @@ const CreateChoristerForm = ()=> {
         schoolName: '',
         grade: '',
         formation : '',
-        vocalRanges :''
+        vocalRange :''
         
     });
 
@@ -58,7 +59,11 @@ const CreateChoristerForm = ()=> {
 
        const createChoristerHandler = async (e,formValues, formations)=> {
          e.preventDefault();
-         console.log(formations);
+        const choristformations = Object.keys(formations).filter(r => formations[r] === true)
+
+        const choristerData = {...formValues,formations:choristformations}
+        const result = await createChorister(choristerData);
+        console.log(result);
       
          
        
@@ -82,7 +87,7 @@ const CreateChoristerForm = ()=> {
         setPictureName(`${formValues.firstName}_${formValues.lastName}.jpg`);
         const directory = Object.keys(formations).filter(r => formations[r] === true)[0];
         const formData = new FormData();
-        console.log(pictureName);
+        
         formData.append('file', file);
         formData.append('directory', JSON.stringify(directory));
         formData.append('pictureName', pictureName);
@@ -168,13 +173,12 @@ const CreateChoristerForm = ()=> {
            value={formValues.schoolName}
            >
             <option>Please choose the school of the chorister</option>
-            <option value="1">Ivan Vazov school</option>
-            <option value="2">D-r Petar Beron school</option>
-            <option value="3">Hristo Botev school</option>
-            <option value="4">Hristo Botev school</option>
-            <option value="5">Hristo Popmarkov school</option>
-            <option value="6">Lyuben Karavelov school</option>
-            <option value="7">Graduated</option>
+            <option value="Ivan Vazov">Ivan Vazov school</option>
+            <option value="d-r Petar Beron">D-r Petar Beron school</option>
+            <option value="Hristo Botev">Hristo Botev school</option>
+            <option value="Hristo Popmarkov">Hristo Popmarkov school</option>
+            <option value="Lyben Karavelov">Lyuben Karavelov school</option>
+            <option value="Graduated">Graduated</option>
             </Form.Select> 
 
             <Form.Select aria-label="Default select example"
@@ -199,9 +203,9 @@ const CreateChoristerForm = ()=> {
             </Form.Select> 
 
             <Form.Select aria-label="Default select example"
-          name="vocalRanges"
+          name="vocalRange"
            onChange={onChangeCreateChoristerFormHandler}
-           value={formValues.vocalRanges}
+           value={formValues.vocalRange}
            >
              <option>Please choose vocal range</option>
             <option value="soprano">Soprano</option>

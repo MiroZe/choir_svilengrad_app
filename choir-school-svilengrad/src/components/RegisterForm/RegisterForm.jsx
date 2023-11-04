@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import styles from '../styles/RegisterForm.module.css'
+import styles from './RegisterForm.module.css'
 
 import Button from 'react-bootstrap/Button';
-import { userRegister } from '../services/userService';
-import { errorCheck } from '../utils/utils';
+import { userRegister } from '../../services/userService';
+import { errorCheck } from '../../utils/utils';
 
 
 const RegisterForm = ()=> {

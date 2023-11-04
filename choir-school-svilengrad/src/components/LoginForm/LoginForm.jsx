@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import styles from '../styles/RegisterForm.module.css' 
+import styles from './LoginForm.module.css' 
 import Button from 'react-bootstrap/Button';
-import { errorCheck } from '../utils/utils';
-import { userLogin } from '../services/userService';
+import { errorCheck } from '../../utils/utils';
+import { userLogin } from '../../services/userService';
 
 
 

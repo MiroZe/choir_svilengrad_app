@@ -1,0 +1,22 @@
+.form-container {
+    max-width: 25em;
+    margin: 10em auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container button{
+    border: none;
+    background-color: #778ca3;
+    display: block;
+    margin: 0 auto;
+
+}
+
+.form-container button:hover {
+    background-color:#4b6584 ;
+}
+
+.form-container p {
+    color: red;
+}

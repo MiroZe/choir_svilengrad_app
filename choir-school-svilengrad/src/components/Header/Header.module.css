@@ -1,5 +1,5 @@
 .header {
-    background-color:#4b6584;
+    background-color:#00cec9;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -33,11 +33,11 @@
   }
   
   .nav ul li a:hover {
-    color: #26de81; /* Change the color on hover as desired */
+    color: #00cec9; 
   }
 
   .header .nav-active {
-    color: #3867d6;
+    color: #00cec9;
   }
 
 

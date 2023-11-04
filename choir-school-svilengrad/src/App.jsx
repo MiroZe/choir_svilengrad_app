@@ -1,13 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Header from './components/Header'
-import Home from './components/Home'
-import RegisterForm from './components/RegisterForm'
+import Header from './components/Header/Header'
+import Home from './components/Home/Home'
+import RegisterForm from './components/RegisterForm/RegisterForm'
 import Test from './components/Test';
-import DownloadButton from './components/TestDownload';
-import LoginForm from './components/LoginForm';
-import CreateChoristerForm from './components/CreateChorister';
+import Formations from './components/Formations/Formations';
+import LoginForm from './components/LoginForm/LoginForm';
+import CreateChoristerForm from './components/CreeateChorister/CreateChorister';
 
 
 function App() {
@@ -21,11 +21,12 @@ function App() {
       <Route path='/auth/register' element={<RegisterForm/>} />
       <Route path='/auth/login' element={<LoginForm />} />
       <Route path='/test' element={<Test/>} />
-      <Route path='/formations' element={<Test/>} />
+      <Route path='/formations' element={<Formations/>} />
       <Route path='/choristers/create' element={<CreateChoristerForm />} />
+      
      </Routes>
 
-     <DownloadButton />
+ 
     </>
   )
 }
