@@ -1,0 +1,8 @@
+.nav-container {
+    background-color: #00cec9;
+}
+
+.nav-container a {
+    text-decoration: none;
+    color: white;
+}

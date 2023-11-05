@@ -2,11 +2,15 @@
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    gap:2em;
+
   }
   
   .formationCard {
+    display: flex;
+    flex-direction: column;
+    gap:3em;
+    justify-content: space-between;
     text-align: center;
     padding: 40px;
     border: 2px solid #00cec9;
@@ -51,3 +55,18 @@
     color: #778ca3;
   }
   
+  .image-container {
+   flex: 1 1 80%;
+   overflow: hidden;
+   aspect-ratio: 16/9;
+  }
+
+  .image-container img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    flex: 1 1 20%;
+  }
