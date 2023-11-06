@@ -31,7 +31,7 @@ const CreateChoristerForm = ()=> {
         burdenis: false
       });
 
-      const[imageUrl, setImageUrl] = useState({imageUrl:''})
+      const[imageUrl, setImageUrl] = useState('')
     
     
       const[errors,setErrors] = useState({
@@ -59,9 +59,10 @@ const CreateChoristerForm = ()=> {
 
        const createChoristerHandler = async (e,formValues, formations)=> {
          e.preventDefault();
-        const choristformations = Object.keys(formations).filter(r => formations[r] === true)
+        const choristformations = Object.keys(formations).filter(r => formations[r] === true);
+       console.log(imageUrl);
 
-        const choristerData = {...formValues,formations:choristformations}
+        const choristerData = {...formValues,formations:choristformations,imageUrl}
         const result = await createChorister(choristerData);
         console.log(result);
       
@@ -84,16 +85,18 @@ const CreateChoristerForm = ()=> {
 
       const attachPictureHandler = async () => {
 
-        setPictureName(`${formValues.firstName}_${formValues.lastName}.jpg`);
         const directory = Object.keys(formations).filter(r => formations[r] === true)[0];
         const formData = new FormData();
+
+        console.log(pictureName);
         
         formData.append('file', file);
         formData.append('directory', JSON.stringify(directory));
         formData.append('pictureName', pictureName);
         
         const url = await uploadPictureService(formData);
-        setImageUrl(state => ({...state, imageUrl:url.imageUrl}));
+        
+         setImageUrl(url.imageUrl);
      
         
    
@@ -103,6 +106,7 @@ const CreateChoristerForm = ()=> {
     
     const handleUpload = (e) => {
         setFile(e.target.files[0])
+        setPictureName(`${formValues.firstName}_${formValues.lastName}.jpg`);
        
 
     }
@@ -244,7 +248,7 @@ const CreateChoristerForm = ()=> {
 
 
             <label htmlFor="picture">Choose picture</label>
-            <input type="file" name="file" id='picture' value={pictureName.value} onChange={handleUpload} />
+            <input type="file" name="pictureName" id='picture' value={pictureName.value} onChange={handleUpload} />
             <button type="button" onClick={ attachPictureHandler}>Attach picture</button>
 
 
@@ -254,7 +258,7 @@ const CreateChoristerForm = ()=> {
             id='imageUrl'
              
              onChange={onChangeImageUrlHandler}
-             value={imageUrl.imageUrl}
+             value={imageUrl}
              disabled />
 
         <Button variant="success" type='submit'>Add Chorister</Button>
