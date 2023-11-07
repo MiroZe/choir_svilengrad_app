@@ -10,6 +10,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import CreateChoristerForm from './components/CreeateChorister/CreateChorister';
 import CreateFormation from './components/Formations/CreateFormation';
 import AdminNavBar from './components/AdminNavBar/AdminNavBar';
+import ChoristerList from './components/CroristerLIst/ChoristerList';
 
 
 
@@ -27,6 +28,7 @@ function App() {
       <Route path='/test' element={<Test/>} />
       <Route path='/formations' element={<Formations/>} />
       <Route path='/formations/create' element={<CreateFormation/>} />
+      <Route path='/choristers/' element={<ChoristerList />} />
       <Route path='/choristers/create' element={<CreateChoristerForm />} />
       
      </Routes>

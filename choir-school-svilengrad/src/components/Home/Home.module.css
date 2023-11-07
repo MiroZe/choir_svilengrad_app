@@ -9,6 +9,7 @@
     color:white;
     background-image: url('../../assets/choirSchhol_n.jpg');
     background-position: center;
+    background-blend-mode: multiply;
   }
   
   .centeredContent {

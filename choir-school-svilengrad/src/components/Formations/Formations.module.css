@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     gap:2em;
+    padding: 3em;
 
   }
   
@@ -13,7 +14,7 @@
     justify-content: space-between;
     text-align: center;
     padding: 40px;
-    border: 2px solid #00cec9;
+    border: 2px solid #95a5a6;
     border-radius: 20px;
     margin: 20px;
     background-color: #f9f9f9;
@@ -35,7 +36,7 @@
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #00cec9;
+    color: #2c3e50;
   }
   
   .links {

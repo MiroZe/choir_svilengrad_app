@@ -3,6 +3,17 @@ const baseURL = 'http://localhost:3000';
 const headers =  {"Content-Type": "application/json",}
 
 
+export const getAllChoristers = async() => {
+
+    const response = await fetch(`${baseURL}/choristers/`, {credentials:'include'});
+    const result = await response.json();
+    console.log(result);
+    return result;
+
+
+
+}
+
 
 export const createChorister = async(choristerdata) => {
 

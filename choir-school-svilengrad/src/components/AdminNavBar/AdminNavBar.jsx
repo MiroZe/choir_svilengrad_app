@@ -18,10 +18,12 @@ return (
           <Navbar.Brand href="#home">Edit Formations </Navbar.Brand>
         </Container>
         <Container>
-          <Navbar.Brand href="#home">Create Chorister</Navbar.Brand>
+          <Navbar.Brand href="#home">
+          <Link  to={"/choristers/create"}>Add chorister</Link>
+          </Navbar.Brand>
         </Container>
         <Container>
-          <Navbar.Brand href="#home">Edit Chorister</Navbar.Brand>
+        <Link  to={"/choristers"}>Choristers</Link>
         </Container>
         <Container>
           <Navbar.Brand href="#home">Upload Notes</Navbar.Brand>
@@ -32,6 +34,8 @@ return (
       </Navbar>
 
 )
+
+
 
 
 
