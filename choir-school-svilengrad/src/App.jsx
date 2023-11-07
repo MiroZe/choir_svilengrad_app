@@ -11,6 +11,7 @@ import CreateChoristerForm from './components/CreeateChorister/CreateChorister';
 import CreateFormation from './components/Formations/CreateFormation';
 import AdminNavBar from './components/AdminNavBar/AdminNavBar';
 import ChoristerList from './components/CroristerLIst/ChoristerList';
+import ChoristerDetail from './components/CroristerLIst/ChoristerDetails';
 
 
 
@@ -30,6 +31,7 @@ function App() {
       <Route path='/formations/create' element={<CreateFormation/>} />
       <Route path='/choristers/' element={<ChoristerList />} />
       <Route path='/choristers/create' element={<CreateChoristerForm />} />
+      <Route path='/choristers/:choristerId' element={<ChoristerDetail />} />
       
      </Routes>
      

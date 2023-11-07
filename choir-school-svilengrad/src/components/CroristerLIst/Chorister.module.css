@@ -1,3 +1,25 @@
+.table-container {
+    max-width: 1280px;
+    margin: 2em auto;
+    text-align: center;
+   
+    padding: 2em;
+    
+}
+
+
+.table-container table{
+
+    margin-top: 3em;
+    }
+
+.table-container  td:nth-child(2) {
+    display: flex;
+    justify-content: center;
+}
+
+
+
 .table-row {
     vertical-align: middle;
 }
@@ -19,4 +41,51 @@
 
 .table-row button {
     margin-right: 10px;
+}
+
+
+/* =============== */
+.chorister-card {
+    background-color: #2c3e50;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px auto;
+}
+
+.chorister-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.chorister-details {
+    flex: 1;
+}
+
+.name {
+    font-size: 24px;
+    margin: 0;
+}
+
+.job-title {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.description {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Hover effect */
+.chorister-card:hover {
+    background-color: #c61b2b;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }

@@ -2,6 +2,8 @@ import Table from 'react-bootstrap/Table';
 import { useState,useEffect } from 'react';
 import { getAllChoristers } from '../../services/choristersServices';
 import Chorister from './Chorister';
+import styles from "./Chorister.module.css";
+
 
 
 
@@ -17,7 +19,7 @@ useEffect(() => {
 
 
 return (
-        <>
+        <div className={styles['table-container']}>
         <h2>List of choristers</h2>
         <Table striped>
           <thead>
@@ -34,7 +36,7 @@ return (
            {choristers.map( (c, index) => <Chorister key={c._id} {...c} index={index}  />)}
           </tbody>
         </Table>
-        </>
+        </div>
 )
 
 }
