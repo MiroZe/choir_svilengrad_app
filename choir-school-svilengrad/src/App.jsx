@@ -12,6 +12,7 @@ import CreateFormation from './components/Formations/CreateFormation';
 import AdminNavBar from './components/AdminNavBar/AdminNavBar';
 import ChoristerList from './components/CroristerLIst/ChoristerList';
 import ChoristerDetail from './components/CroristerLIst/ChoristerDetails';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -34,6 +35,8 @@ function App() {
       <Route path='/choristers/:choristerId' element={<ChoristerDetail />} />
       
      </Routes>
+
+     <Footer />
      
      
  
