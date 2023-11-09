@@ -13,6 +13,7 @@ import AdminNavBar from './components/AdminNavBar/AdminNavBar';
 import ChoristerList from './components/CroristerLIst/ChoristerList';
 import ChoristerDetail from './components/CroristerLIst/ChoristerDetails';
 import Footer from './components/Footer/Footer';
+import { UserProvider } from './contexts/UserContext';
 
 
 
@@ -21,8 +22,10 @@ function App() {
 
   return (
     <>
+    <UserProvider>
      <Header />
      <AdminNavBar />
+    
      <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/auth/register' element={<RegisterForm/>} />
@@ -38,7 +41,7 @@ function App() {
 
      <Footer />
      
-     
+     </UserProvider>
  
     </>
   )

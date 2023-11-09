@@ -14,7 +14,7 @@ const Chorister = ({ index, firstName, lastName, formations, imageUrl, _id }) =>
       </td>
       <td>{firstName}</td>
       <td>{lastName}</td>
-      <td>{formations.join("")}</td>
+      <td>{formations.join(", ")}</td>
       <td>
       <Link to={`/choristers/${_id}`}><Button variant="info">Info</Button></Link>
       <Button variant="warning">Edit</Button>
