@@ -1,14 +1,21 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css'
-import logo from '../../assets/JMFBG-logo-1-180x300.png'
+import logo from '../../assets/JMFBG-logo-1-180x300.png';
+import { useUserContext } from '../../contexts/UserContext';
+
+
 
 
 const Header = () => {
+ const {username} = useUserContext()
+ console.log(username);
+
   return (
     <header className={styles.header}>
       <div className="logo">
         <img src={logo} alt="Logo" />
       </div>
+      <p>Welcome, dear {username || 'Guest'}</p>
       <nav className={styles.nav}>
         <ul>
           

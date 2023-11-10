@@ -17,12 +17,14 @@ import { UserProvider } from './contexts/UserContext';
 
 
 
+
 function App() {
   
 
   return (
-    <>
     <UserProvider>
+    <>
+
      <Header />
      <AdminNavBar />
     
@@ -40,10 +42,11 @@ function App() {
      </Routes>
 
      <Footer />
-     
-     </UserProvider>
- 
     </>
+     </UserProvider>
+     
+   
+ 
   )
 }
 

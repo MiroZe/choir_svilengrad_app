@@ -5,13 +5,18 @@ import styles from './LoginForm.module.css'
 import Button from 'react-bootstrap/Button';
 import { errorCheck } from '../../utils/utils';
 import { userLogin } from '../../services/userService';
+import {useUserContext} from '../../contexts/UserContext'
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 const LoginForm = ()=> {
 
- 
+  const {setUserFunction} = useUserContext()
+  const navigate = useNavigate()
+
       const [formValues, setFormValues] = useState({
         username:'',   
         password:'',
@@ -38,7 +43,10 @@ const LoginForm = ()=> {
         const userData = {username,password};
     
          const loggedUser = await userLogin(userData);
+
          console.log(loggedUser);
+         setUserFunction(loggedUser);
+         navigate('/formations')
        
     
       }
