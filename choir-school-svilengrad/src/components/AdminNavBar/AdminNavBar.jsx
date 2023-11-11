@@ -10,26 +10,22 @@ return (
 
 <Navbar className={styles['nav-container']} >
         <Container>
-          <Navbar.Brand >
-        <Link to={'/formations/create'}>Formations Create</Link>
-          </Navbar.Brand>
+          <Navbar.Brand as={Link} to={'/formations/create'}>Formations Create</Navbar.Brand>
         </Container>
         <Container>
-          <Navbar.Brand href="#home">Edit Formations </Navbar.Brand>
+          <Navbar.Brand as={Link} to={'/formations/edit'}>Edit Formations </Navbar.Brand>
         </Container>
         <Container>
-          <Navbar.Brand href="#home">
-          <Link  to={"/choristers/create"}>Add chorister</Link>
-          </Navbar.Brand>
+          <Navbar.Brand as={Link}  to={"/choristers/create"}>Add chorister</Navbar.Brand>
         </Container>
         <Container>
         <Link  to={"/choristers"}>Choristers</Link>
         </Container>
         <Container>
-          <Navbar.Brand href="#home">Upload Notes</Navbar.Brand>
+          <Navbar.Brand as={Link}>Upload Notes</Navbar.Brand>
         </Container>
         <Container>
-          <Navbar.Brand href="#home">Upload Arrangiments</Navbar.Brand>
+          <Navbar.Brand as={Link}>Upload Arrangiments</Navbar.Brand>
         </Container>
       </Navbar>
 

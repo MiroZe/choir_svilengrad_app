@@ -1,16 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css'
 import logo from '../../assets/JMFBG-logo-1-180x300.png';
-import { useUserContext } from '../../contexts/UserContext';
+import { Usercontext } from '../../contexts/UserContext';
+import { useContext } from 'react';
+import AdminNavBar from '../AdminNavBar/AdminNavBar';
 
 
 
 
 const Header = () => {
- const {username} = useUserContext()
- console.log(username);
+ const {username, isAdmin} = useContext(Usercontext)
+
 
   return (
+    <>
     <header className={styles.header}>
       <div className="logo">
         <img src={logo} alt="Logo" />
@@ -25,12 +28,15 @@ const Header = () => {
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/register"}>Register</NavLink> </li>
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/test"}>Test</NavLink> </li>
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/login"}>Login</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/logout"}>Logout</NavLink> </li>
 
           
         
         </ul>
       </nav>
     </header>
+    {isAdmin && <AdminNavBar/>}
+    </>
   );
 };
 

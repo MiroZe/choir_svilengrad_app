@@ -1,15 +1,21 @@
-import { createContext,useState, useContext } from "react";
+import { createContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
-const Usercontext = createContext();
+export const Usercontext = createContext();
 
 export const UserProvider = ({children}) => {
 
 
-const [user, setUser] = useState({});
+const [user, setUser] = useLocalStorage('user',{});
 const setUserFunction = (userData) => setUser(userData)
 
 
-const contextValues = {setUserFunction, username:user.username}
+const contextValues = {
+    setUserFunction,
+     username:user.username,
+    isAdmin: user.role == 'admin',
+    test:'TEST STRING'
+    }
 
 
 return (
@@ -24,7 +30,7 @@ return (
 
 }
 
-export const useUserContext = () => {
-    return useContext(Usercontext);
-  };
+
+
+
 

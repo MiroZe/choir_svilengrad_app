@@ -15,3 +15,8 @@ export const userLogin = async (userData) => {
     const result = await response.json();
     return result;
 }
+
+export const userLogout = async () => {
+    return await fetch(`${baseURL}/logout`, {method:'POST',credentials:'include'});
+   
+}
