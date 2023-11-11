@@ -44,9 +44,9 @@ const LoginForm = ()=> {
     
          const loggedUser = await userLogin(userData);
 
-         console.log(loggedUser);
+         
          setUserFunction(loggedUser);
-         navigate('/formations')
+         navigate('/')
        
     
       }

@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import styles from './RegisterForm.module.css'
-
+import {Usercontext} from '../../contexts/UserContext'
 import Button from 'react-bootstrap/Button';
 import { userRegister } from '../../services/userService';
 import { errorCheck } from '../../utils/utils';
+import { useNavigate } from 'react-router-dom';
 
 
 const RegisterForm = ()=> {
+
+  const {setUserFunction} = useContext(Usercontext)
+  const navigate = useNavigate()
 
 
   const [formValues, setFormValues] = useState({
@@ -38,8 +42,9 @@ const RegisterForm = ()=> {
     e.preventDefault();
     const userData = {username,email,password,rePassword};
 
-     await userRegister(userData);
-   
+     const registeredUser = await userRegister(userData);
+     setUserFunction(registeredUser);
+     navigate('/')
 
   }
   const errCheck = (e,criteria,pattern)=> {
