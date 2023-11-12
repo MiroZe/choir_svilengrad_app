@@ -6,3 +6,11 @@
     max-width:40em;
     margin: 3em auto
 }
+
+.form-container .error {
+    color: #c61b2b;
+}
+
+.form-container button:hover {
+    color: #c61b2b
+}

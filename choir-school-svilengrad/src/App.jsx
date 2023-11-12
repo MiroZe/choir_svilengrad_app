@@ -8,7 +8,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Test from "./components/Test";
 import Formations from "./components/Formations/FormationsList";
 import LoginForm from "./components/LoginForm/LoginForm";
-import CreateChoristerForm from "./components/CreeateChorister/CreateChorister";
+import CreateChoristerForm from "./components/CreateChorister/CreateChorister";
 import CreateFormation from "./components/Formations/CreateFormation";
 
 import ChoristerList from "./components/CroristerLIst/ChoristerList";
