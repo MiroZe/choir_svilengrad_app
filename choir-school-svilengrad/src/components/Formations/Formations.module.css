@@ -43,14 +43,7 @@
     display: flex;
     justify-content: space-around;
   }
-  
-  .links a {
-    text-decoration: none;
-    color: #00cec9;
-    font-weight: bold;
-    font-size: 18px;
-    transition: color 0.3s ease;
-  }
+
   
   .links a:hover {
     color: #778ca3;
@@ -70,4 +63,12 @@
 
   .content {
     flex: 1 1 20%;
+  }
+  .formationCard a {
+    color: #2c3e50;
+    color: white;
+  }
+
+  .formationCard a:hover {
+    color: #c61b2b;
   }

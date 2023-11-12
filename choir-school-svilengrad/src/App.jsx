@@ -16,6 +16,7 @@ import ChoristerDetail from "./components/CroristerLIst/ChoristerDetails";
 import Footer from "./components/Footer/Footer";
 import { UserProvider } from "./contexts/UserContext";
 import Logout from "./components/Logout/Logout";
+import FormationDetails from "./components/Formations/FormationDetails";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/test" element={<Test />} />
         <Route path="/formations" element={<Formations />} />
         <Route path="/formations/create" element={<CreateFormation />} />
+        <Route path="/formations/:formationId" element={<FormationDetails />} />
         <Route path="/choristers/" element={<ChoristerList />} />
         <Route path="/choristers/create" element={<CreateChoristerForm />} />
         <Route path="/choristers/:choristerId" element={<ChoristerDetail />} />

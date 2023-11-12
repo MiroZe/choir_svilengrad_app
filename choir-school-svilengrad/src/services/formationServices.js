@@ -27,3 +27,15 @@ export const getFormations = async() => {
     
     return result;
 }
+
+
+export const getFormationById = async(formationId) => {
+
+    console.log(formationId);
+   
+    const response = await fetch(`${baseURL}/formations/${formationId}`)
+  
+    const result = await response.json();
+    
+    return result;
+}
