@@ -14,7 +14,7 @@ const contextValues = {
     setUserFunction,
      username:user.username,
     isAdmin: user.role == 'admin',
-    test:'TEST STRING'
+   
     }
 
 
