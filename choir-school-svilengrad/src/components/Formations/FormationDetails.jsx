@@ -2,18 +2,27 @@ import { useEffect, useState } from "react";
 import styles from "./FormationDetails.module.css";
 import { Link, useParams } from "react-router-dom";
 import { getFormationById } from "../../services/formationServices";
+import SpinnerComp from "../Spinner/Spinner";
 
 const FormationDetails = () => {
   const { formationId } = useParams();
   const [formation, setFormation] = useState({});
+  const [spinner, setSpinner] = useState(true);
 
   useEffect(() => {
     getFormationById(formationId)
-      .then(setFormation)
+      .then((data) => {
+        setFormation(data);
+         setSpinner(false)
+    })
       .catch((err) => console.log(err));
   }, [formationId]);
 
   return (
+    <div className={styles['card-container']}>
+        {spinner &&  <SpinnerComp/>}
+  
+     {!spinner && 
     <div className={styles["card"]}>
       <img src={formation.imageUrl} alt="Choir Formation Image" />
       <div className={styles["card-content"]}>
@@ -29,6 +38,8 @@ const FormationDetails = () => {
           <a href="#choristers">Choristers</a>
         </div>
       </div>
+    </div>
+}
     </div>
   );
 };
