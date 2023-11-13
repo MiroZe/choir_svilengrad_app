@@ -76,5 +76,17 @@ justify-content: center;
     text-decoration: none;
    
   }
+
+  .admin-actions {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    margin-top: 1em;
+  }
+
+  .admin-actions button,.admin-actions a  {
+    display: inline-block;
+    width: 100px;
+  }
   
   

@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./FormationDetails.module.css";
 import { Link, useParams } from "react-router-dom";
-import { getFormationById } from "../../services/formationServices";
-import SpinnerComp from "../Spinner/Spinner";
+import { getFormationById } from "../../../services/formationServices";
+import SpinnerComp from "../../Spinner/Spinner";
+import Button from 'react-bootstrap/Button';
+import { Usercontext } from "../../../contexts/UserContext";
 
 const FormationDetails = () => {
   const { formationId } = useParams();
   const [formation, setFormation] = useState({});
   const [spinner, setSpinner] = useState(true);
+  const {isAdmin} = useContext(Usercontext)
 
   useEffect(() => {
     getFormationById(formationId)
@@ -35,8 +38,14 @@ const FormationDetails = () => {
         <div className={styles["links"]}>
           <a href="#gallery">Gallery</a>
           <a href="#video">Video</a>
-          <a href="#choristers">Choristers</a>
+          <Link to={'/choristers'}>Choristers</Link> 
         </div>
+        {isAdmin && 
+        <div className={styles['admin-actions']}>
+        <Button as={Link} to={`/formations/${formation._id}/edit`} variant="warning">Edit</Button>
+        <Button variant="danger">Delete</Button>
+        </div>
+        }
       </div>
     </div>
 }

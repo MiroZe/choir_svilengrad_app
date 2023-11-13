@@ -12,9 +12,7 @@ return (
         <Container>
           <Navbar.Brand as={Link} to={'/formations/create'}>Formations Create</Navbar.Brand>
         </Container>
-        <Container>
-          <Navbar.Brand as={Link} to={'/formations/edit'}>Edit Formations </Navbar.Brand>
-        </Container>
+        
         <Container>
           <Navbar.Brand as={Link}  to={"/choristers/create"}>Add chorister</Navbar.Brand>
         </Container>
