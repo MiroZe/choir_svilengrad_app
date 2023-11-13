@@ -5,31 +5,28 @@ import styles from "../CreateFormation/CreateFormations.module.css";
 import { editFormation, getFormationById } from "../../../services/formationServices";
 import { useFormErrors } from "../../../hooks/useFormErrors";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { FormationContext } from "../../../contexts/FormationContext";
 
 const EditFormation = () => {
 
   const {formationId} = useParams();
-  const [initialData, setInitialData] = useState({})
+  const {formation} = useContext(FormationContext)
+  const { formValues, onChangeHandler } = useForm(
+    {formationName:formation.formationName,
+      conductor:formation.conductor,
+      imageUrl:formation.imageUrl,
+      description: formation.description
+    });
 
-  useEffect ( () => {
-    getFormationById(formationId)
-    .then(data =>{
-      setInitialData(data)
-      })
-    .catch(err => console.log(err))
-  },[formationId]);
+
+
+
+ 
 
 
   
-  const { formValues, onChangeHandler } = useForm({
-    formationName: initialData?.formationName || '',
-    imageUrl: initialData?.imageUrl || '',
-    conductor: initialData?.conductor || '',
-    description: initialData?.description || '',
-  });
-//   console.log(initialData?.conductor);
- console.log(formValues.conductor);
+    
 
   const { errors, onErrorHandler, isErrors } = useFormErrors({
     formationName: false,
@@ -51,15 +48,15 @@ const EditFormation = () => {
    
     <div className={styles["form-container"]}>
       <h1>Edit formation Form</h1>
-      {initialData.formationName && 
+      
       <Form onSubmit={onEditFormationHandler}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" controlId="controlInput">
           <Form.Label>Formation Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="name of Formation"
             name="formationName"
-            value={formValues.formationName}
+            value={formValues?.formationName}
             onChange={onChangeHandler}
             onBlur={(e) => onErrorHandler(e, "5")}
           />
@@ -117,7 +114,7 @@ const EditFormation = () => {
         <Button variant="secondary" >
           Cancel 
         </Button>
-      </Form> }
+      </Form> 
     </div>
   
           

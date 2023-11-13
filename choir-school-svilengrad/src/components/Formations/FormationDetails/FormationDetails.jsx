@@ -5,17 +5,22 @@ import { getFormationById } from "../../../services/formationServices";
 import SpinnerComp from "../../Spinner/Spinner";
 import Button from 'react-bootstrap/Button';
 import { Usercontext } from "../../../contexts/UserContext";
+import { FormationContext } from "../../../contexts/FormationContext";
+
 
 const FormationDetails = () => {
   const { formationId } = useParams();
-  const [formation, setFormation] = useState({});
+  // const [formation, setFormation] = useState({});
   const [spinner, setSpinner] = useState(true);
-  const {isAdmin} = useContext(Usercontext)
+  const {isAdmin} = useContext(Usercontext);
+  const {formation, setFormationFunction} = useContext(FormationContext)
 
   useEffect(() => {
     getFormationById(formationId)
       .then((data) => {
-        setFormation(data);
+      
+        //setFormation(data);
+        setFormationFunction(data)
          setSpinner(false)
     })
       .catch((err) => console.log(err));

@@ -18,6 +18,7 @@ import { UserProvider } from "./contexts/UserContext";
 import Logout from "./components/Logout/Logout";
 import FormationDetails from "./components/Formations/FormationDetails/FormationDetails";
 import EditFormation from "./components/Formations/EditFormation/EditFormation";
+import { FormationProvider } from "./contexts/FormationContext";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <UserProvider>
+        
       <Header />
     
 
@@ -35,8 +37,8 @@ function App() {
         <Route path="/test" element={<Test />} />
         <Route path="/formations" element={<Formations />} />
         <Route path="/formations/create" element={<CreateFormation />} />
-        <Route path="/formations/:formationId" element={<FormationDetails />} />
-        <Route path="/formations/:formationId/edit" element={<EditFormation />} />
+        <Route path="/formations/:formationId" element={<FormationProvider><FormationDetails /></FormationProvider>} />
+        <Route path="/formations/:formationId/edit" element={<FormationProvider><EditFormation /></FormationProvider>} />
         <Route path="/choristers/" element={<ChoristerList />} />
         <Route path="/choristers/create" element={<CreateChoristerForm />} />
         <Route path="/choristers/:choristerId" element={<ChoristerDetail />} />
@@ -44,6 +46,7 @@ function App() {
       </Routes>
 
       <Footer />
+     
     </UserProvider>
   );
 }
