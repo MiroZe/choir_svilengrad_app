@@ -7,7 +7,7 @@ import { useFormErrors } from "../../../hooks/useFormErrors";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { FormationContext } from "../../../contexts/FormationContext";
-import logo from '../../../../public/SHKOLA_ZNAK.png';
+import logo from '../../../assets/SHKOLA_ZNAK.png';
 
 
 const EditFormation = () => {

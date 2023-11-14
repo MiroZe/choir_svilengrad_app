@@ -2,10 +2,11 @@ import { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import styles from './CreateChorister.module.css' 
-import { errorCheck } from '../../utils/utils';
-import { uploadPictureService } from '../../services/uploadServices';
-import { createChorister } from '../../services/choristersServices';
-import logo from '../../../public/SHKOLA_ZNAK.png';
+import { errorCheck } from '../../../utils/utils';
+import { uploadPictureService } from '../../../services/uploadServices';
+import { createChorister } from '../../../services/choristersServices';
+import logo from '../../../assets/SHKOLA_ZNAK.png';
+
 
 
 

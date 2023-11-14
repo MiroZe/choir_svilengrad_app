@@ -8,11 +8,10 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Test from "./components/Test";
 import Formations from "./components/Formations/FormationsList";
 import LoginForm from "./components/LoginForm/LoginForm";
-import CreateChoristerForm from "./components/CreateChorister/CreateChorister";
+import CreateChoristerForm from "./components/Choristers/CreateChorister/CreateChorister";
 import CreateFormation from "./components/Formations/CreateFormation/CreateFormation";
-
-import ChoristerList from "./components/CroristerLIst/ChoristerList";
-import ChoristerDetail from "./components/CroristerLIst/ChoristerDetails";
+import ChoristerList from "./components/Choristers/ChoristersList/ChoristersList";
+import ChoristerDetails from './components/Choristers/ChoristerDetails/ChoristerDetails'
 import Footer from "./components/Footer/Footer";
 import { UserProvider } from "./contexts/UserContext";
 import Logout from "./components/Logout/Logout";
@@ -41,7 +40,7 @@ function App() {
         <Route path="/formations/:formationId/edit" element={<FormationProvider><EditFormation /></FormationProvider>} />
         <Route path="/choristers/" element={<ChoristerList />} />
         <Route path="/choristers/create" element={<CreateChoristerForm />} />
-        <Route path="/choristers/:choristerId" element={<ChoristerDetail />} />
+        <Route path="/choristers/:choristerId" element={<ChoristerDetails />} />
         <Route path="/auth/logout" element={<Logout />} />
       </Routes>
 

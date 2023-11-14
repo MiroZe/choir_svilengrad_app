@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import { useState,useEffect } from 'react';
-import { getAllChoristers } from '../../services/choristersServices';
+import { getAllChoristers } from '../../../services/choristersServices';
 import Chorister from './Chorister';
 import styles from "./Chorister.module.css";
 

@@ -10,7 +10,7 @@ import { FormationContext } from "../../../contexts/FormationContext";
 
 const FormationDetails = () => {
   const { formationId } = useParams();
-  // const [formation, setFormation] = useState({});
+  
   const [spinner, setSpinner] = useState(true);
   const {isAdmin} = useContext(Usercontext);
   const {formation, setFormationFunction} = useContext(FormationContext)

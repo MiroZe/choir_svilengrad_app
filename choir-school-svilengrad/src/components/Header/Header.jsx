@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css'
-import logo from '../../../public/SHKOLA_ZNAK.png';
+import logo from '../../assets/SHKOLA_ZNAK.png';
+
 import { Usercontext } from '../../contexts/UserContext';
 import { useContext } from 'react';
 import AdminNavBar from '../AdminNavBar/AdminNavBar';

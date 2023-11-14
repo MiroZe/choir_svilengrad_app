@@ -7,7 +7,8 @@ import { errorCheck } from "../../utils/utils";
 import { userLogin } from "../../services/userService";
 import { Usercontext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import logo from '../../../public/SHKOLA_ZNAK.png';
+import logo from '../../assets/SHKOLA_ZNAK.png';
+
 
 
 const LoginForm = () => {

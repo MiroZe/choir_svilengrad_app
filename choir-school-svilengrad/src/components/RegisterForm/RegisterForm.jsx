@@ -7,7 +7,8 @@ import Button from 'react-bootstrap/Button';
 import { userRegister } from '../../services/userService';
 import { errorCheck } from '../../utils/utils';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../../public/SHKOLA_ZNAK.png';
+import logo from '../../assets/SHKOLA_ZNAK.png';
+
 
 
 

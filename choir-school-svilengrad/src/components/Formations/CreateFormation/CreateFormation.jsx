@@ -4,7 +4,8 @@ import { useForm } from '../../../hooks/useForm';
 import styles from './CreateFormations.module.css'
 import { createFormation } from '../../../services/formationServices';
 import { useFormErrors } from '../../../hooks/useFormErrors';
-import logo from '../../../../public/SHKOLA_ZNAK.png';
+import logo from '../../../assets/SHKOLA_ZNAK.png';
+
 
 
 
