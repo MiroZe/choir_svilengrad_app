@@ -18,7 +18,7 @@ const Header = () => {
       <div className="logo">
         <img src={logo} alt="Logo" />
       </div>
-      <p>Welcome, dear {username || 'Guest'}</p>
+      <p>Welcome, dear <span>{username || 'Guest'}</span></p>
       <nav className={styles.nav}>
         <ul>
           
