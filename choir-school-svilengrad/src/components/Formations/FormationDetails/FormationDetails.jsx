@@ -24,7 +24,7 @@ const FormationDetails = () => {
          setSpinner(false)
     })
       .catch((err) => console.log(err));
-  }, [formationId]);
+  }, [formationId,setFormationFunction]);
 
   return (
     <div className={styles['card-container']}>

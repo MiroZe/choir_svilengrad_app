@@ -2,11 +2,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "../../../hooks/useForm";
 import styles from "../CreateFormation/CreateFormations.module.css";
-import { editFormation, getFormationById } from "../../../services/formationServices";
+import { editFormation } from "../../../services/formationServices";
 import { useFormErrors } from "../../../hooks/useFormErrors";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { FormationContext } from "../../../contexts/FormationContext";
+import logo from '../../../../public/SHKOLA_ZNAK.png';
+
 
 const EditFormation = () => {
 
@@ -47,7 +49,12 @@ const EditFormation = () => {
    
    
     <div className={styles["form-container"]}>
-      <h1>Edit formation Form</h1>
+     
+    
+      <div className={styles['header']}>
+      <img src={logo} alt="" />
+      <h2>Edit formation Form</h2>
+      </div>
       
       <Form onSubmit={onEditFormationHandler}>
         <Form.Group className="mb-3" controlId="controlInput">

@@ -15,8 +15,8 @@ return (
         </div>
     </div>
     <div className={styles['social-icons']}>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/choir.school_svilengrad/?fbclid=IwAR1js_lBSCcgckhNj12sm80rUqCI1k1N0N5yM9Q_6K_98roNKxSZtSsFoWA" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/groups/642507609155386/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
         <a href="https://jmfbg.org/bg/" target="_blank" rel="noopener noreferrer"><i className="fa-solid fa-globe"></i></a>
     </div>
     <div className="copyright">

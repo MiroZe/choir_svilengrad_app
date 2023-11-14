@@ -4,6 +4,8 @@ import { useForm } from '../../../hooks/useForm';
 import styles from './CreateFormations.module.css'
 import { createFormation } from '../../../services/formationServices';
 import { useFormErrors } from '../../../hooks/useFormErrors';
+import logo from '../../../../public/SHKOLA_ZNAK.png';
+
 
 
 const CreateFormation = () => {
@@ -37,7 +39,10 @@ const CreateFormation = () => {
 return  (
 
     <div className={styles['form-container']}>
-<h1>Create formation Form</h1>
+      <div className={styles['header']}>
+      <img src={logo} alt="" />
+<h2>Create formation Form</h2>
+      </div>
 
 <Form onSubmit={onSubmitFormationHandler}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

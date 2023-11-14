@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import { userRegister } from '../../services/userService';
 import { errorCheck } from '../../utils/utils';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../../public/SHKOLA_ZNAK.png';
+
 
 
 const RegisterForm = ()=> {
@@ -65,7 +67,11 @@ return (
 
   <div className={styles['form-container']}>
 
-  <h2>Register Form</h2>
+<div className={styles["header"]}>
+        <img src={logo} alt="" />
+        <h2>Register Form</h2>
+      </div>
+
     <form action="" onSubmit={(e) => registerUserHandler(e,formValues)}>
     <FloatingLabel
       controlId="floatingInput"
