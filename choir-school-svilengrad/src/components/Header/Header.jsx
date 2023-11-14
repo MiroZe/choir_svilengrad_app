@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import styles from './Header.module.css'
 import logo from '../../assets/SHKOLA_ZNAK.png';
 
@@ -17,7 +17,9 @@ const Header = () => {
     <>
     <header className={styles.header}>
       <div className="logo">
+        <Link to="/">
         <img src={logo} alt="Logo" />
+        </Link>
       </div>
       <p>Welcome, dear <span>{username || 'Guest'}</span></p>
       <nav className={styles.nav}>
