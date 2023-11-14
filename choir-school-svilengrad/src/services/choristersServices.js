@@ -34,4 +34,13 @@ export const getOneChorister = async (choristerId) => {
   
     return result;
 
+};
+
+export const deleteChorister = async (choristerId) => {
+    const response = await fetch(`${baseURL}/choristers/${choristerId}/delete`,  {method:'DELETE' ,credentials:'include'});
+    const result = await response.json();
+   
+  
+    return result;
+
 }

@@ -1,14 +1,19 @@
 import Image from "react-bootstrap/Image";
 import styles from "./Chorister.module.css";
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 
 
-const Chorister = ({ index, firstName, lastName, formations, imageUrl, _id }) => {
+
+
+const Chorister = ({ index, firstName, lastName, formations, imageUrl, _id , showDeleteModal}) => {
+
+ 
 
 
   return (
+    <>
     <tr className={styles['table-row']}>
       <td>{index + 1}</td>
       <td>
@@ -22,13 +27,12 @@ const Chorister = ({ index, firstName, lastName, formations, imageUrl, _id }) =>
       <td>
       <Link to={`/choristers/${_id}`}><Button variant="info">Info</Button></Link>
       <Button variant="warning">Edit</Button>
-      <Button variant="danger">Delete</Button> 
-
-     
-      
+      <Button variant="danger" onClick={() => showDeleteModal(_id, firstName,lastName)}>Delete</Button> 
       </td>
    
     </tr>
+   
+    </>
   );
 };
 

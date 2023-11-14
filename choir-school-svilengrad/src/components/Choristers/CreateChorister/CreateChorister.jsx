@@ -6,12 +6,15 @@ import { errorCheck } from '../../../utils/utils';
 import { uploadPictureService } from '../../../services/uploadServices';
 import { createChorister } from '../../../services/choristersServices';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
 const CreateChoristerForm = ()=> {
+
+  const navigate = useNavigate()
 
  
       const [formValues, setFormValues] = useState({
@@ -61,11 +64,12 @@ const CreateChoristerForm = ()=> {
        const createChoristerHandler = async (e,formValues, formations)=> {
          e.preventDefault();
         const choristformations = Object.keys(formations).filter(r => formations[r] === true);
-       console.log(imageUrl);
+      
 
         const choristerData = {...formValues,formations:choristformations,imageUrl}
-        const result = await createChorister(choristerData);
-        console.log(result);
+         await createChorister(choristerData);
+         navigate('/choristers')
+       
       
          
        

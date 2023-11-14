@@ -1,21 +1,52 @@
 import Table from 'react-bootstrap/Table';
 import { useState,useEffect } from 'react';
-import { getAllChoristers } from '../../../services/choristersServices';
+import { deleteChorister, getAllChoristers } from '../../../services/choristersServices';
 import Chorister from './Chorister';
 import styles from "./Chorister.module.css";
+import DeleteConfirmationModal from '../../DeleteConfirmationModal/DeleteConformationModal';
+
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
 const ChoristerList =() => {
-
-const [choristers, setChoristers] = useState([]);
+  
+  const [choristers, setChoristers] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+  const [userData, setUserData] = useState({});
+  
+  const navigate = useNavigate()
 
 
 useEffect(() => {
     getAllChoristers().then(result => setChoristers(result))
 },[])
+
+const showDeleteModal = (id,firstName,lastName) => {
+  
+  setUserData({ id, firstName, lastName })
+  setModalShow(true);
+  
+  
+  
+  
+
+}
+
+
+
+
+const deleteClickHandler = async (id) => {
+    await deleteChorister(id);
+    setModalShow(false)
+   setChoristers(state => [...state.filter(ch=> ch._id !== id )])
+    navigate('/choristers')
+    
+
+} 
+
 
 
 return (
@@ -33,9 +64,17 @@ return (
             </tr>
           </thead>
           <tbody>
-           {choristers.map( (c, index) => <Chorister key={c._id} {...c} index={index}  />)}
+           {choristers.map( (c, index) => <Chorister key={c._id} {...c} index={index} showDeleteModal={showDeleteModal} />)}
           </tbody>
         </Table>
+        <>
+        <DeleteConfirmationModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        userData={userData}
+        deleteClickHandler = {deleteClickHandler}
+        />
+        </>
         </div>
 )
 
