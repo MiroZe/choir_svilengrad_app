@@ -6,6 +6,7 @@
     padding: 3em;
     color: white;
     border-radius: 2em;
+    flex-grow: 1;
 }
 
 .form-container button{
