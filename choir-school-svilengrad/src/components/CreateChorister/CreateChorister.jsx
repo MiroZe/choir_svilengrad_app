@@ -2,10 +2,10 @@ import { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import styles from './CreateChorister.module.css' 
-import Button from 'react-bootstrap/Button';
 import { errorCheck } from '../../utils/utils';
 import { uploadPictureService } from '../../services/uploadServices';
 import { createChorister } from '../../services/choristersServices';
+import logo from '../../../public/SHKOLA_ZNAK.png';
 
 
 
@@ -122,7 +122,10 @@ const CreateChoristerForm = ()=> {
     
       <div className={styles['form-container']}>
     
-      <h2>Add Chorister Form</h2>
+    <div className={styles["header"]}>
+        <img src={logo} alt="" />
+        <h2>Add Chorister Form</h2>
+      </div>
         <form className={styles.choristerForm} onSubmit={(e) => createChoristerHandler(e,formValues,formations)}>
         <FloatingLabel
           controlId="floatingfirstName"
@@ -261,7 +264,7 @@ const CreateChoristerForm = ()=> {
              value={imageUrl}
              disabled />
 
-        <Button variant="success" type='submit'>Add Chorister</Button>
+        <button type='submit'>Add Chorister</button>
         </form>
         </div> 
     )
