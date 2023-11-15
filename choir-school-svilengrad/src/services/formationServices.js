@@ -43,3 +43,14 @@ export const editFormation = async (formationId, value) => {
 
 
 };
+
+
+
+export const deleteFormation = async (formationId) => {
+    const response = await fetch(`${baseURL}/formations/${formationId}/delete`,  {method:'DELETE' ,credentials:'include'});
+    const result = await response.json();
+   
+  
+    return result;
+
+}

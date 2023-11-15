@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./FormationDetails.module.css";
 import { Link, useParams } from "react-router-dom";
-import { getFormationById } from "../../../services/formationServices";
+import { deleteFormation, getFormationById } from "../../../services/formationServices";
 import SpinnerComp from "../../Spinner/Spinner";
 import Button from 'react-bootstrap/Button';
 import { Usercontext } from "../../../contexts/UserContext";
 import { FormationContext } from "../../../contexts/FormationContext";
+import DeleteConfirmationModal from "../../DeleteConfirmationModal/DeleteConformationModal";
+import {useNavigate} from 'react-router-dom'
 
 
 const FormationDetails = () => {
@@ -13,18 +15,28 @@ const FormationDetails = () => {
   
   const [spinner, setSpinner] = useState(true);
   const {isAdmin} = useContext(Usercontext);
-  const {formation, setFormationFunction} = useContext(FormationContext)
+  const {formation, setFormationFunction} = useContext(FormationContext);
+  const [modalShow, setModalShow] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getFormationById(formationId)
       .then((data) => {
       
-        //setFormation(data);
         setFormationFunction(data)
          setSpinner(false)
     })
       .catch((err) => console.log(err));
-  }, [formationId,setFormationFunction]);
+  }, [formationId, setFormationFunction]);
+
+
+  const deleteClickHandler = async (id) => {
+    await deleteFormation(id);
+    setModalShow(false)
+    navigate('/formations')
+    
+  
+  }
 
   return (
     <div className={styles['card-container']}>
@@ -48,10 +60,18 @@ const FormationDetails = () => {
         {isAdmin && 
         <div className={styles['admin-actions']}>
         <Button as={Link} to={`/formations/${formation._id}/edit`} variant="warning">Edit</Button>
-        <Button variant="danger">Delete</Button>
+        <Button variant="danger" onClick={() => setModalShow(true)}>Delete</Button>
         </div>
         }
       </div>
+      <>
+        <DeleteConfirmationModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        data={formation}
+        deleteClickHandler = {deleteClickHandler}
+        />
+        </>
     </div>
 }
     </div>

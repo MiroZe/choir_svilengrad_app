@@ -3,15 +3,22 @@ import Modal from 'react-bootstrap/Modal';
 import styles from './DeleteConfirmationModal.module.css'
 
 
-const  DeleteConfirmationModal = ({userData,deleteClickHandler, ...otherProps}) => {
+const  DeleteConfirmationModal = ({data,deleteClickHandler, ...otherProps}) => {
 
-    const {firstName, lastName, id, } = userData;
-
-   
-   
     
-  
-  
+    const names = {
+      firstName : '',
+      lastName : ''
+    }
+    Object.keys(data).forEach(d => {
+      if(d.includes('firstName')) {
+        names['firstName'] = data[d]
+      } else if( d.includes('lastName')) {
+        names['lastName'] = data[d]
+      } else if (d.includes('Name')){
+        names['firstName'] = data[d]
+      }
+    })
   
     return (
        
@@ -27,12 +34,12 @@ const  DeleteConfirmationModal = ({userData,deleteClickHandler, ...otherProps}) 
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>{`Are you sure to delete ${firstName} ${lastName}?`}</h4>
+            <h4>{`Are you sure to delete ${names.firstName} ${names.lastName ? names.lastName : ''}?`}</h4>
           
            
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={()=> deleteClickHandler(id)}>Delete</Button>
+            <Button variant="danger" onClick={()=> deleteClickHandler(data._id)}>Delete</Button>
             <Button onClick={otherProps.onHide}>Cancel</Button>
           </Modal.Footer>
         </Modal>

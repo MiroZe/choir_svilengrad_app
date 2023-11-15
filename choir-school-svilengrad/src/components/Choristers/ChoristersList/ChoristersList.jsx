@@ -71,7 +71,7 @@ return (
         <DeleteConfirmationModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        userData={userData}
+        data={userData}
         deleteClickHandler = {deleteClickHandler}
         />
         </>

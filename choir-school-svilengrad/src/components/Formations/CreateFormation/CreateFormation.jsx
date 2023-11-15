@@ -5,12 +5,14 @@ import styles from './CreateFormations.module.css'
 import { createFormation } from '../../../services/formationServices';
 import { useFormErrors } from '../../../hooks/useFormErrors';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
+import {useNavigate} from 'react-router-dom'
 
 
 
 
 const CreateFormation = () => {
 
+  const navigate = useNavigate()
 
     const { formValues, onChangeHandler } = useForm({
        formationName: '', 
@@ -27,13 +29,21 @@ const CreateFormation = () => {
       
       const onSubmitFormationHandler = async (e) => {
           e.preventDefault();
-          if(!(Object.values(errors).some(f => f!==false))) return
+          console.log(Object.values(errors));
+          if((Object.values(errors).some(f => f == true))) {
+            console.log('error');
+            return
+          } 
          
-        
-        
+        try {
+          await createFormation(formValues);
+          navigate('/formations')
+          
+        } catch (error) {
+          console.log(error);
+        }
 
          
-          await createFormation(formValues);
           
       }
 
