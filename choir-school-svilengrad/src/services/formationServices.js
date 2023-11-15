@@ -38,8 +38,13 @@ export const getFormationById = async(formationId) => {
     return result;
 };
 
-export const editFormation = async (formationId, value) => {
+export const editFormation = async (formationId, formationData) => {
+   
 
+    const response = await fetch(`${baseURL}/formations/${formationId}/edit`,
+      {method:'PUT' ,headers:headers, body:JSON.stringify(formationData), credentials:'include', });
+      const result = await response.json();
+      return result
 
 
 };
@@ -47,7 +52,8 @@ export const editFormation = async (formationId, value) => {
 
 
 export const deleteFormation = async (formationId) => {
-    const response = await fetch(`${baseURL}/formations/${formationId}/delete`,  {method:'DELETE' ,credentials:'include'});
+    const response = await fetch(`${baseURL}/formations/${formationId}/delete`, 
+     {method:'DELETE' ,credentials:'include'});
     const result = await response.json();
    
   

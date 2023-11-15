@@ -4,7 +4,7 @@ import { useForm } from "../../../hooks/useForm";
 import styles from "../CreateFormation/CreateFormations.module.css";
 import { editFormation } from "../../../services/formationServices";
 import { useFormErrors } from "../../../hooks/useFormErrors";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FormationContext } from "../../../contexts/FormationContext";
 import logo from '../../../assets/SHKOLA_ZNAK.png';
@@ -21,14 +21,7 @@ const EditFormation = () => {
       description: formation.description
     });
 
-
-
-
- 
-
-
-  
-    
+    const navigate= useNavigate()
 
   const { errors, onErrorHandler, isErrors } = useFormErrors({
     formationName: false,
@@ -39,15 +32,16 @@ const EditFormation = () => {
 
   const onEditFormationHandler = async (e) => {
     e.preventDefault();
-    if (!Object.values(errors).some((f) => f !== false)) return;
-
-    await editFormation(formationId, formValues);
+    if (Object.values(errors).some((f) => f == true)) return;
+  
+  await editFormation(formationId, formValues);
+    navigate(`/formations/${formation._id}`)
+  
   };
 
   return (
 
-   
-   
+
     <div className={styles["form-container"]}>
      
     
@@ -115,12 +109,10 @@ const EditFormation = () => {
             </p>
           )}
         </Form.Group>
-        <Button type="submit" variant="secondary" disabled={!isErrors}>
+        <Button type="submit" variant="warning" disabled={!isErrors}>
           Save 
         </Button>
-        <Button variant="secondary" >
-          Cancel 
-        </Button>
+        <Button as={Link} to={`/formations/${formation._id}`}   variant="primary">Cancel</Button>
       </Form> 
     </div>
   

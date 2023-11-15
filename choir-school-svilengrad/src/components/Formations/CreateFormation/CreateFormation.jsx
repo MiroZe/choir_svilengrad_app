@@ -5,7 +5,7 @@ import styles from './CreateFormations.module.css'
 import { createFormation } from '../../../services/formationServices';
 import { useFormErrors } from '../../../hooks/useFormErrors';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 
 
@@ -90,7 +90,8 @@ return  (
          {errors.description && <p className={styles.error}>Description should be 20 characters at least</p>}
 
       </Form.Group>
-      <Button type='submit' variant="secondary" disabled={!isErrors}>Create Formation</Button>
+      <Button type='submit' variant="warning" disabled={!isErrors}>Create Formation</Button>
+      <Button as={Link} to={'/formations'}   variant="primary">Cancel</Button>
     </Form>
     </div>
 

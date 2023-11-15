@@ -37,3 +37,7 @@
     width: 60px;
     height: 60px;
 }
+
+.form-container button {
+    margin-right: 20px;
+}
