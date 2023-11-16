@@ -4,7 +4,7 @@ import { deleteChorister, getAllChoristers } from '../../../services/choristersS
 import Chorister from './Chorister';
 import styles from "./Chorister.module.css";
 import DeleteConfirmationModal from '../../DeleteConfirmationModal/DeleteConformationModal';
-
+import logo from '../../../assets/SHKOLA_ZNAK.png'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -24,9 +24,9 @@ useEffect(() => {
     getAllChoristers().then(result => setChoristers(result))
 },[])
 
-const showDeleteModal = (id,firstName,lastName) => {
+const showDeleteModal = (_id,firstName,lastName) => {
   
-  setUserData({ id, firstName, lastName })
+  setUserData({ _id, firstName, lastName })
   setModalShow(true);
   
   
@@ -39,6 +39,7 @@ const showDeleteModal = (id,firstName,lastName) => {
 
 
 const deleteClickHandler = async (id) => {
+ 
     await deleteChorister(id);
     setModalShow(false)
    setChoristers(state => [...state.filter(ch=> ch._id !== id )])
@@ -51,7 +52,11 @@ const deleteClickHandler = async (id) => {
 
 return (
         <div className={styles['table-container']}>
+          <div className={styles['title']}>
+          <img src={logo} alt="" />
         <h2>List of choristers</h2>
+        
+          </div>
         <Table striped>
           <thead>
             <tr>
