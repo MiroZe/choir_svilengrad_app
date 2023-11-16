@@ -6,14 +6,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from './UploadForm.module.css'
 import logo from '../../assets/SHKOLA_ZNAK.png'
-import { uploadPictureToGalleryService } from '../../services/uploadServices';
+import { uploadFileService } from '../../services/uploadServices';
 
 const UploadForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadType, setUploadType] = useState('');
   const [formation, setFormation] = useState('');
-  const [imageUrl, setImageURl] = useState('');
+  const [url, setUrl] = useState('');
   const [fileName, setfileName] = useState('');
+  const [authorName, setAuthorName] = useState('');
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -30,13 +31,12 @@ const UploadForm = () => {
   const handleFileNameChange = (e) => {
     setfileName(e.target.value)
   }
-
- 
+  const handleAuthorNameChange = (e) => {
+    setAuthorName(e.target.value)
+  }
 
 
   const handleUpload = async () => {
-
-   
 
 
     const formData = new FormData();
@@ -50,13 +50,10 @@ const UploadForm = () => {
    
     if (selectedFile) {
      
-      if(uploadType == 'picture') {
-        const imageUrl = await uploadPictureToGalleryService(formData);
-       
-        setImageURl(imageUrl.imageUrl)
-      }
-    
-   
+      
+      const url = await uploadFileService(formData)
+       console.log(url);
+        setUrl(url.imageUrl)
 
     } else {
       console.log('No file selected');
@@ -87,24 +84,33 @@ const UploadForm = () => {
                 <option value="notes">Notes</option>
               </Form.Control>
               {uploadType !== 'picture' && uploadType !== 'na' &&
+              <>
               <Form.Group controlId="name" className="mb-3">
               <Form.Label>Name of file</Form.Label>
               <Form.Control type="text" onChange={handleFileNameChange} value={fileName} />
              </Form.Group>
-}
+
+              <Form.Group controlId="author" className="mb-3">
+              <Form.Label>Author</Form.Label>
+              <Form.Control type="text" onChange={handleAuthorNameChange} value={authorName} />
+              </Form.Group>
+              </>
+              }
             </Form.Group>
             <Form.Group controlId="formType" className="mb-3">
               <Form.Label>Select Formation</Form.Label>
               <Form.Control as="select" value={formation} onChange={handleFormationName}>
+                {uploadType === 'picture' && 
                 <option value="all">For All Formations</option>
+                }
                 <option value="littleOnes">Little Ones</option>
                 <option value="childrensChoir">Childrens Choir</option>
                 <option value="burdenis">Burdenis</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="imageUrl" className="mb-3">
-              <Form.Label>ImageUrl</Form.Label>
-              <Form.Control type="text" value={imageUrl} />
+              <Form.Label>Url</Form.Label>
+              <Form.Control type="text" value={url} />
             </Form.Group>
 
             <Button

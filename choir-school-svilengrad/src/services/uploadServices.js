@@ -15,10 +15,10 @@ export const uploadPictureService = async(uploadData) => {
 
 }
 
-export const uploadPictureToGalleryService = async(uploadData) => {
+export const uploadFileService = async(uploadData) => {
     
     const response = await fetch(
-        `${baseURL}/upload/gallery` ,
+        `${baseURL}/upload/file` ,
          {method:'POST',
           
            body:uploadData})
