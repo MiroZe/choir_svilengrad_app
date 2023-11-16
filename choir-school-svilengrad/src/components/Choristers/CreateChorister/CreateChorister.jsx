@@ -93,7 +93,7 @@ const CreateChoristerForm = ()=> {
         const directory = Object.keys(formations).filter(r => formations[r] === true)[0];
         const formData = new FormData();
 
-        console.log(pictureName);
+       
         
         formData.append('file', file);
         formData.append('directory', JSON.stringify(directory));

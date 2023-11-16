@@ -6,11 +6,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from './UploadForm.module.css'
 import logo from '../../assets/SHKOLA_ZNAK.png'
+import { uploadPictureToGalleryService } from '../../services/uploadServices';
 
 const UploadForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadType, setUploadType] = useState('');
   const [formation, setFormation] = useState('');
+  const [imageUrl, setImageURl] = useState('');
+  const [fileName, setfileName] = useState('');
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -24,13 +27,37 @@ const UploadForm = () => {
     setFormation(e.target.value);
   };
 
+  const handleFileNameChange = (e) => {
+    setfileName(e.target.value)
+  }
 
-  const handleUpload = () => {
-    // Add your file upload logic here
+ 
+
+
+  const handleUpload = async () => {
+
+   
+
+
+    const formData = new FormData();
+
+    formData.append('file', selectedFile);
+    formData.append('category', uploadType);
+    formData.append('formation', formation);
+    formData.append('name', fileName);
+
+    
+   
     if (selectedFile) {
-      console.log('Uploading file:', selectedFile);
-      console.log('Selected upload type:', uploadType);
-      // Add your file upload logic here
+     
+      if(uploadType == 'picture') {
+        const imageUrl = await uploadPictureToGalleryService(formData);
+       
+        setImageURl(imageUrl.imageUrl)
+      }
+    
+   
+
     } else {
       console.log('No file selected');
     }
@@ -54,29 +81,45 @@ const UploadForm = () => {
             <Form.Group controlId="formType" className="mb-3">
               <Form.Label>Select Type</Form.Label>
               <Form.Control as="select" value={uploadType} onChange={handleUploadTypeChange}>
-                <option value="select">--------</option>
+                <option value="na">--------</option>
                 <option value="arrangement">Arrangement</option>
                 <option value="picture">Picture</option>
                 <option value="notes">Notes</option>
               </Form.Control>
+              {uploadType !== 'picture' && uploadType !== 'na' &&
+              <Form.Group controlId="name" className="mb-3">
+              <Form.Label>Name of file</Form.Label>
+              <Form.Control type="text" onChange={handleFileNameChange} value={fileName} />
+             </Form.Group>
+}
             </Form.Group>
             <Form.Group controlId="formType" className="mb-3">
               <Form.Label>Select Formation</Form.Label>
               <Form.Control as="select" value={formation} onChange={handleFormationName}>
-                <option value="select">--------</option>
+                <option value="all">For All Formations</option>
                 <option value="littleOnes">Little Ones</option>
                 <option value="childrensChoir">Childrens Choir</option>
                 <option value="burdenis">Burdenis</option>
               </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="imageUrl" className="mb-3">
+              <Form.Label>ImageUrl</Form.Label>
+              <Form.Control type="text" value={imageUrl} />
             </Form.Group>
 
             <Button
               variant="primary"
               type="button"
               onClick={handleUpload}
-              style={{ backgroundColor: '#c61b2b', borderColor: '#c61b2b' }}
+              className={styles['btn']}
             >
               Upload
+            </Button>
+            <Button
+              variant="success"
+              type="submit"
+            >
+              Save
             </Button>
           </Form>
         </Col>

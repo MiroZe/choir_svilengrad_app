@@ -14,3 +14,15 @@ export const uploadPictureService = async(uploadData) => {
     
 
 }
+
+export const uploadPictureToGalleryService = async(uploadData) => {
+    
+    const response = await fetch(
+        `${baseURL}/upload/gallery` ,
+         {method:'POST',
+          
+           body:uploadData})
+    return await response.json();
+    
+
+}
