@@ -44,3 +44,13 @@ export const deleteChorister = async (choristerId) => {
     return result;
 
 }
+
+export const editChorister = async (choristerId, choristerData) => {
+
+
+    const response = await fetch(`${baseURL}/choristers/${choristerId}/edit`,
+    {method:'PUT' ,headers:headers, body:JSON.stringify(choristerData), credentials:'include', });
+    const result = await response.json();
+    return result
+
+}

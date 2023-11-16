@@ -26,7 +26,7 @@ const Chorister = ({ index, firstName, lastName, formations, imageUrl, _id , sho
       <td>{formations.join(", ")}</td>
       <td>
       <Link to={`/choristers/${_id}`}><Button variant="info">Info</Button></Link>
-      <Button variant="warning">Edit</Button>
+      <Button as={Link} to={`/choristers/${_id}/edit`} variant="warning">Edit</Button>
       <Button variant="danger" onClick={() => showDeleteModal(_id, firstName,lastName)}>Delete</Button> 
       </td>
    
