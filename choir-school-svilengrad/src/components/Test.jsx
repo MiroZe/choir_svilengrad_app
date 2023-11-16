@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+
 const Test = () => {
   const [file, setFile] = useState(null);
 
@@ -7,6 +8,7 @@ const Test = () => {
     setFile(e.target.files[0]);
   };
 
+  
   const handleUpload = () => {
     const formData = new FormData();
     formData.append('file', file);
@@ -32,7 +34,6 @@ const Test = () => {
       <input type="file" onChange={handleFileChange} name='file' />
       <button onClick={handleUpload}>Upload File</button>
     </div>
-  
     </>
   );
 };

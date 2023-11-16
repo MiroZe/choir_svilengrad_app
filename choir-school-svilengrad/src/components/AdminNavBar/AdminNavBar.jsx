@@ -8,6 +8,8 @@ const AdminNavBar= () => {
 
 return (
 
+
+
 <Navbar className={styles['nav-container']} >
         <Container>
           <Navbar.Brand as={Link} to={'/formations/create'}>Formations Create</Navbar.Brand>
@@ -20,12 +22,11 @@ return (
         <Link  to={"/choristers"}>Choristers</Link>
         </Container>
         <Container>
-          <Navbar.Brand as={Link}>Upload Notes</Navbar.Brand>
+          <Navbar.Brand as={Link} to={"/upload"}>Upload</Navbar.Brand>
         </Container>
-        <Container>
-          <Navbar.Brand as={Link}>Upload Arrangiments</Navbar.Brand>
-        </Container>
+       
       </Navbar>
+     
 
 )
 

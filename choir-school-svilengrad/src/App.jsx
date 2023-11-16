@@ -19,6 +19,7 @@ import FormationDetails from "./components/Formations/FormationDetails/Formation
 import EditFormation from "./components/Formations/EditFormation/EditFormation";
 import { FormationProvider } from "./contexts/FormationContext";
 import EditChorister from "./components/Choristers/EditChorister/EditChorister";
+import UploadForm from "./components/Upload/UploadForm";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/choristers/create" element={<CreateChoristerForm />} />
         <Route path="/choristers/:choristerId" element={<ChoristerDetails />} />
         <Route path="/choristers/:choristerId/edit" element={<EditChorister />} />
+        <Route path="/upload" element={<UploadForm />} />
         <Route path="/auth/logout" element={<Logout />} />
       </Routes>
 
