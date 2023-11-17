@@ -15,7 +15,7 @@ export const uploadPictureService = async(uploadData) => {
 
 }
 
-export const uploadFileService = async(uploadData) => {
+export const geUrlUploadService = async(uploadData) => {
     
     const response = await fetch(
         `${baseURL}/upload/file` ,
@@ -24,5 +24,25 @@ export const uploadFileService = async(uploadData) => {
            body:uploadData})
     return await response.json();
     
+
+}
+
+export const uploadFileService = async(uploadType,formation,url,fileName,authorName) => {
+    let response;
+
+    console.log(formation);
+   
+    
+
+    if(uploadType === 'picture') {
+        response = await fetch(`${baseURL}/pictures`,
+        {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
+        body:JSON.stringify({formation,url}) } );
+    }
+
+
+    const result =  await response.json();
+    console.log(result);
+
 
 }

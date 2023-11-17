@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState,useMemo,useCallback } from "react";
 
 export const FormationContext = createContext();
 
@@ -7,15 +7,25 @@ export const FormationProvider = ({children}) => {
 
 
 const [formation, setFormation] = useState({});
-const setFormationFunction = (formationData) => setFormation(formationData)
 
 
 
-const contextValues = {
-    setFormationFunction,
-    formation
-   
-}
+const setFormationFunction = useCallback(
+    (formationData) => setFormation(formationData),
+    []
+  );
+
+  const contextValues = useMemo(
+    () => ({
+      setFormationFunction,
+      formation,
+    }),
+    [setFormationFunction, formation]
+  );
+
+
+
+
 
 
 return (

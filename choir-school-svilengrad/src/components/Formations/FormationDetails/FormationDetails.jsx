@@ -18,6 +18,7 @@ const FormationDetails = () => {
   const {formation, setFormationFunction} = useContext(FormationContext);
   const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     getFormationById(formationId)
@@ -27,7 +28,7 @@ const FormationDetails = () => {
          setSpinner(false)
     })
       .catch((err) => console.log(err));
-  }, [formationId, setFormationFunction]);
+  }, [formationId,setFormationFunction]);
 
 
   const deleteClickHandler = async (id) => {

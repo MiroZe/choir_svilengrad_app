@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from './UploadForm.module.css'
 import logo from '../../assets/SHKOLA_ZNAK.png'
-import { uploadFileService } from '../../services/uploadServices';
+import { geUrlUploadService, uploadFileService } from '../../services/uploadServices';
 
 const UploadForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -15,6 +15,12 @@ const UploadForm = () => {
   const [url, setUrl] = useState('');
   const [fileName, setfileName] = useState('');
   const [authorName, setAuthorName] = useState('');
+ 
+
+
+  const handleUrlChange = (e) => {
+    console.log(e.target);
+  };
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -51,14 +57,25 @@ const UploadForm = () => {
     if (selectedFile) {
      
       
-      const url = await uploadFileService(formData)
-       console.log(url);
+      const url = await geUrlUploadService(formData)
+      
         setUrl(url.imageUrl)
 
     } else {
       console.log('No file selected');
     }
   };
+
+
+  const uploadSubmitHandler= async(e, uploadType,formation,url,fileName,authorName) => {
+    e.preventDefault();
+   await uploadFileService(uploadType,formation,url,fileName,authorName)
+    
+
+
+  }
+
+
 
   return (
 
@@ -69,15 +86,15 @@ const UploadForm = () => {
         </div>
       <Row className="justify-content-md-center mt-5">
         <Col md="6">
-          <Form>
+          <Form onSubmit={(e) => uploadSubmitHandler(e, uploadType,formation,url,fileName,authorName)}>
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Label>Choose File</Form.Label>
-              <Form.Control type="file" onChange={handleFileChange} />
+              <Form.Control name='file' type="file" onChange={handleFileChange} />
             </Form.Group>
 
             <Form.Group controlId="formType" className="mb-3">
               <Form.Label>Select Type</Form.Label>
-              <Form.Control as="select" value={uploadType} onChange={handleUploadTypeChange}>
+              <Form.Control name='uploadType' as="select" value={uploadType} onChange={handleUploadTypeChange}>
                 <option value="na">--------</option>
                 <option value="arrangement">Arrangement</option>
                 <option value="picture">Picture</option>
@@ -87,19 +104,20 @@ const UploadForm = () => {
               <>
               <Form.Group controlId="name" className="mb-3">
               <Form.Label>Name of file</Form.Label>
-              <Form.Control type="text" onChange={handleFileNameChange} value={fileName} />
+              <Form.Control name='fileName' type="text" onChange={handleFileNameChange} value={fileName} />
              </Form.Group>
 
               <Form.Group controlId="author" className="mb-3">
               <Form.Label>Author</Form.Label>
-              <Form.Control type="text" onChange={handleAuthorNameChange} value={authorName} />
+              <Form.Control name="authorName" type="text" onChange={handleAuthorNameChange} value={authorName} />
               </Form.Group>
               </>
               }
             </Form.Group>
             <Form.Group controlId="formType" className="mb-3">
               <Form.Label>Select Formation</Form.Label>
-              <Form.Control as="select" value={formation} onChange={handleFormationName}>
+              <Form.Control name="formation" as="select" value={formation} onChange={handleFormationName}>
+              <option value="" selected>------------</option>
                 {uploadType === 'picture' && 
                 <option value="all">For All Formations</option>
                 }
@@ -110,7 +128,7 @@ const UploadForm = () => {
             </Form.Group>
             <Form.Group controlId="imageUrl" className="mb-3">
               <Form.Label>Url</Form.Label>
-              <Form.Control type="text" value={url} />
+              <Form.Control name="url" type="text" value={url} onChange={handleUrlChange} />
             </Form.Group>
 
             <Button
