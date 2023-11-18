@@ -35,3 +35,17 @@
   .carousel-control-prev-icon {
     background-color: #c61b2b;
   }
+
+  .fullsize {
+    margin: 0 auto;
+    max-width: 1200px;
+  
+ 
+    
+  }
+
+  .fullsize img {
+    width: 100%;
+    object-fit: revert;
+    height: auto;
+  }
