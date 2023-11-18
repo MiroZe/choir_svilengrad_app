@@ -54,7 +54,7 @@ const FormationDetails = () => {
         <p>{formation.description}</p>
         <p>Conductor:{formation.conductor}</p>
         <div className={styles["links"]}>
-          <a href="#gallery">Gallery</a>
+          <Link to={'/gallery'}>Gallery</Link>
           <a href="#video">Video</a>
           <Link to={'/choristers'}>Choristers</Link> 
         </div>

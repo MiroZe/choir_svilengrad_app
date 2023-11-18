@@ -45,4 +45,10 @@ export const uploadFileService = async(uploadType,formation,url,fileName,authorN
     console.log(result);
 
 
+};
+
+export const getPictures = async () => {
+    const response = await fetch(`${baseURL}/pictures`, {credentials: 'include'});
+    const result = response.json();
+    return result
 }

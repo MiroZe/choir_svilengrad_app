@@ -34,7 +34,7 @@ const Header = () => {
           </>
           }
           {username && <>
-          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/test"}>Test</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/gallery"}>Gallery</NavLink> </li>
           
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/logout"}>Logout</NavLink> </li>
           </>

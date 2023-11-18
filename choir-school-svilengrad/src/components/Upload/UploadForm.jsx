@@ -1,14 +1,17 @@
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import styles from './UploadForm.module.css'
+import styles from './UploadForm.module.css';
 import logo from '../../assets/SHKOLA_ZNAK.png'
 import { geUrlUploadService, uploadFileService } from '../../services/uploadServices';
 
 const UploadForm = () => {
+
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadType, setUploadType] = useState('');
   const [formation, setFormation] = useState('');
@@ -69,7 +72,22 @@ const UploadForm = () => {
 
   const uploadSubmitHandler= async(e, uploadType,formation,url,fileName,authorName) => {
     e.preventDefault();
-   await uploadFileService(uploadType,formation,url,fileName,authorName)
+    const values = {uploadType,formation,url};
+    const paths = {
+      picture: 'gallery',
+
+    }
+
+    console.log(paths[uploadType]);
+
+    if(Object.values(values).some(v => v === '')) {return}
+    try {
+      await uploadFileService(uploadType,formation,url,fileName,authorName);
+      navigate(`/${paths[uploadType]}`)
+      
+    } catch (error) {
+      console.log(error);
+    }
     
 
 

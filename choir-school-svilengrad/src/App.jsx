@@ -20,6 +20,7 @@ import EditFormation from "./components/Formations/EditFormation/EditFormation";
 import { FormationProvider } from "./contexts/FormationContext";
 import EditChorister from "./components/Choristers/EditChorister/EditChorister";
 import UploadForm from "./components/Upload/UploadForm";
+import Gallery from "./components/Gallery/Gallery";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/choristers/:choristerId" element={<ChoristerDetails />} />
         <Route path="/choristers/:choristerId/edit" element={<EditChorister />} />
         <Route path="/upload" element={<UploadForm />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/auth/logout" element={<Logout />} />
       </Routes>
 
