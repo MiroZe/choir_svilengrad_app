@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { getPictures } from '../../services/uploadServices';
 import styles from './Gallery.module.css'
+import logo from '../../assets/SHKOLA_ZNAK.png'
 
 
 
@@ -55,7 +56,12 @@ return (
         </Carousel>
         
         }
-        {fullsize && (<div className={styles['fullsize']}><img onClick={backToGallery} src={src}/></div>)}
+        {fullsize && (<div className={styles['fullsize']}>
+            <div className={styles['logo']}>
+            <img  src={logo} alt="" />
+            </div>
+            <img onClick={backToGallery} src={src}/>
+            </div>)}
         </>
       )
     

@@ -37,8 +37,10 @@
   }
 
   .fullsize {
-    margin: 0 auto;
+    margin: 2em auto;
     max-width: 1200px;
+    padding: 2em;
+    background-color: #2c3e50;
   
  
     
@@ -48,4 +50,11 @@
     width: 100%;
     object-fit: revert;
     height: auto;
+    border-radius: 3em;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
   }
