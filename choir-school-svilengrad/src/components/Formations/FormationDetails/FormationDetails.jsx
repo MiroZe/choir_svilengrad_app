@@ -56,6 +56,7 @@ const FormationDetails = () => {
         <div className={styles["links"]}>
           <Link to={'/gallery'}>Gallery</Link>
           <Link to={`/formations/${formation._id}/scores`}>Scores</Link>
+          <Link to={`/formations/${formation._id}/arrangements`}>Arrangements</Link>
           <Link to={'/choristers'}>Choristers</Link> 
         </div>
         {isAdmin && 

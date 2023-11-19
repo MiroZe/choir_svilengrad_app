@@ -8,7 +8,7 @@ const ScoreItem = (
 ) => {
 
 return (
-    <div className={styles['score-container']}>
+    <div className={styles['file-container']}>
         
     <div className={styles['img-container']}>
     <img src="https://thumb.mp-farm.com/380097/preview.jpg" alt="score picture" />

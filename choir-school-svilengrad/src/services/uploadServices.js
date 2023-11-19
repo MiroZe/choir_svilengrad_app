@@ -43,6 +43,11 @@ export const uploadFileService = async(uploadType,formation,url,fileName,authorN
         {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
         body:JSON.stringify({formation,url,fileName,authorName}) } );
     }
+    else if (uploadType ==='arrangement'){
+        response = await fetch(`${baseURL}/arrangements`,
+        {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
+        body:JSON.stringify({formation,url,fileName,authorName}) } );
+    }
 
 
     return await response.json();
@@ -59,6 +64,12 @@ export const getPictures = async () => {
 
 export const getScores = async (formationName) => {
     const response = await fetch(`${baseURL}/scores?name=${formationName}`, {credentials: 'include'});
+    const result = response.json();
+    return result
+}
+
+export const getArrangements = async (formationName) => {
+    const response = await fetch(`${baseURL}/arrangements?name=${formationName}`, {credentials: 'include'});
     const result = response.json();
     return result
 }

@@ -6,6 +6,7 @@ import { FormationContext } from "../../contexts/FormationContext";
 
 
 
+
 const Scores = () => {
 
     const [scores,setScores] = useState([]);
@@ -22,9 +23,15 @@ const Scores = () => {
 
 
 return (
-   <div className={styles['scores-container']}>
-        {scores.map(score => <ScoreItem  key={score._id} {...score} formationId={formationId}/>)}
-
+   <div className={styles['file-card-container']}>
+    {scores.length > 0 && 
+        scores.map(score => <ScoreItem  key={score._id} {...score} formationId={formationId}/>)
+    }
+     {scores.length == 0 && 
+     <>
+        <h3>There is no uploaded scores for {formationName} yet!</h3>
+    </>
+    }
    </div>
 
 )

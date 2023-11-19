@@ -1,5 +1,5 @@
 
-.scores-container {
+.file-card-container {
 
    
     margin: 20px auto;
@@ -10,7 +10,7 @@
     
 }
 
-.score-container {
+.file-container {
     max-width: 400px;
     max-height: 700px;
     display: flex;
