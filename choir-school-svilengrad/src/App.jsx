@@ -21,6 +21,7 @@ import { FormationProvider } from "./contexts/FormationContext";
 import EditChorister from "./components/Choristers/EditChorister/EditChorister";
 import UploadForm from "./components/Upload/UploadForm";
 import Gallery from "./components/Gallery/Gallery";
+import Scores from "./components/Scores/Scores";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/formations/create" element={<CreateFormation />} />
         <Route path="/formations/:formationId" element={<FormationProvider><FormationDetails /></FormationProvider>} />
         <Route path="/formations/:formationId/edit" element={<FormationProvider><EditFormation /></FormationProvider>} />
+        <Route path="/formations/:formationId/scores" element={<FormationProvider><Scores /></FormationProvider>} />
         <Route path="/choristers/" element={<ChoristerList />} />
         <Route path="/choristers/create" element={<CreateChoristerForm />} />
         <Route path="/choristers/:choristerId" element={<ChoristerDetails />} />

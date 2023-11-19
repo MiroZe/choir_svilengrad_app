@@ -73,17 +73,14 @@ const UploadForm = () => {
   const uploadSubmitHandler= async(e, uploadType,formation,url,fileName,authorName) => {
     e.preventDefault();
     const values = {uploadType,formation,url};
-    const paths = {
-      picture: 'gallery',
+   
 
-    }
-
-    console.log(paths[uploadType]);
+    
 
     if(Object.values(values).some(v => v === '')) {return}
     try {
       await uploadFileService(uploadType,formation,url,fileName,authorName);
-      navigate(`/${paths[uploadType]}`)
+      navigate('/formations')
       
     } catch (error) {
       console.log(error);
@@ -116,7 +113,7 @@ const UploadForm = () => {
                 <option value="na">--------</option>
                 <option value="arrangement">Arrangement</option>
                 <option value="picture">Picture</option>
-                <option value="notes">Notes</option>
+                <option value="score">Score</option>
               </Form.Control>
               {uploadType !== 'picture' && uploadType !== 'na' &&
               <>

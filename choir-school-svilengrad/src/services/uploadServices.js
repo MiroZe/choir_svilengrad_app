@@ -30,7 +30,7 @@ export const geUrlUploadService = async(uploadData) => {
 export const uploadFileService = async(uploadType,formation,url,fileName,authorName) => {
     let response;
 
-    console.log(formation);
+  
    
     
 
@@ -38,11 +38,15 @@ export const uploadFileService = async(uploadType,formation,url,fileName,authorN
         response = await fetch(`${baseURL}/pictures`,
         {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
         body:JSON.stringify({formation,url}) } );
+    } else if (uploadType ==='score'){
+        response = await fetch(`${baseURL}/scores`,
+        {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
+        body:JSON.stringify({formation,url,fileName,authorName}) } );
     }
 
 
-    const result =  await response.json();
-    console.log(result);
+    return await response.json();
+   
 
 
 };

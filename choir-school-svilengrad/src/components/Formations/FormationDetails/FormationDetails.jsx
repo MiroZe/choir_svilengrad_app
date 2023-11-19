@@ -55,7 +55,7 @@ const FormationDetails = () => {
         <p>Conductor:{formation.conductor}</p>
         <div className={styles["links"]}>
           <Link to={'/gallery'}>Gallery</Link>
-          <a href="#video">Video</a>
+          <Link to={`/formations/${formation._id}/scores`}>Scores</Link>
           <Link to={'/choristers'}>Choristers</Link> 
         </div>
         {isAdmin && 
