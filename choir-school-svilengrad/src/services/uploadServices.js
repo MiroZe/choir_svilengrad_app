@@ -56,3 +56,9 @@ export const getPictures = async () => {
     const result = response.json();
     return result
 }
+
+export const getScores = async (formationName) => {
+    const response = await fetch(`${baseURL}/scores?name=${formationName}`, {credentials: 'include'});
+    const result = response.json();
+    return result
+}

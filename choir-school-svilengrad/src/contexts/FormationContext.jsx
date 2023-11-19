@@ -19,6 +19,8 @@ const setFormationFunction = useCallback(
     () => ({
       setFormationFunction,
       formation,
+      formationName:formation.formationName,
+      formationId:formation._id
     }),
     [setFormationFunction, formation]
   );

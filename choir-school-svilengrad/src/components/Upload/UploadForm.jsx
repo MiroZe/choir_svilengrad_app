@@ -132,7 +132,7 @@ const UploadForm = () => {
             <Form.Group controlId="formType" className="mb-3">
               <Form.Label>Select Formation</Form.Label>
               <Form.Control name="formation" as="select" value={formation} onChange={handleFormationName}>
-              <option value="" selected>------------</option>
+              <option value="" >------------</option>
                 {uploadType === 'picture' && 
                 <option value="all">For All Formations</option>
                 }
