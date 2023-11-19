@@ -23,6 +23,7 @@ import UploadForm from "./components/Upload/UploadForm";
 import Gallery from "./components/Gallery/Gallery";
 import Scores from "./components/Scores/Scores";
 import Arrangements from "./components/Arrangements/Arrangements";
+import NoPageFound from "./components/NoPageFound/NoPageFound";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route path="/upload" element={<UploadForm />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/auth/logout" element={<Logout />} />
+        <Route path="*" element={<NoPageFound/>} />
       </Routes>
 
       <Footer />
