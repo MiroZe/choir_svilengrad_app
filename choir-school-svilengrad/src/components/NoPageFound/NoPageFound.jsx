@@ -6,7 +6,7 @@ const NoPageFound = ( ) => {
     return (
 <div style={{ textAlign: 'center', paddingTop: '50px' }}>
       <img src={noPage} alt="Choir" style={{ width: '500px', borderRadius: '50%', marginBottom: '20px', flexGrow:'1'}} />
-      <h1>404 - Not Found</h1>
+      
       <p>Oops! The page you are looking for does not exist.</p>
       <Link style=
       {{color:'#c61b2b', fontSize:'2em', textDecoration:'none', backgroundColor:'#2c3e50'}}
