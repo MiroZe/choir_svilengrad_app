@@ -1,5 +1,5 @@
-const request = async (method, token, url, data) => {
-    const options = {};
+const requester = async (method,url,data) => {
+    const options = {credentials: 'include'};
 
     if (method !== 'GET') {
         options.method = method;
@@ -13,12 +13,7 @@ const request = async (method, token, url, data) => {
         }
     }
 
-    if (token) {
-        options.headers = {
-            ...options.headers,
-            'X-Authorization': token,
-        };
-    }
+    
 
     const response = await fetch(url, options);
 
@@ -35,12 +30,12 @@ const request = async (method, token, url, data) => {
     return result;
 };
 
-export const requestFactory = (token) => {
-    return {
-        get: request.bind(null, 'GET', token),
-        post: request.bind(null, 'POST', token),
-        put: request.bind(null, 'PUT', token),
-        patch: request.bind(null, 'PATCH', token),
-        delete: request.bind(null, 'DELETE', token),
-    }
+export const request =  {
+     
+        get: requester.bind(null, 'GET'),
+        post: requester.bind(null, 'POST'),
+        put: requester.bind(null, 'PUT'),
+        patch: requester.bind(null, 'PATCH'),
+        delete: requester.bind(null, 'DELETE'),
+    
 };
