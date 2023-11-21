@@ -11,14 +11,17 @@
 .user-container {
     display: flex;
     gap: 2em;
-}
-
-.user-container .list-group-item {
-    display: flex;
-    color: black;
+    align-items: center;
     
 }
 
+.user-container p{
+   width: 15em;
+}
+
+.user-container span {
+    color: #c61b2b;
+}
 
 
 .current {

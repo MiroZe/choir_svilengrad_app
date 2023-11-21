@@ -16,8 +16,8 @@ const UserItem = ({
 
     return (
              
-      <ListGroup.Item as="li" className={styles['user-container']}>{email}
-     
+      <ListGroup.Item as="li" className={styles['user-container']}>
+        <p className={styles['current']}>Email: <span>{email}</span> </p>
       <p className={styles['current']}>Username : <span>{username}</span></p> 
       <p className={styles['current']}>Current Role : <span>{role}</span></p> 
 
