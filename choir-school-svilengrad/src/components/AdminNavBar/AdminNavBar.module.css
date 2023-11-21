@@ -1,8 +1,20 @@
 .nav-container {
-    background-color: #c61b2b;;
+    background-color: #c61b2b;
+    display: flex;
+    justify-content: space-between;
+   
 }
+
+.container {
+    justify-content: center;
+}
+
 
 .nav-container a {
     text-decoration: none;
     color: white;
+}
+
+.nav-container a:hover {
+    color: #2c3e50;
 }

@@ -24,6 +24,7 @@ import Gallery from "./components/Gallery/Gallery";
 import Scores from "./components/Scores/Scores";
 import Arrangements from "./components/Arrangements/Arrangements";
 import NoPageFound from "./components/NoPageFound/NoPageFound";
+import Users from "./components/Users/Users";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route path="/choristers/:choristerId/edit" element={<EditChorister />} />
         <Route path="/upload" element={<UploadForm />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/users" element={<Users />} />
         <Route path="/auth/logout" element={<Logout />} />
         <Route path="*" element={<NoPageFound/>} />
       </Routes>

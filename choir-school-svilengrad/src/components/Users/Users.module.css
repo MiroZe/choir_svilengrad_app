@@ -1,0 +1,19 @@
+
+
+.user-container {
+    display: flex;
+    gap: 2em;
+}
+
+.user-container .list-group-item {
+    display: flex;
+    color: black;
+    
+}
+
+
+
+.current {
+    
+    color: #2c3e50;
+}
