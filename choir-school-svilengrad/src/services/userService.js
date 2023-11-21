@@ -25,3 +25,8 @@ return result
 export const userLogout = async () => {
          return await request.post(`${baseURL}/logout`)
 }
+
+
+export const getAllUsers = async() => {
+    return await request.get(`${baseURL}/users`)
+}

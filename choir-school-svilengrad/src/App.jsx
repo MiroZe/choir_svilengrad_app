@@ -24,7 +24,7 @@ import Gallery from "./components/Gallery/Gallery";
 import Scores from "./components/Scores/Scores";
 import Arrangements from "./components/Arrangements/Arrangements";
 import NoPageFound from "./components/NoPageFound/NoPageFound";
-import Users from "./components/Users/Users";
+import Users from "./components/Users/UsersList";
 
 
 function App() {
