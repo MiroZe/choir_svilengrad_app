@@ -8,6 +8,9 @@ import { userRegister } from '../../services/userService';
 import { errorCheck } from '../../utils/utils';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/SHKOLA_ZNAK.png';
+import { useDispatch } from 'react-redux';
+
+import { setError } from "../../reduxErrorState/store";
 
 
 
@@ -15,7 +18,9 @@ import logo from '../../assets/SHKOLA_ZNAK.png';
 const RegisterForm = ()=> {
 
   const {setUserFunction} = useContext(Usercontext)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+
 
 
   const [formValues, setFormValues] = useState({
@@ -45,9 +50,16 @@ const RegisterForm = ()=> {
     e.preventDefault();
     const userData = {username,email,password,rePassword};
 
-     const registeredUser = await userRegister(userData);
-     setUserFunction(registeredUser);
-     navigate('/')
+    try {
+      const registeredUser = await userRegister(userData);
+      setUserFunction(registeredUser);
+      navigate('/')
+      
+    } catch (error) {
+   
+      dispatch(setError(error.message));
+    }
+
 
   }
   const errCheck = (e,criteria,pattern)=> {

@@ -7,12 +7,16 @@ import { errorCheck } from "../../utils/utils";
 import { userLogin } from "../../services/userService";
 import { Usercontext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setError } from "../../reduxErrorState/store";
+
 import logo from '../../assets/SHKOLA_ZNAK.png';
 
 
 
 const LoginForm = () => {
   const { setUserFunction } = useContext(Usercontext);
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
@@ -33,10 +37,16 @@ const LoginForm = () => {
     e.preventDefault();
     const userData = { username, password };
 
-    const loggedUser = await userLogin(userData);
+    try {
+      const loggedUser = await userLogin(userData);
+      setUserFunction(loggedUser);
+      navigate("/");
+      
+    } catch (error) {
+      dispatch(setError(error.message));
+    }
 
-    setUserFunction(loggedUser);
-    navigate("/");
+
   };
   const errCheck = (e, criteria, pattern) => {
     setErrors((state) => ({

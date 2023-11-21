@@ -1,15 +1,20 @@
 import styles from './ErrorMessage.module.css'
+import { useDispatch,useSelector } from 'react-redux';
+import { clearError } from '../../reduxErrorState/store';
 
 
 const ErrorMessage = () => {
+
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.error);
 
 return (
 
 
 
-<div className={styles["alert danger-alert"]}>
-  <h3>Danger Alert Message</h3>
-  <a className={styles['close']}>&times;</a>
+  <div className={styles['error-alert']}>
+  <p className={styles["error-message"]}>{error}</p>
+  <button onClick={() => dispatch(clearError())}>Ok</button>
 </div>
 
 

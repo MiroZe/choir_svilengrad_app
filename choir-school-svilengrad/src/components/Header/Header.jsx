@@ -5,13 +5,15 @@ import logo from '../../assets/SHKOLA_ZNAK.png';
 import { Usercontext } from '../../contexts/UserContext';
 import { useContext } from 'react';
 import AdminNavBar from '../AdminNavBar/AdminNavBar';
+import ErrorMessage from '../ErrorMessages/ErrorMessage';
+import { useSelector } from 'react-redux';
 
 
 
 
 const Header = () => {
  const {username, isAdmin} = useContext(Usercontext)
-
+ const error = useSelector(state => state.error);
 
   return (
     <>
@@ -45,6 +47,7 @@ const Header = () => {
       </nav>
     </header>
     {isAdmin && <AdminNavBar/>}
+    {error && <ErrorMessage/>}
     </>
   );
 };
