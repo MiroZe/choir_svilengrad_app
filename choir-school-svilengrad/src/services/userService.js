@@ -28,5 +28,8 @@ export const userLogout = async () => {
 
 
 export const getAllUsers = async() => {
-    return await request.get(`${baseURL}/users`)
+
+     return  await request.get(`${baseURL}/users`);
+      
+  
 }

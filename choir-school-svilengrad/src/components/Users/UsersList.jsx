@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch } from 'react-redux';
 import { setError } from "../../reduxErrorState/store";
+import {useNavigate } from "react-router-dom"
 
 import styles from './Users.module.css';
 import { getAllUsers } from '../../services/userService';
@@ -15,19 +16,26 @@ const Users = () => {
 
     
     const [usersList, setUsersList] = useState([]);
-  const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
 
-
-    useEffect(()=> {
+    useEffect(() => {
+      const fetchData = async () => {
         try {
-            getAllUsers()
-                .then(setUsersList)
+          const result = await getAllUsers();
+          setUsersList(result);
         } catch (error) {
-            dispatch(setError(error.message));
+          
+          localStorage.removeItem('user')
+          console.log('Attempting to navigate to /login');
+          navigate('/login')
+          dispatch(setError(`${error.message}Please log in!`));
         }
-
-    },[dispatch])
+      };
+    
+      fetchData();
+    }, [dispatch,history]);
 
    
 
