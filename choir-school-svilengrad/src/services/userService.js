@@ -33,3 +33,8 @@ export const getAllUsers = async() => {
       
   
 }
+
+
+export const changeUserRole = async(userId,newRole) => {
+    return await request.put(`${baseURL}/users/profile`,{userId,newRole})
+}

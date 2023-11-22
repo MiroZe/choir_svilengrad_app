@@ -5,7 +5,7 @@ import styles from './Users.module.css';
 
 
 const UserItem = ({
-    email, role, username
+    email, role, username, _id,changeRoleClickHandler
 }) => {
 
     const [roleSelect, setRole] = useState({role:''});
@@ -13,6 +13,9 @@ const UserItem = ({
        
         setRole(e.target.value)
     }
+
+
+   
 
     return (
              
@@ -27,7 +30,11 @@ const UserItem = ({
         <option value="chorister">Chosrister</option>
         <option value="user">User</option>
       </select>
-      <button>Change</button>
+      
+      <button 
+      
+      
+       onClick={() => changeRoleClickHandler(_id,roleSelect)}>Change</button>
       
    
       </ListGroup.Item>

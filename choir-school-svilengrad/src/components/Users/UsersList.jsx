@@ -3,6 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch } from 'react-redux';
 import { setError } from "../../reduxErrorState/store";
 import {useNavigate } from "react-router-dom"
+import { changeUserRole } from "../../services/userService";
 
 import styles from './Users.module.css';
 import { getAllUsers } from '../../services/userService';
@@ -28,16 +29,25 @@ const Users = () => {
         } catch (error) {
           
           localStorage.removeItem('user')
-          console.log('Attempting to navigate to /login');
+         
           navigate('/login')
           dispatch(setError(`${error.message}Please log in!`));
         }
       };
     
       fetchData();
-    }, [dispatch,history]);
+    }, [dispatch,navigate]);
 
-   
+    const changeRoleClickHandler = async (id,newRole) => {
+
+      
+     const upadatedUser =  await changeUserRole(id,newRole);
+     setUsersList(usersList => usersList.map(user => (user._id === upadatedUser._id ?{...user,role:upadatedUser.role}: user)))
+      
+ 
+     }
+
+  
 
 
 return (
@@ -50,7 +60,7 @@ return (
       </div>
         <ListGroup as="ol" numbered> 
 
-        {usersList.map(user => <UserItem key={user._id} {...user}/>)}
+        {usersList.map(user => <UserItem key={user._id} {...user} changeRoleClickHandler={changeRoleClickHandler}/>)}
 
         </ListGroup>
 
