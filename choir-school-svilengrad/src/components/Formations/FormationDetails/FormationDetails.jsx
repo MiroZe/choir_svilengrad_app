@@ -5,9 +5,11 @@ import { deleteFormation, getFormationById } from "../../../services/formationSe
 import SpinnerComp from "../../Spinner/Spinner";
 import Button from 'react-bootstrap/Button';
 import { Usercontext } from "../../../contexts/UserContext";
-import { FormationContext } from "../../../contexts/FormationContext";
 import DeleteConfirmationModal from "../../DeleteConfirmationModal/DeleteConformationModal";
 import {useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+  import { setFormation } from '../../../reduxErrorState/store';
+
 
 
 const FormationDetails = () => {
@@ -15,20 +17,25 @@ const FormationDetails = () => {
   
   const [spinner, setSpinner] = useState(true);
   const {isAdmin} = useContext(Usercontext);
-  const {formation, setFormationFunction} = useContext(FormationContext);
   const [modalShow, setModalShow] = useState(false);
+  
+
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const formation = useSelector((state) => state.formation);
   
 
   useEffect(() => {
     getFormationById(formationId)
       .then((data) => {
       
-        setFormationFunction(data)
+        dispatch(setFormation(data));
+       
          setSpinner(false)
     })
       .catch((err) => console.log(err));
-  }, [formationId,setFormationFunction]);
+  }, [formationId,dispatch]);
 
 
   const deleteClickHandler = async (id) => {
@@ -38,6 +45,8 @@ const FormationDetails = () => {
     
   
   }
+
+  
 
   return (
     <div className={styles['card-container']}>

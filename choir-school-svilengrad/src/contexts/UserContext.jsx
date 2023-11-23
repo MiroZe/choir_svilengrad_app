@@ -14,7 +14,9 @@ const contextValues = {
     setUserFunction,
      username:user.username,
     isAdmin: user.role == 'admin',
-   
+    isAuthenticated: !!user._id,
+    hasAccess : (user.role === 'admin' || user.role === 'chorister'),
+    
     }
 
 

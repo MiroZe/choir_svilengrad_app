@@ -5,15 +5,16 @@ import styles from "../CreateFormation/CreateFormations.module.css";
 import { editFormation } from "../../../services/formationServices";
 import { useFormErrors } from "../../../hooks/useFormErrors";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { FormationContext } from "../../../contexts/FormationContext";
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
+import { setFormation } from "../../../reduxErrorState/store";
 
 
 const EditFormation = () => {
 
   const {formationId} = useParams();
-  const {formation} = useContext(FormationContext)
+
+  const formation = useSelector((state) => state.formation);
   const { formValues, onChangeHandler } = useForm(
     {formationName:formation.formationName,
       conductor:formation.conductor,
@@ -21,7 +22,10 @@ const EditFormation = () => {
       description: formation.description
     });
 
-    const navigate= useNavigate()
+   
+
+    const navigate= useNavigate();
+    const dispatch = useDispatch();
 
   const { errors, onErrorHandler, isErrors } = useFormErrors({
     formationName: false,
@@ -34,7 +38,8 @@ const EditFormation = () => {
     e.preventDefault();
     if (Object.values(errors).some((f) => f == true)) return;
   
-  await editFormation(formationId, formValues);
+  const editedFormation = await editFormation(formationId, formValues);
+  dispatch(setFormation(editedFormation))
     navigate(`/formations/${formation._id}`)
   
   };

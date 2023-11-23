@@ -2,7 +2,8 @@ import { useState,useEffect,useContext } from "react"
 import { getScores } from "../../services/uploadServices";
 import styles from './Scores.module.css'
 import ScoreItem from "./ScoreItem";
-import { FormationContext } from "../../contexts/FormationContext";
+import { useSelector } from "react-redux"; 
+
 
 
 
@@ -10,7 +11,7 @@ import { FormationContext } from "../../contexts/FormationContext";
 const Scores = () => {
 
     const [scores,setScores] = useState([]);
-    const {formationName, formationId} = useContext(FormationContext);
+    const {formationName, formationId} = useSelector((state) => state.formation);
 
  
 

@@ -9,11 +9,24 @@ const errorSlice = createSlice({
   },
 });
 
+
+const formationSlice = createSlice({
+  name: 'formation',
+  initialState: null,
+  reducers: {
+    setFormation: (state, action) => {
+      return action.payload;
+    },
+  },
+});
+
+export const { setFormation } = formationSlice.actions;
 export const { setError, clearError } = errorSlice.actions;
 
 const store = configureStore({
   reducer: {
     error: errorSlice.reducer,
+    formation: formationSlice.reducer,
   },
 });
 

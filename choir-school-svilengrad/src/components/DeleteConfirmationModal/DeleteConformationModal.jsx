@@ -6,7 +6,7 @@ import styles from './DeleteConfirmationModal.module.css'
 const  DeleteConfirmationModal = ({data,deleteClickHandler, ...otherProps}) => {
 
 
-  console.log(data);
+
     
     const names = {
       firstName : '',

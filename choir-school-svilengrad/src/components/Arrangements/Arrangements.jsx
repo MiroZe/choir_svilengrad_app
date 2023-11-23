@@ -1,8 +1,8 @@
-import { useState,useEffect,useContext } from "react"
+import { useState,useEffect } from "react"
 import { getArrangements } from "../../services/uploadServices";
 import styles from '../Scores/Scores.module.css'
 import ScoreItem from "./ArrangementItem";
-import { FormationContext } from "../../contexts/FormationContext";
+import { useSelector } from "react-redux"; 
 
 
 
@@ -10,26 +10,28 @@ import { FormationContext } from "../../contexts/FormationContext";
 const Arrangements = () => {
 
     const [arrangements,setArrangements] = useState([]);
-    const {formationName, formationId} = useContext(FormationContext);
 
+
+    const formation = useSelector((state) => state.formation);
+    console.log(formation);
  
 
     useEffect(() => {
-        getArrangements(formationName)
+        getArrangements(formation.formationName)
             .then(setArrangements)
 
-    },[formationName])
+    },[formation.formationName])
 
 
 
 return (
    <div className={styles['file-card-container']}>
     {arrangements.length > 0 && 
-        arrangements.map(arrangement => <ScoreItem  key={arrangement._id} {...arrangement} formationId={formationId}/>)
+        arrangements.map(arrangement => <ScoreItem  key={arrangement._id} {...arrangement} formationId={formation._id}/>)
     }
      {arrangements.length == 0 && 
      <>
-        <h3>There is no uploaded arrangements for {formationName} yet!</h3>
+        <h3>There is no uploaded arrangements for {formation.formationName} yet!</h3>
     </>
     }
    </div>
