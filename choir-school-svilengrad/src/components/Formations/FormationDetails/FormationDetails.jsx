@@ -8,7 +8,7 @@ import { Usercontext } from "../../../contexts/UserContext";
 import DeleteConfirmationModal from "../../DeleteConfirmationModal/DeleteConformationModal";
 import {useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-  import { setFormation } from '../../../reduxErrorState/store';
+  import { setFormation } from '../../../reduxStates/store';
 
 
 
@@ -16,7 +16,7 @@ const FormationDetails = () => {
   const { formationId } = useParams();
   
   const [spinner, setSpinner] = useState(true);
-  const {isAdmin} = useContext(Usercontext);
+  const {isAdmin, hasAccess} = useContext(Usercontext);
   const [modalShow, setModalShow] = useState(false);
   
 
@@ -64,9 +64,11 @@ const FormationDetails = () => {
         <p>Conductor:{formation.conductor}</p>
         <div className={styles["links"]}>
           <Link to={'/gallery'}>Gallery</Link>
+          {hasAccess && (<>
           <Link to={`/formations/${formation._id}/scores`}>Scores</Link>
           <Link to={`/formations/${formation._id}/arrangements`}>Arrangements</Link>
           <Link to={'/choristers'}>Choristers</Link> 
+          </>)}
         </div>
         {isAdmin && 
         <div className={styles['admin-actions']}>

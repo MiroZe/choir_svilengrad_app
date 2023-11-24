@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch } from 'react-redux';
-import { setError } from "../../reduxErrorState/store";
+import { setError } from "../../reduxStates/store";
 import {useNavigate } from "react-router-dom"
 import { changeUserRole } from "../../services/userService";
 

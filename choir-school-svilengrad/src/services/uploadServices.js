@@ -1,3 +1,4 @@
+import { request } from "./requester";
 
 const baseURL = 'http://localhost:3000';
 
@@ -28,30 +29,18 @@ export const geUrlUploadService = async(uploadData) => {
 }
 
 export const uploadFileService = async(uploadType,formation,url,fileName,authorName) => {
-    let response;
-
-  
    
-    
+
+
 
     if(uploadType === 'picture') {
-        response = await fetch(`${baseURL}/pictures`,
-        {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
-        body:JSON.stringify({formation,url}) } );
+       return request.post(`${baseURL}/pictures`,({formation,url}))
     } else if (uploadType ==='score'){
-        response = await fetch(`${baseURL}/scores`,
-        {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
-        body:JSON.stringify({formation,url,fileName,authorName}) } );
+       return request.post(`${baseURL}/scores`,({formation,url,fileName,authorName}) )
     }
     else if (uploadType ==='arrangement'){
-        response = await fetch(`${baseURL}/arrangements`,
-        {method:'POST',credentials: 'include', headers:{"Content-Type": "application/json"},
-        body:JSON.stringify({formation,url,fileName,authorName}) } );
+        return request.post(`${baseURL}/arrangements`,({formation,url,fileName,authorName}))
     }
-
-
-    return await response.json();
-   
 
 
 };
@@ -72,4 +61,9 @@ export const getArrangements = async (formationName) => {
     const response = await fetch(`${baseURL}/arrangements?name=${formationName}`, {credentials: 'include'});
     const result = response.json();
     return result
+}
+
+export const deleteScore = (scoreId,scoreImageUrl)  => {
+
+    return request.delete(`${baseURL}/upload/file`,{id:scoreId,fileUrl:scoreImageUrl,modelName:'score'});
 }

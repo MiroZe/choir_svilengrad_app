@@ -52,13 +52,20 @@ justify-content: center;
   
   .links a {
     text-decoration: none;
-    color: #3498db;
+    color: #c61b2b;
+    background-color: #34495e;
     font-weight: bold;
     transition: color 0.3s ease;
+    padding: 0.5em;
+    border-radius: 0.4em;
   }
   
   .links a:hover {
     color: #0077cc;
+  }
+
+  .card-content a:hover {
+    color: white;
   }
 
 

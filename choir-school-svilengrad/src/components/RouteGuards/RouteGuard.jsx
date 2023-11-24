@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { Usercontext } from '../../contexts/UserContext';
 import { useDispatch } from 'react-redux';
-import { setError } from "../../reduxErrorState/store";
+import { setError } from "../../reduxStates/store";
 
 const RouteGuard = ({
     children,

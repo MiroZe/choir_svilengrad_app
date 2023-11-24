@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import styles from './UploadForm.module.css';
 import logo from '../../assets/SHKOLA_ZNAK.png'
 import { geUrlUploadService, uploadFileService } from '../../services/uploadServices';
+import { setError } from '../../reduxStates/store';
+import { useDispatch } from 'react-redux';
 
 const UploadForm = () => {
 
@@ -19,8 +21,9 @@ const UploadForm = () => {
   const [fileName, setfileName] = useState('');
   const [authorName, setAuthorName] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [uploadDisabled, setUploadDisabled] = useState(true);
  
-
+  const dispatch = useDispatch();
 
   const handleUrlChange = (e) => {
     console.log(e.target);
@@ -28,6 +31,7 @@ const UploadForm = () => {
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
+    setUploadDisabled(false)
   };
 
   const handleUploadTypeChange = (e) => {
@@ -92,7 +96,7 @@ const UploadForm = () => {
       navigate('/formations')
       
     } catch (error) {
-      console.log(error);
+      dispatch(setError(error.message))
     }
     
 
@@ -156,6 +160,7 @@ const UploadForm = () => {
             </Form.Group>
 
             <Button
+            disabled={uploadDisabled}
               variant="primary"
               type="button"
               onClick={handleUpload}

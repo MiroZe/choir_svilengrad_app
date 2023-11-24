@@ -7,7 +7,7 @@ import { useFormErrors } from "../../../hooks/useFormErrors";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
-import { setFormation } from "../../../reduxErrorState/store";
+import { setFormation } from "../../../reduxStates/store";
 
 
 const EditFormation = () => {

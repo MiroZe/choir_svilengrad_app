@@ -83,3 +83,9 @@
     width: 5em;
     margin: 0 auto;
   }
+
+  .link-cont {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+  }

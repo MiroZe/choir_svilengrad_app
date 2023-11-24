@@ -5,12 +5,13 @@ import styles from './DeleteConfirmationModal.module.css'
 
 const  DeleteConfirmationModal = ({data,deleteClickHandler, ...otherProps}) => {
 
-
-
+  
+  const fileUrl = data.scoreUrl || data.arrangementUrl
     
     const names = {
       firstName : '',
-      lastName : ''
+      lastName : '',
+    
     }
     Object.keys(data).forEach(d => {
       if(d.includes('firstName')) {
@@ -41,7 +42,7 @@ const  DeleteConfirmationModal = ({data,deleteClickHandler, ...otherProps}) => {
            
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={()=> deleteClickHandler(data._id)}>Delete</Button>
+            <Button variant="danger" onClick={()=> deleteClickHandler(data._id, fileUrl)}>Delete</Button>
             <Button onClick={otherProps.onHide}>Cancel</Button>
           </Modal.Footer>
         </Modal>

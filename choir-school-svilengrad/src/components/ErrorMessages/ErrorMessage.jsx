@@ -1,6 +1,6 @@
 import styles from './ErrorMessage.module.css'
 import { useDispatch,useSelector } from 'react-redux';
-import { clearError } from '../../reduxErrorState/store';
+import { clearError } from '../../reduxStates/store';
 
 
 const ErrorMessage = () => {

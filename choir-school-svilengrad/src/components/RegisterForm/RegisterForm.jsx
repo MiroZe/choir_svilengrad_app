@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/SHKOLA_ZNAK.png';
 import { useDispatch } from 'react-redux';
 
-import { setError } from "../../reduxErrorState/store";
+import { setError } from "../../reduxStates/store";
 
 
 

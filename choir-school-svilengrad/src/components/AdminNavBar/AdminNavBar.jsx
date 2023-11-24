@@ -14,10 +14,10 @@ const AdminNavBar = () => {
         <Link to={"/choristers/create"}>Add chorister</Link>
       </Container>
       <Container>
-        <Link to={"/choristers"}>Choristers</Link>
+        <Link to={"/upload"}>Upload</Link>
       </Container>
       <Container>
-        <Link to={"/upload"}>Upload</Link>
+        <Link to={"/choristers"}>Choristers</Link>
       </Container>
       <Container>
         <Link to={"/users"}>Users</Link>

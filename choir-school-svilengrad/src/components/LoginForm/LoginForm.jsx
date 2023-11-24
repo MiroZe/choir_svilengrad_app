@@ -8,7 +8,7 @@ import { userLogin } from "../../services/userService";
 import { Usercontext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { setError } from "../../reduxErrorState/store";
+import { setError } from "../../reduxStates/store";
 
 import logo from '../../assets/SHKOLA_ZNAK.png';
 
