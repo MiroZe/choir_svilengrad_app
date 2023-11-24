@@ -73,3 +73,13 @@
     border-radius: 1em;
     text-decoration: none;
   }
+
+  .no-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .no-content a {
+    display: inline-block;
+    width: 5em;
+    margin: 0 auto;
+  }

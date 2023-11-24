@@ -18,6 +18,7 @@ const UploadForm = () => {
   const [url, setUrl] = useState('');
   const [fileName, setfileName] = useState('');
   const [authorName, setAuthorName] = useState('');
+  const [disabled, setDisabled] = useState(true);
  
 
 
@@ -58,11 +59,16 @@ const UploadForm = () => {
     
    
     if (selectedFile) {
-     
+      try {
+        const url = await geUrlUploadService(formData)
+        setUrl(url.imageUrl);
+        setDisabled(false)
+        
+      } catch (error) {
+        console.log(error)
+      }
       
-      const url = await geUrlUploadService(formData)
       
-        setUrl(url.imageUrl)
 
     } else {
       console.log('No file selected');
@@ -77,7 +83,10 @@ const UploadForm = () => {
 
     
 
-    if(Object.values(values).some(v => v === '')) {return}
+    if(Object.values(values).some(v => v === '')) {
+      setDisabled(false);
+      return
+    }
     try {
       await uploadFileService(uploadType,formation,url,fileName,authorName);
       navigate('/formations')
@@ -155,6 +164,7 @@ const UploadForm = () => {
               Upload
             </Button>
             <Button
+            disabled={disabled}
               variant="success"
               type="submit"
             >

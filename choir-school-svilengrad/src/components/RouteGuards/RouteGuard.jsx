@@ -11,7 +11,7 @@ const RouteGuard = ({
     const {isAuthenticated, hasAccess} = useContext(Usercontext)
     const dispatch = useDispatch()
 
-    console.log(hasAccess);
+   
     
     if (!isAuthenticated) {
         dispatch(setError('You do not have access to this resources.Please log in!'));
