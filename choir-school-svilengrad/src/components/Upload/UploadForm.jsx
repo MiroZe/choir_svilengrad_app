@@ -69,13 +69,13 @@ const UploadForm = () => {
         setDisabled(false)
         
       } catch (error) {
-        console.log(error)
+        dispatch(setError(error.message));
       }
       
       
 
     } else {
-      console.log('No file selected');
+      dispatch(setError('No file selected'));
     }
   };
 
@@ -84,7 +84,7 @@ const UploadForm = () => {
     e.preventDefault();
     const values = {uploadType,formation,url};
    
-
+    console.log(values);
     
 
     if(Object.values(values).some(v => v === '')) {
@@ -145,13 +145,17 @@ const UploadForm = () => {
             <Form.Group controlId="formType" className="mb-3">
               <Form.Label>Select Formation</Form.Label>
               <Form.Control name="formation" as="select" value={formation} onChange={handleFormationName}>
-              <option value="" >------------</option>
+                <option value="na">--------</option>
+             
                 {uploadType === 'picture' && 
+
                 <option value="all">For All Formations</option>
                 }
+                {uploadType !== 'picture' && ( <>
                 <option value="littleOnes">Little Ones</option>
                 <option value="childrensChoir">Childrens Choir</option>
                 <option value="burdenis">Burdenis</option>
+                </>)}
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="imageUrl" className="mb-3">

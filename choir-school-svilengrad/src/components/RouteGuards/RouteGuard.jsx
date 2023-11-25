@@ -18,7 +18,7 @@ const RouteGuard = ({
         return <Navigate to="/auth/login" />;
     }
     if (!hasAccess) {
-        dispatch(setError('You should be member of Choir School to view this resource '));
+        dispatch(setError('You should be member of Choir School.Please join us :)'));
         return <Navigate to="/formations" />;
     }
 

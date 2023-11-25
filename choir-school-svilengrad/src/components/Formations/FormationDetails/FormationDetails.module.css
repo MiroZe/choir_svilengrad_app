@@ -9,7 +9,7 @@ justify-content: center;
   .card {
     max-width: 800px;
     margin: 20px auto;
-    background-color: #2c3e50; /* Updated background color */
+    background-color: #2c3e50; 
     border-radius: 8px;
    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -41,20 +41,19 @@ justify-content: center;
   
   p {
     margin-bottom: 16px;
-    color: #fff; /* Updated text color */
+    color: #fff; 
   }
   
   .links {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap:0.5em
   }
   
   .links a {
     text-decoration: none;
-    color: #c61b2b;
-    background-color: #34495e;
-    font-weight: bold;
+    color:  #2c3e50;
     transition: color 0.3s ease;
     padding: 0.5em;
     border-radius: 0.4em;
@@ -68,8 +67,20 @@ justify-content: center;
     color: white;
   }
 
+  .links .scores {
+    background-color: #009bf9;
+    
+  }
 
+  .links .arrangements {
+    background-color: #25b382;
+   
+  }
 
+  .links .choristers {
+    background-color: #e4a6c4;
+ 
+  }
 
   .overlay a {
     padding: 10px 20px;
@@ -77,7 +88,7 @@ justify-content: center;
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
+    
     cursor: pointer;
     transition: background-color 0.3s ease; 
     text-decoration: none;

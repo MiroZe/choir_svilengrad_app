@@ -6,6 +6,8 @@ import styles from "./Chorister.module.css";
 import DeleteConfirmationModal from '../../DeleteConfirmationModal/DeleteConformationModal';
 import logo from '../../../assets/SHKOLA_ZNAK.png'
 import { useNavigate } from 'react-router-dom';
+import { setError } from '../../../reduxStates/store';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -17,25 +19,28 @@ const ChoristerList =() => {
   const [modalShow, setModalShow] = useState(false);
   const [userData, setUserData] = useState({});
   
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
 
 useEffect(() => {
-    getAllChoristers().then(result => setChoristers(result))
-},[])
+  getAllChoristers()
+  .then(result => setChoristers(result))
+  .catch(error => {
+   
+    dispatch(setError(error.message))
+}) 
+  }
+, [dispatch]);
+
 
 const showDeleteModal = (_id,firstName,lastName) => {
   
   setUserData({ _id, firstName, lastName })
   setModalShow(true);
   
-  
-  
-  
 
 }
-
-
 
 
 const deleteClickHandler = async (id) => {
