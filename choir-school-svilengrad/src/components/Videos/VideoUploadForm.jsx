@@ -1,4 +1,5 @@
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import styles from './VideoUploadForm.module.css'
 import logo from '../../assets/SHKOLA_ZNAK.png';
 
@@ -25,7 +26,23 @@ return (
       <option value="littleOnes">Little Ones</option>
       <option value="other">Other Video</option>
     </Form.Select>
-   
+             
+            <Button
+           
+              variant="success"
+              type="submit"
+            >
+              Add Video
+            </Button>
+            <Button
+            
+            variant="primary"
+            type="button"
+           
+            className={styles['btn']}
+          >
+            Cancel
+          </Button>
     
 
     </Form>

@@ -22,3 +22,8 @@
     width: 60px;
     height: 60px;
 }
+
+.video-container button {
+    margin-top: 20px;
+    margin-right: 10px;
+}
