@@ -67,3 +67,7 @@ export const deleteScore = (scoreId,scoreImageUrl)  => {
 
     return request.delete(`${baseURL}/upload/file`,{id:scoreId,fileUrl:scoreImageUrl,modelName:'score'});
 }
+export const deleteArrangement = (arrangementId,arrangementImageUrl)  => {
+
+    return request.delete(`${baseURL}/upload/file`,{id:arrangementId,fileUrl:arrangementImageUrl,modelName:'arrangement'});
+}
