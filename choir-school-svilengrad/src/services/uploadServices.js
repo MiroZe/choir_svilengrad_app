@@ -71,3 +71,9 @@ export const deleteArrangement = (arrangementId,arrangementImageUrl)  => {
 
     return request.delete(`${baseURL}/upload/file`,{id:arrangementId,fileUrl:arrangementImageUrl,modelName:'arrangement'});
 }
+
+export const createYouTubeRecord = (videoId,videoUrl,tag) => {
+
+
+    return request.post(`${baseURL}/videos`,({videoId,videoUrl,tag}))
+}

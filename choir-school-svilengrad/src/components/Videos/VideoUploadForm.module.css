@@ -23,7 +23,8 @@
     height: 60px;
 }
 
-.video-container button {
+.video-container button,
+.video-container a {
     margin-top: 20px;
     margin-right: 10px;
 }

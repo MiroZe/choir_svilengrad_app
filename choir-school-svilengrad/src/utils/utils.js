@@ -31,4 +31,7 @@ export const errorCheck = (value, criteria,pattern) => {
         return value1 === value2
     }
 
+   
+
+
 
