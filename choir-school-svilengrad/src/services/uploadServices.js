@@ -77,3 +77,12 @@ export const createYouTubeRecord = (videoId,videoUrl,tag) => {
 
     return request.post(`${baseURL}/videos`,({videoId,videoUrl,tag}))
 }
+
+export const getAllVideos = () => {
+
+    return request.get(`${baseURL}/videos`)
+}
+
+export const deleteVideoById = (id) => {
+    return request.delete(`${baseURL}/videos/${id}`)
+}

@@ -26,7 +26,7 @@ import NoPageFound from "./components/NoPageFound/NoPageFound";
 import Users from "./components/Users/UsersList";
 import RouteGuard from "./components/RouteGuards/RouteGuard";
 import RouteAdminGuard from "./components/RouteGuards/RouteAdminGuard";
-import VideoLinkUploadForm from "./components/Videos/VideoUploadForm";
+import VideoLinkUploadForm from "./components/Videos/VideoUploadForm/VideoUploadForm";
 import VideoGallery from "./components/Videos/VideoGallery";
 
 

@@ -1,13 +1,13 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import styles from './VideoUploadForm.module.css'
-import logo from '../../assets/SHKOLA_ZNAK.png';
-import { useForm } from '../../hooks/useForm';
+import logo from '../../../assets/SHKOLA_ZNAK.png';
+import { useForm } from '../../../hooks/useForm';
 import { useEffect, useState } from 'react';
-import { getYouTubeVideoId } from '../../utils/getYouTubeUrl';
-import {setError} from '../../reduxStates/store'
+import { getYouTubeVideoId } from '../../../utils/getYouTubeUrl';
+import {setError} from '../../../reduxStates/store'
 import {useDispatch} from "react-redux"
-import { createYouTubeRecord } from '../../services/uploadServices';
+import { createYouTubeRecord } from '../../../services/uploadServices';
 import {useNavigate, Link} from 'react-router-dom'
 
 
@@ -46,7 +46,7 @@ const VideoLinkUploadForm = () => {
    const youTubeId = getYouTubeVideoId(youTubeLink);
    const youTubeRecord = await createYouTubeRecord(youTubeId,youTubeLink,tag);
    console.log(youTubeRecord);
-   navigate('/')
+   navigate('/videos')
   
  } catch (error) {
   dispatch(setError(error.message))
