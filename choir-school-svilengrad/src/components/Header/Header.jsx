@@ -37,6 +37,7 @@ const Header = () => {
           }
           {username && <>
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/gallery"}>Gallery</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/videos"}>Videos</NavLink> </li>
           
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/logout"}>Logout</NavLink> </li>
           </>

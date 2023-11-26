@@ -27,6 +27,7 @@ import Users from "./components/Users/UsersList";
 import RouteGuard from "./components/RouteGuards/RouteGuard";
 import RouteAdminGuard from "./components/RouteGuards/RouteAdminGuard";
 import VideoLinkUploadForm from "./components/Videos/VideoUploadForm";
+import VideoGallery from "./components/Videos/VideoGallery";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/videos" element={<VideoGallery />} />
         <Route path="/formations" element={<Formations />} />
         <Route path="/auth/register" element={<RegisterForm />} />
         <Route path="/auth/login" element={<LoginForm />} />
@@ -55,6 +57,7 @@ function App() {
         <Route path="/formations/:formationId/scores" element={<Scores />} />
         <Route path="/formations/:formationId/arrangements" element={<Arrangements />} />
         <Route path="/choristers/:choristerId" element={<ChoristerDetails />} />
+
 
 
 
