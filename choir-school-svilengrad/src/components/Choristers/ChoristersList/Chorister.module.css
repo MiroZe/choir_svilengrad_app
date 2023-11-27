@@ -11,6 +11,12 @@
 }
 
 
+.table-container i {
+    color: #c61b2b;
+    cursor: pointer;
+}
+
+
 .table-container table{
 
     margin-top: 3em;

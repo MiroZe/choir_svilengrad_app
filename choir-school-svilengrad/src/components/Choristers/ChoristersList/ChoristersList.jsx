@@ -53,6 +53,19 @@ const deleteClickHandler = async (id) => {
 
 } 
 
+const sortHandler = (criteria) => {
+  console.log(choristers);
+  if(criteria === 'formations') {
+    setChoristers(c => [...c].sort((a,b)=> a[criteria][0].localeCompare(b[criteria][0])))
+  }else {
+
+    setChoristers(c => [...c.sort((a,b)=> a[criteria].localeCompare(b[criteria]))])
+  }
+ 
+
+
+}
+
 
 
 return (
@@ -67,9 +80,9 @@ return (
             <tr>
               <th>#</th>
               <th>Image</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Formation</th>
+              <th onClick={() => sortHandler('firstName')}>First Name <i className="fa-solid fa-arrow-down-wide-short"></i></th>
+              <th onClick={() => sortHandler('lastName')}>Last Name <i className="fa-solid fa-arrow-down-wide-short"></i></th>
+              <th onClick={() => sortHandler('formations')}>Formation <i className="fa-solid fa-arrow-down-wide-short"></i></th>
               <th>Actions</th>
             </tr>
           </thead>
