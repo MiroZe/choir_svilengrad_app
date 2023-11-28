@@ -23,6 +23,9 @@ const AdminNavBar = () => {
         <Link to={"/choristers"}>Choristers</Link>
       </Container>
       <Container>
+        <Link to={"/taxes"}>Taxes</Link>
+      </Container>
+      <Container>
         <Link to={"/users"}>Users</Link>
       </Container>
     </Navbar>

@@ -28,6 +28,7 @@ import RouteGuard from "./components/RouteGuards/RouteGuard";
 import RouteAdminGuard from "./components/RouteGuards/RouteAdminGuard";
 import VideoLinkUploadForm from "./components/Videos/VideoUploadForm/VideoUploadForm";
 import VideoGallery from "./components/Videos/VideoGallery";
+import TaxesDashboard from "./components/Taxes/TaxesDashboard/TaxesDashboard";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
         <Route path="/upload" element={<UploadForm />} />
         <Route path="/users" element={<Users />} />
         <Route path="/videos/upload" element={<VideoLinkUploadForm />} />
+        <Route path="/taxes" element={<TaxesDashboard />} />
 
 
         </Route>
