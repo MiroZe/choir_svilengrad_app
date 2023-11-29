@@ -9,14 +9,19 @@ import TaxRowItem from './TaxRowItem';
 const TaxesList = ({formValues}) => {
 
     const[choristers,setChoristers] = useState([]);
-    const [payments,setPayments] = useState([])
+    const [year,setYear] = useState('');
+    const [month,setMonth] = useState('');
+    const [payments,setPayments] = useState([]);
    
 
    useEffect(() => {
     getPayments(formValues)
-        .then(({choristers,payments}) => {
-            setChoristers(choristers);
-             setPayments(payments)
+        .then(({choristers,data}) => {
+            console.log(data);
+             setChoristers(choristers);
+             setYear(data.year)
+             setMonth(data.month);
+             setPayments(data.payments)
 
         })
           
@@ -24,7 +29,7 @@ const TaxesList = ({formValues}) => {
 
    },[formValues])
 
-
+   console.log(year);
 
     return (
         <Table striped bordered hover size="sm">
@@ -41,7 +46,14 @@ const TaxesList = ({formValues}) => {
           </thead>
           <tbody>
             
-            {choristers.map((ch,index ) => <TaxRowItem key={ch._id} {...ch} index={index} payments={payments}/>)}
+            {choristers.map((ch,index ) => <TaxRowItem 
+            key={ch._id}
+             {...ch}
+              index={index} 
+              year = {year}
+              month = {month}
+              payments = {payments}
+              />)}
 
           </tbody>
         </Table>

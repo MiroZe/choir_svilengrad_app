@@ -37,8 +37,9 @@ const TaxesDashboard = () => {
 
     const showList = async (e) => {
         e.preventDefault()
+        const {year,month,formation} = formValues
        
-       
+       if(year === '' || month === '' || formation == '') return
         
         setShowChoristerList(true)
     }
