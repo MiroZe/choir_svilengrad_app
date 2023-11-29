@@ -7,6 +7,10 @@ import { uploadPictureService } from '../../../services/uploadServices';
 import { createChorister } from '../../../services/choristersServices';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setError } from '../../../reduxStates/store';
+import Button from 'react-bootstrap/esm/Button';
+
 
 
 
@@ -14,7 +18,9 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateChoristerForm = ()=> {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [disabled,setDisabled] = useState(true);
 
  
       const [formValues, setFormValues] = useState({
@@ -70,37 +76,40 @@ const CreateChoristerForm = ()=> {
          await createChorister(choristerData);
          navigate('/choristers')
        
-      
-         
-       
-    
        }
       const errCheck = (e,criteria,pattern)=> {
         
       setErrors((state) => ({...state, [e.target.name] : errorCheck(e.target.value, criteria,pattern)}));
-    
-    
+  
       }
 
       const onChangeFormationHandler = (e) => {
         setFormations(state => ({...state ,[e.target.name]: e.target.checked}));
        
-        
       }
 
       const attachPictureHandler = async () => {
 
+          
+        if(Object.values(formations).some(f => f === false)) {
+          dispatch(setError('Please choose formation!'));
+          setDisabled(true)
+      
+          return;
+        }
+
+
         const directory = Object.keys(formations).filter(r => formations[r] === true)[0];
         const formData = new FormData();
 
-       
         
-        formData.append('file', file);
+        formData.append('file', file );
         formData.append('directory', JSON.stringify(directory));
         formData.append('pictureName', pictureName);
         
         const url = await uploadPictureService(formData);
         
+        setDisabled(false)
          setImageUrl(url.imageUrl);
      
         
@@ -110,7 +119,11 @@ const CreateChoristerForm = ()=> {
 
     
     const handleUpload = (e) => {
+
         setFile(e.target.files[0])
+        setDisabled(false)
+      
+        
         setPictureName(`${formValues.firstName}_${formValues.lastName}.jpg`);
        
 
@@ -257,7 +270,7 @@ const CreateChoristerForm = ()=> {
 
             <label htmlFor="picture">Choose picture</label>
             <input type="file" name="pictureName" id='picture' value={pictureName.value} onChange={handleUpload} />
-            <button type="button" onClick={ attachPictureHandler}>Attach picture</button>
+            <Button variant="warning" type="button" disabled={disabled} onClick={ attachPictureHandler}>Attach picture</Button>
 
 
             <label htmlFor="imageUrl">Choose picture</label>
@@ -269,7 +282,7 @@ const CreateChoristerForm = ()=> {
              value={imageUrl}
              disabled />
 
-        <button type='submit'>Add Chorister</button>
+        <Button variant="success" type='submit'>Add Chorister</Button>
         </form>
         </div> 
     )
