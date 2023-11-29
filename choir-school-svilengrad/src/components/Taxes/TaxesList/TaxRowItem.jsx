@@ -18,10 +18,11 @@ const [disabled, setDisabled] = useState(false)
  })
 
  const [paymentAmount, setPaymentAmount] = useState('')
+ const [newPayments, setNewPayments] = useState(payments)
 
  useEffect(() => {
 
-     payments.map(x => {
+    newPayments.map(x => {
         if(_id == x.choristerId && x.isPaid) {
             
             setPaymentAmount(x.amountPaid)
@@ -30,9 +31,9 @@ const [disabled, setDisabled] = useState(false)
         return
      })
 
- },[payments])
+ },[newPayments,_id])
 
-console.log(value.taxAmount);
+
 
  const onChangeHandler = (e) => {
     setValue( state => ({...state, [e.target.name]:e.target.value}))
@@ -47,12 +48,18 @@ console.log(value.taxAmount);
     
 
     try {
-         await makeTaxPayment(id, amountPayment, year,name);
-       
+         await makeTaxPayment(id, amountPayment, year,month);
+         setNewPayments(state => state.map(x => ({...x,amountPaid:value.taxAmount })))
+         setDisabled(true);
     } catch (error) {
         dispatch(setError(error.message))
     }
 
+ }
+
+ const newPaymentSubmitHandler = () => {
+    setDisabled(false);
+    setPaymentAmount('')
  }
 
 
@@ -64,9 +71,12 @@ return (
               <td>{lastName}</td>
               <td>{year}</td>
               <td>{month}</td>
-              <td><input disabled={disabled} type="text" value={paymentAmount} name="taxAmount" onChange={onChangeHandler}/></td>
-              <td><Button variant="success" onClick={()=> paymentHandler(_id)}>Pay</Button>
-              <Button variant="danger">Mark as unpaid</Button></td>
+              <td><input disabled={disabled} type="text" value={paymentAmount || value.taxAmount} name="taxAmount" onChange={onChangeHandler}/></td>
+              <td><Button variant="success" 
+              onClick={()=> paymentHandler(_id)}
+              disabled={disabled}
+              >Pay</Button>
+              <Button variant="danger" onClick={newPaymentSubmitHandler}>Edit existing payment</Button></td>
               
             </tr>
 )

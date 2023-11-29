@@ -17,7 +17,7 @@ const TaxesList = ({formValues}) => {
    useEffect(() => {
     getPayments(formValues)
         .then(({choristers,data}) => {
-            console.log(data);
+            
              setChoristers(choristers);
              setYear(data.year)
              setMonth(data.month);
@@ -29,7 +29,6 @@ const TaxesList = ({formValues}) => {
 
    },[formValues])
 
-   console.log(year);
 
     return (
         <Table striped bordered hover size="sm">

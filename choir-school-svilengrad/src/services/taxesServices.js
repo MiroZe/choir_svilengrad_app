@@ -16,6 +16,6 @@ export const getPayments = (dateData) => {
 
 export const makeTaxPayment = (choristerId,amountPayment,year,month) => {
 
-    return request.put(`${baseURL}/taxes`, ({choristerId,amountPayment,year,month}))
+    return request.patch(`${baseURL}/taxes`, ({choristerId,amountPayment,year,month}))
 
 }

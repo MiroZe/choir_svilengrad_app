@@ -25,3 +25,15 @@
    
 }
 
+.header {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.header img {
+    width: 60px;
+    height: 60px;
+}
+

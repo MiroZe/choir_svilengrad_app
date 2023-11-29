@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import TaxesList from '../TaxesList/TaxesList';
+import logo from '../../../assets/SHKOLA_ZNAK.png';
 
 
 
@@ -12,12 +13,12 @@ const TaxesDashboard = () => {
 
     
   
-    const [newEventName, setnewEventName] = useState('');
+  
     const [formValues, setFormValues] = useState(
         {year: '',
         month: '',
         formation:'',
-        eventName:''
+       
                 }
     );
     const [showChoristerList, setShowChoristerList] = useState(false);
@@ -28,12 +29,9 @@ const TaxesDashboard = () => {
     const onChangeEventHandler = (e) => {
        
         setFormValues(state => ({...state, [e.target.name]:e.target.value}))
+        setShowChoristerList(false)
     }
 
-    const setNewOption = (value) => {
-        setnewEventName(value);
-        
-    }
 
     const showList = async (e) => {
         e.preventDefault()
@@ -47,22 +45,19 @@ const TaxesDashboard = () => {
 return (
   
     <div className={styles['container']}>
-  
+  <div className={styles["header"]}>
+        <img src={logo} alt="" />
+        <h2>Taxes</h2>
+      </div>
         <Form onSubmit={showList}>
       
-    <Form.Label>Event Name</Form.Label>
-    <>
-        <Form.Control type="text" value={formValues.eventName} name="eventName" onChange={onChangeEventHandler}/>
-        <Button onClick={()=> setNewOption(formValues.eventName)}>Save</Button>
-        </>
-
         <Form.Label>Choose Year</Form.Label>
     <Form.Select placeholder='Choose Year' aria-label="year" name='year' value={formValues.year} onChange={onChangeEventHandler}>
     <option value="">-------</option>
       <option value="2023">2023</option>
       <option value="2024">2024</option>
     </Form.Select>
-    <Form.Label>Choose Month or Event</Form.Label>
+    <Form.Label>Choose Month</Form.Label>
     <Form.Select aria-label="month" name='month' value={formValues.month} onChange={onChangeEventHandler}>
       <option value="">-------</option>
       <option value="january">January</option>
@@ -77,7 +72,7 @@ return (
       <option value="october">October</option>
       <option value="november">November</option>
       <option value="december">December</option>  
-      <option value={newEventName}>{newEventName}</option>  
+     
     </Form.Select>
     <Form.Label>Choose Formation</Form.Label>
 
