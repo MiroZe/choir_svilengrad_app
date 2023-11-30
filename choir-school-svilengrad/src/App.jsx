@@ -29,6 +29,7 @@ import RouteAdminGuard from "./components/RouteGuards/RouteAdminGuard";
 import VideoLinkUploadForm from "./components/Videos/VideoUploadForm/VideoUploadForm";
 import VideoGallery from "./components/Videos/VideoGallery";
 import TaxesDashboard from "./components/Taxes/TaxesDashboard/TaxesDashboard";
+import WeatherCard from "./components/Weather/WeatherCard";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/videos" element={<VideoGallery />} />
         <Route path="/formations" element={<Formations />} />
+        <Route path="/weather" element={<WeatherCard />} />
         <Route path="/auth/register" element={<RegisterForm />} />
         <Route path="/auth/login" element={<LoginForm />} />
         <Route path="/formations/:formationId" element={<FormationDetails />} />

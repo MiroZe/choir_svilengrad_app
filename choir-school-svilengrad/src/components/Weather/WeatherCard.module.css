@@ -1,0 +1,13 @@
+
+
+.weather-container {
+
+    margin: 0 auto;
+    flex: 1;
+    padding: 2em;
+
+}
+
+.weather-container h2 {
+    text-align: center;
+}

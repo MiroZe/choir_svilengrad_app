@@ -56,7 +56,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={styles["form-container"]}>
+    <div className={styles["main-container"]}>
+      <div className={styles["form-container"]}>
       <div className={styles["header"]}>
         <img src={logo} alt="" />
         <h2>Login Form</h2>
@@ -103,6 +104,7 @@ const LoginForm = () => {
           Log in
         </Button>
       </form>
+      </div>
     </div>
   );
 };
