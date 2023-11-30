@@ -24,12 +24,13 @@ import Scores from "./components/Scores/Scores";
 import Arrangements from "./components/Arrangements/Arrangements";
 import NoPageFound from "./components/NoPageFound/NoPageFound";
 import Users from "./components/Users/UsersList";
-import RouteGuard from "./components/RouteGuards/RouteGuard";
 import RouteAdminGuard from "./components/RouteGuards/RouteAdminGuard";
 import VideoLinkUploadForm from "./components/Videos/VideoUploadForm/VideoUploadForm";
 import VideoGallery from "./components/Videos/VideoGallery";
 import TaxesDashboard from "./components/Taxes/TaxesDashboard/TaxesDashboard";
 import WeatherCard from "./components/Weather/WeatherCard";
+import RouteUserGuard from "./components/RouteGuards/RouteUser";
+import RouteChoristerGuard from "./components/RouteGuards/RouteChoristerGuard";
 
 
 function App() {
@@ -44,39 +45,47 @@ function App() {
     
 
       <Routes>
+       {/* PUBLIC ROUTES  */}
         <Route path="/" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/videos" element={<VideoGallery />} />
         <Route path="/formations" element={<Formations />} />
         <Route path="/weather" element={<WeatherCard />} />
         <Route path="/auth/register" element={<RegisterForm />} />
         <Route path="/auth/login" element={<LoginForm />} />
         <Route path="/formations/:formationId" element={<FormationDetails />} />
-        
-        <Route element={<RouteGuard />}>
-        <Route path="/formations/create" element={<CreateFormation />} />
-        <Route path="/formations/:formationId/edit" element={<EditFormation />} />
-        <Route path="/choristers/" element={<ChoristerList />} />
+        {/* PUBLIC ROUTES  */}
+
+          {/* USER ROUTES  */}
+        <Route element={<RouteUserGuard />}>
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/videos" element={<VideoGallery />} />
+            <Route path="/auth/logout" element={<Logout />} />
+        </Route>
+          {/* USER ROUTES  */}
+
+         {/* CHORISTER ROUTES  */}
+         <Route element={<RouteChoristerGuard />}>
         <Route path="/formations/:formationId/scores" element={<Scores />} />
         <Route path="/formations/:formationId/arrangements" element={<Arrangements />} />
+        <Route path="/choristers/" element={<ChoristerList />} />
         <Route path="/choristers/:choristerId" element={<ChoristerDetails />} />
-
-
-
-
         </Route>
 
+        {/* CHORISTER ROUTES  */}
+
+    
+      {/* ADMIN ROUTES  */}
         <Route element={<RouteAdminGuard />}>
-        <Route path="/choristers/create" element={<CreateChoristerForm />} />
-        <Route path="/choristers/:choristerId/edit" element={<EditChorister />} />
-        <Route path="/upload" element={<UploadForm />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/videos/upload" element={<VideoLinkUploadForm />} />
-        <Route path="/taxes" element={<TaxesDashboard />} />
-
-
+            <Route path="/formations/create" element={<CreateFormation />} />
+            <Route path="/formations/:formationId/edit" element={<EditFormation />} />
+            <Route path="/choristers/create" element={<CreateChoristerForm />} />
+            <Route path="/choristers/:choristerId/edit" element={<EditChorister />} />
+            <Route path="/upload" element={<UploadForm />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/videos/upload" element={<VideoLinkUploadForm />} />
+            <Route path="/taxes" element={<TaxesDashboard />} />
         </Route>
-        <Route path="/auth/logout" element={<Logout />} />
+          {/* ADMIN ROUTES  */}
+      
         <Route path="*" element={<NoPageFound/>} />
       </Routes>
 

@@ -16,7 +16,7 @@ const FormationDetails = () => {
   const { formationId } = useParams();
   
   const [spinner, setSpinner] = useState(true);
-  const {isAdmin, hasAccess, isOnlyUser} = useContext(Usercontext);
+  const {isAdmin, isChorister, isOnlyUser} = useContext(Usercontext);
   const [modalShow, setModalShow] = useState(false);
   
 
@@ -65,7 +65,7 @@ const FormationDetails = () => {
         <div className={styles["links"]}>
           {isOnlyUser && 
           <Link to={'/gallery'}>Gallery</Link>}
-          {hasAccess && (<>
+          {isChorister && (<>
           <Link to={`/formations/${formation._id}/scores`} className={styles['scores']}>Scores</Link>
           <Link to={`/formations/${formation._id}/arrangements`} className={styles['arrangements']}>Arrangements</Link>
           <Link to={'/choristers'} className={styles['choristers']}>Choristers</Link> 

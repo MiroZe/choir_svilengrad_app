@@ -15,7 +15,7 @@ const contextValues = {
      username:user.username,
     isAdmin: user.role == 'admin',
     isAuthenticated: !!user._id,
-    hasAccess : (user.role === 'admin' || user.role === 'chorister'),
+    isChorister : (user.role !== 'user' && !!user._id),
     isOnlyUser : user.role === 'user' 
     
     }
