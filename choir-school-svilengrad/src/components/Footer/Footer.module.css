@@ -28,3 +28,23 @@
     font-weight: 700;
    
 }
+
+
+@media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .contact-info {
+      margin-bottom: 20px;
+    }
+  
+    .address {
+      margin-right: 0;
+    }
+  
+    .social-icons {
+      margin-top: 20px;
+    }
+  }

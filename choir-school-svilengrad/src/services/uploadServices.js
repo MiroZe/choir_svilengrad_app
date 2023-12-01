@@ -39,13 +39,16 @@ export const uploadFileService = async(uploadType,formation,url,fileName,authorN
         return request.post(`${baseURL}/arrangements`,({formation,url,fileName,authorName}))
     }
 
-
 };
 
 export const getPictures = async () => {
     const response = await fetch(`${baseURL}/pictures`, {credentials: 'include'});
     const result = response.json();
     return result
+}
+
+export const deletePictureById = (pictureId,pictureUrl) => {
+    return request.delete(`${baseURL}/upload/file`, {id:pictureId,fileUrl:pictureUrl,modelName:'picture'})
 }
 
 export const getScores = async (formationName) => {
