@@ -8,14 +8,16 @@ import { uploadPictureService } from '../../../services/uploadServices';
 import { editChorister, getOneChorister } from '../../../services/choristersServices';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import SpinnerComp from '../../Spinner/Spinner';
+import { useDispatch } from 'react-redux';
+import { setError } from '../../../reduxStates/store';
 
 
 const EditChorister = ()=> {
 
   const navigate = useNavigate();
   const {choristerId} = useParams();
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false);
+  const dispatch = useDispatch()
 
   const [formValues, setFormValues] = useState({
     firstName: '',   
@@ -39,26 +41,31 @@ const EditChorister = ()=> {
   const[imageUrl, setImageUrl] = useState('')
 
 
-
+ 
   useEffect( () => {
 
     getOneChorister(choristerId)
     .then(chorister => {
         setFormValues(chorister) 
        
-       chorister.formations.forEach( f => {
-        
-         if(Object.keys(formations).includes(f)) {
-             formations[f]= true
-         }
-       })
+        setFormations((prevFormations) => {
+          const updatedFormations = { ...prevFormations };
+  
+          chorister.formations.forEach((f) => {
+            if (Object.keys(updatedFormations).includes(f)) {
+              updatedFormations[f] = true;
+            }
+          });
+  
+          return updatedFormations;
+        });
       
      
         setImageUrl(chorister.imageUrl)    
     })
-    .catch(err => console.log(err))
+    .catch(error => dispatch(setError(error.message)))
 
-  },[choristerId,formations])
+  },[choristerId,dispatch])
 
       const[errors,setErrors] = useState({
         firstName:'',   
@@ -89,8 +96,17 @@ const EditChorister = ()=> {
       
 
         const choristerData = {...formValues,formations:choristformations,imageUrl}
-         await editChorister(choristerId, choristerData);
-         navigate('/choristers')
+        if(Object.values(choristerData).some(f => f === '')) {
+           
+          throw new Error('Please check all fields')
+        } 
+        try {
+          await editChorister(choristerId, choristerData);
+          navigate('/choristers')
+          
+        } catch (error) {
+          dispatch(setError(error.message))
+        }
     
     
        }
@@ -102,7 +118,11 @@ const EditChorister = ()=> {
       }
 
       const onChangeFormationHandler = (e) => {
-        setFormations(state => ({...state ,[e.target.name]: e.target.checked}));
+        console.log(formations);
+        setFormations((prevFormations) => ({
+          ...prevFormations,
+          [e.target.name]: e.target.checked,
+        }));
        
         
       }
@@ -117,10 +137,15 @@ const EditChorister = ()=> {
         formData.append('directory', JSON.stringify(directory));
         formData.append('pictureName', pictureName);
         
-        const url = await uploadPictureService(formData);
-        
-         setImageUrl(url.imageUrl);
-         setDisabled(true)
+        try {
+          const url = await uploadPictureService(formData);
+          
+           setImageUrl(url.imageUrl);
+           setDisabled(true)
+          
+        } catch (error) {
+          dispatch(setError(error.message))
+        }
      
         
    
@@ -144,8 +169,8 @@ const EditChorister = ()=> {
 
     return (
         <>
-      {!formValues.firstName && <SpinnerComp/>}
-      {formValues.firstName &&
+      
+     
       <div className={styles['form-container']}>
     
   
@@ -164,7 +189,7 @@ const EditChorister = ()=> {
           onChange={onChangeCreateChoristerFormHandler} 
           value={formValues.firstName}
           onBlur={(e) => errCheck(e, 3)}/>
-          {errors.firstName && <p className="error">First Name should be at least 2 characters long!</p>}
+          {errors.firstName && <p className={styles["error"]}>First Name should be at least 2 characters long!</p>}
           
           </FloatingLabel>
       
@@ -175,7 +200,7 @@ const EditChorister = ()=> {
            value={formValues.surName}
            onBlur={(e) => errCheck(e, 3)}
            />
-           {errors.surName && <p className="error">Surname should be 3 characters at least</p>}
+           {errors.surName && <p className={styles['error']}>Surname should be 3 characters at least</p>}
         </FloatingLabel>
 
         <FloatingLabel controlId="floatinglastName" label="Last Name" className="mb-3">
@@ -184,7 +209,7 @@ const EditChorister = ()=> {
            value={formValues.lastName}
            onBlur={(e) => errCheck(e, 3)}
            />
-           {errors.surName && <p className="error">Last name should be 3 characters at least</p>}
+           {errors.surName && <p className={styles['error']}>Last name should be 3 characters at least</p>}
         </FloatingLabel>
 
             <div className="mb-3">
@@ -251,25 +276,25 @@ const EditChorister = ()=> {
 
         
 
-            <div className={styles.checkboxContainer}>
+            <div className={styles['checkboxContainer']}>
 
           
             <input type="checkbox" id="littleOnes" name='littleOnes' 
             checked={formations?.littleOnes}
-            value={formations.littleOnes}
+            
             onChange={onChangeFormationHandler}
             />
             <label htmlFor="littleOnes">Choir of littles ones</label>
 
             <input type="checkbox" id="childrensChoir" name='childrensChoir' 
             checked={formations['childrensChoir']}
-            value={formations.childrensChoir} 
+            
             onChange={onChangeFormationHandler} 
             />
             <label htmlFor="childrensChoir">Children`s choir</label>
             <input type="checkbox" id="burdenis" name='burdenis'
             
-             value={formations.burdenis}
+             
             onChange={onChangeFormationHandler} 
              checked={formations['burdenis']}
              />
@@ -299,7 +324,7 @@ const EditChorister = ()=> {
 
         </form>
         </div> 
-}
+
         </>
     )
     

@@ -47,7 +47,7 @@ return (
     <div className={styles['container']}>
   <div className={styles["header"]}>
         <img src={logo} alt="" />
-        <h2>Taxes</h2>
+        <h2>Monthly Taxes</h2>
       </div>
         <Form onSubmit={showList}>
       

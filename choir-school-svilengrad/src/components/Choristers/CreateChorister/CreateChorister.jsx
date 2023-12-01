@@ -6,7 +6,7 @@ import { errorCheck } from '../../../utils/utils';
 import { uploadPictureService } from '../../../services/uploadServices';
 import { createChorister } from '../../../services/choristersServices';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setError } from '../../../reduxStates/store';
 import Button from 'react-bootstrap/esm/Button';
@@ -73,8 +73,21 @@ const CreateChoristerForm = ()=> {
       
 
         const choristerData = {...formValues,formations:choristformations,imageUrl}
-         await createChorister(choristerData);
-         navigate('/choristers')
+
+        try {
+         
+          if(Object.values(choristerData).some(f => f === '')) {
+           
+            throw new Error('Please check all fields')
+          } 
+          await createChorister(choristerData);
+          navigate('/choristers')
+
+          
+        } catch (error) {
+          dispatch(setError(error.message))
+        }
+       
        
        }
       const errCheck = (e,criteria,pattern)=> {
@@ -90,8 +103,8 @@ const CreateChoristerForm = ()=> {
 
       const attachPictureHandler = async () => {
 
-          
-        if(Object.values(formations).some(f => f === false)) {
+        if(!Object.values(formations).some(f => f === true)) {
+         
           dispatch(setError('Please choose formation!'));
           setDisabled(true)
       
@@ -155,7 +168,7 @@ const CreateChoristerForm = ()=> {
           onChange={onChangeCreateChoristerFormHandler} 
           value={formValues.firstName}
           onBlur={(e) => errCheck(e, 3)}/>
-          {errors.firstName && <p className="error">First Name should be at least 2 characters long!</p>}
+          {errors.firstName && <p className={styles['error']}>First Name should be at least 2 characters long!</p>}
           
           </FloatingLabel>
       
@@ -166,7 +179,7 @@ const CreateChoristerForm = ()=> {
            value={formValues.surName}
            onBlur={(e) => errCheck(e, 3)}
            />
-           {errors.surName && <p className="error">Surname should be 3 characters at least</p>}
+           {errors.surName && <p className={styles['error']}>Surname should be 3 characters at least</p>}
         </FloatingLabel>
 
         <FloatingLabel controlId="floatinglastName" label="Last Name" className="mb-3">
@@ -175,7 +188,7 @@ const CreateChoristerForm = ()=> {
            value={formValues.lastName}
            onBlur={(e) => errCheck(e, 3)}
            />
-           {errors.surName && <p className="error">Last name should be 3 characters at least</p>}
+           {errors.surName && <p className={styles['error']}>Last name should be 3 characters at least</p>}
         </FloatingLabel>
 
             <div className="mb-3">
@@ -281,8 +294,10 @@ const CreateChoristerForm = ()=> {
              onChange={onChangeImageUrlHandler}
              value={imageUrl}
              disabled />
-
+        <div className={styles['button-container']} >
         <Button variant="success" type='submit'>Add Chorister</Button>
+        <Button as={Link} to={'/choristers'} variant="primary">Cancel</Button>
+        </div>
         </form>
         </div> 
     )

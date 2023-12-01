@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -84,7 +84,7 @@ const UploadForm = () => {
     e.preventDefault();
     const values = {uploadType,formation,url};
    
-    console.log(values);
+  
     
 
     if(Object.values(values).some(v => v === '')) {
@@ -165,7 +165,7 @@ const UploadForm = () => {
 
             <Button
             disabled={uploadDisabled}
-              variant="primary"
+              variant="warning"
               type="button"
               onClick={handleUpload}
               className={styles['btn']}
@@ -178,6 +178,14 @@ const UploadForm = () => {
               type="submit"
             >
               Save
+            </Button>
+            <Button
+            as={Link} to={'/'}
+              style={{marginLeft:'10px'}}
+              variant="primary"
+             
+            >
+              Cancel
             </Button>
           </Form>
         </Col>

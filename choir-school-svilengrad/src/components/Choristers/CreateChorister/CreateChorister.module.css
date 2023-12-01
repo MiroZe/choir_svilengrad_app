@@ -62,3 +62,7 @@
     gap: 2em;
 
 }
+
+.error {
+    color: red;
+}
