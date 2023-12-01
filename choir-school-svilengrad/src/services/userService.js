@@ -14,7 +14,7 @@ export const userRegister = async (userData) => {
 
 export const userLogin = async (userData) => {
 
-    const result = await request.post(`${baseURL}/login`,userData );
+    const result = request.post(`${baseURL}/login`,userData );
   
 return result
 
@@ -23,18 +23,18 @@ return result
 
 
 export const userLogout = async () => {
-         return await request.post(`${baseURL}/logout`)
+         return request.post(`${baseURL}/logout`)
 }
 
 
 export const getAllUsers = async() => {
 
-     return  await request.get(`${baseURL}/users`);
+     return  request.get(`${baseURL}/users`);
       
   
 }
 
 
 export const changeUserRole = async(userId,newRole) => {
-    return await request.put(`${baseURL}/users/profile`,{userId,newRole})
+    return request.put(`${baseURL}/users/profile`,{userId,newRole})
 }

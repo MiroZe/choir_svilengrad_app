@@ -186,9 +186,9 @@ const CreateChoristerForm = ()=> {
           <Form.Control type="text"  name='lastName' 
           onChange={onChangeCreateChoristerFormHandler}
            value={formValues.lastName}
-           onBlur={(e) => errCheck(e, 3)}
+           onBlur={(e) => errCheck(e, 5)}
            />
-           {errors.surName && <p className={styles['error']}>Last name should be 3 characters at least</p>}
+           {errors.surName && <p className={styles['error']}>Last name should be 5 characters at least</p>}
         </FloatingLabel>
 
             <div className="mb-3">

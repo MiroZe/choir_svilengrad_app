@@ -30,9 +30,6 @@ export const geUrlUploadService = async(uploadData) => {
 
 export const uploadFileService = async(uploadType,formation,url,fileName,authorName) => {
    
-
-
-
     if(uploadType === 'picture') {
        return request.post(`${baseURL}/pictures`,({formation,url}))
     } else if (uploadType ==='score'){
