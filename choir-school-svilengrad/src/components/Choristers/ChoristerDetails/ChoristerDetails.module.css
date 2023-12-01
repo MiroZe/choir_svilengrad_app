@@ -69,3 +69,17 @@
   .info p:not(:last-child) {
     margin-bottom: 10px;
   }
+
+
+  @media (max-width: 768px) {
+
+    .chorister-card {
+        max-width:300px ;
+        font-size: 0.5em;
+    }
+
+    .chorister-image {
+        width: 100px;
+        height: 100px;
+    }
+  }

@@ -18,7 +18,7 @@ const {isAdmin} = useContext(Usercontext)
     <>
     <tr className={styles['table-row']}>
       <td>{index + 1}</td>
-      <td>
+      <td className={styles['td-img']}>
         <div className={styles["image-container"]}>
           <Image src={imageUrl} rounded />
         </div>

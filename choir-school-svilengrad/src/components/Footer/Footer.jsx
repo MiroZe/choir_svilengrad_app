@@ -14,7 +14,9 @@ return (
         </div>
        
     </div>
+   
         <GoogleMapsLocation/>
+  
     <div className={styles['social-icons']}>
     <p className={styles['footer-heading']}>Follow us:</p>
 

@@ -36,3 +36,12 @@
     width: 60px;
     height: 60px;
 }
+
+@media (max-width: 768px) {
+
+    .form-container {
+        min-width: initial;
+        margin: 1.2em 1.2em;
+    }
+
+}

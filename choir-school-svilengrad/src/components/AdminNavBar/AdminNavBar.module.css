@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
    
+   
 }
 
 
@@ -16,4 +17,16 @@
 
 .nav-container a:hover {
     color: #2c3e50;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .nav-container{
+        
+        font-size: 0.4em;
+        
+    }
+
+
 }

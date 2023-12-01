@@ -43,3 +43,17 @@
     width: 60px;
     height: 60px;
 }
+
+
+@media (max-width: 768px) {
+
+    .main-container {
+        min-width: initial;
+      
+        
+    }
+    .form-container {
+        margin: auto 1.2em;
+    }
+
+}

@@ -31,7 +31,7 @@ const TaxesList = ({formValues}) => {
 
 
     return (
-        <Table striped bordered hover size="sm">
+        <Table striped bordered hover size="sm" responsive="sm">
           <thead>
             <tr>
               <th>#</th>

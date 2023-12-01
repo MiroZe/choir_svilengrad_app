@@ -59,3 +59,35 @@
 }
 
 
+@media (max-width: 768px) {
+
+    .table-container {
+        font-size: 0.5em;
+        
+    }
+    
+
+   
+    .table-container td {
+        padding: 0;
+      
+      
+    }
+  
+
+    .table-container button,
+    .table-container a {
+        font-size: 0.7em;
+        padding: 1em;
+    }
+    .table-container tr .td-img {
+        display: none;
+    }
+
+    .table-container .numbers {
+        width: 5px;
+    }
+  
+
+}
+

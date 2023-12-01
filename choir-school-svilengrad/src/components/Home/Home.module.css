@@ -61,10 +61,12 @@
     .heading-name {
       font-size: 30px;
       margin-top: 15px;
+      text-align: center;
     }
   
     .description {
       font-size: 16px;
       margin-top: 25px;
+      text-align: center;
     }
   }

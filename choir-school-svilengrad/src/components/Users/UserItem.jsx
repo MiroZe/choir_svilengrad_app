@@ -24,7 +24,7 @@ const UserItem = ({
       <p className={styles['current']}>Username : <span>{username}</span></p> 
       <p className={styles['current']}>Current Role : <span>{role}</span></p> 
 
-     
+     <div className={styles['actions']}>
       <select name="role" value={roleSelect} onChange={roleOnChangeHandler} id='role'>
         <option value="admin">Admin</option>
         <option value="chorister">Chosrister</option>
@@ -36,7 +36,7 @@ const UserItem = ({
       
        onClick={() => changeRoleClickHandler(_id,roleSelect)}>Change</button>
       
-   
+      </div>
       </ListGroup.Item>
 
  

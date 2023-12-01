@@ -13,3 +13,12 @@
     font-size: 0.7em;
     margin: 0;
 }
+
+@media (max-width: 768px) {
+
+    .location-container{
+        height: 80px;
+        width: 300px;
+    }
+
+}

@@ -15,6 +15,9 @@ const Header = () => {
  const {username, isAdmin} = useContext(Usercontext)
  const error = useSelector(state => state.error);
 
+
+ 
+
   return (
     <>
     <header className={styles.header}>
@@ -24,23 +27,27 @@ const Header = () => {
         </Link>
       </div>
       <p>Welcome, dear <span>{username || 'Guest'}</span></p>
+
+     
+   
+ 
       <nav className={styles.nav}>
         <ul>
           
          
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/"}>Home</NavLink> </li>
-          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/formations"}>Formations</NavLink> </li>
-          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/weather"}>Weather</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/formations"} >Formations</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/weather"} >Weather</NavLink> </li>
          {!username && <>
-          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/login"}>Login</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/login"} >Login</NavLink> </li>
           <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/register"}>Register</NavLink> </li>
           </>
           }
           {username && <>
-          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/gallery"}>Gallery</NavLink> </li>
-          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/videos"}>Videos</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/gallery"} >Gallery</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/videos"} >Videos</NavLink> </li>
           
-          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/logout"}>Logout</NavLink> </li>
+          <li> <NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to={"/auth/logout"} >Logout</NavLink> </li>
           </>
         }   
           
