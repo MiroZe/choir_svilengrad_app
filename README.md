@@ -29,12 +29,12 @@ To run this project locally, follow these steps:
   3.Install dependencies:
 npm install
 
-Usage
+## Usage
 
 To start the development server and view the app in your browser, use the following command:
 
 npm run dev
- Features
+## Features
 
     Event Management: Easily organize and manage choir events.
     Member Directory: Keep track of choir members and their information.
