@@ -40,8 +40,8 @@ npm run dev
     Member Directory: Keep track of choir members and their information.
     Repertoire Tracker: Maintain a list of songs in the choir's repertoire.
 
-Feel free to add more features or details as needed.
-Contributing
+
+## Contributing
 
 If you would like to contribute to this project, please follow these guidelines:
 
