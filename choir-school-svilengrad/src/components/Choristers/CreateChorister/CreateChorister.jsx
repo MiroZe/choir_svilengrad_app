@@ -143,9 +143,8 @@ const CreateChoristerForm = ()=> {
     }
 
 
-    const onChangeImageUrlHandler = (e) => {
-        console.log(e.target.value);
-        console.log(imageUrl);
+    const onChangeImageUrlHandler = () => {
+       
     }
    
 

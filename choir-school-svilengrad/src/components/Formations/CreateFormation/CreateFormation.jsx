@@ -6,13 +6,16 @@ import { createFormation } from '../../../services/formationServices';
 import { useFormErrors } from '../../../hooks/useFormErrors';
 import logo from '../../../assets/SHKOLA_ZNAK.png';
 import {Link, useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setError } from '../../../reduxStates/store';
 
 
 
 
 const CreateFormation = () => {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
     const { formValues, onChangeHandler } = useForm({
        formationName: '', 
@@ -29,9 +32,9 @@ const CreateFormation = () => {
       
       const onSubmitFormationHandler = async (e) => {
           e.preventDefault();
-          console.log(Object.values(errors));
+     
           if((Object.values(errors).some(f => f == true))) {
-            console.log('error');
+            
             return
           } 
          
@@ -40,7 +43,7 @@ const CreateFormation = () => {
           navigate('/formations')
           
         } catch (error) {
-          console.log(error);
+          dispatch(setError(error.message))
         }
 
          

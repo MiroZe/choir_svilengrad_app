@@ -118,7 +118,7 @@ const EditChorister = ()=> {
       }
 
       const onChangeFormationHandler = (e) => {
-        console.log(formations);
+      
         setFormations((prevFormations) => ({
           ...prevFormations,
           [e.target.name]: e.target.checked,
@@ -161,9 +161,8 @@ const EditChorister = ()=> {
     }
 
 
-    const onChangeImageUrlHandler = (e) => {
-        console.log(e.target.value);
-        console.log(imageUrl);
+    const onChangeImageUrlHandler = () => {
+       
     }
    
 

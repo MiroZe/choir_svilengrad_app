@@ -25,8 +25,8 @@ const UploadForm = () => {
  
   const dispatch = useDispatch();
 
-  const handleUrlChange = (e) => {
-    console.log(e.target);
+  const handleUrlChange = () => {
+  
   };
 
   const handleFileChange = (e) => {

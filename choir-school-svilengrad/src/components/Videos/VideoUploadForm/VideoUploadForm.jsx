@@ -44,8 +44,8 @@ const VideoLinkUploadForm = () => {
   
   try {
    const youTubeId = getYouTubeVideoId(youTubeLink);
-   const youTubeRecord = await createYouTubeRecord(youTubeId,youTubeLink,tag);
-   console.log(youTubeRecord);
+   await createYouTubeRecord(youTubeId,youTubeLink,tag);
+  
    navigate('/videos')
   
  } catch (error) {

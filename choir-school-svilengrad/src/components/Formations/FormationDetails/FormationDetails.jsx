@@ -8,7 +8,7 @@ import { Usercontext } from "../../../contexts/UserContext";
 import DeleteConfirmationModal from "../../DeleteConfirmationModal/DeleteConformationModal";
 import {useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-  import { setFormation } from '../../../reduxStates/store';
+  import { setError, setFormation } from '../../../reduxStates/store';
 
 
 
@@ -34,7 +34,7 @@ const FormationDetails = () => {
        
          setSpinner(false)
     })
-      .catch((err) => console.log(err));
+      .catch((err) =>dispatch(setError(err.message)));
   }, [formationId,dispatch]);
 
 

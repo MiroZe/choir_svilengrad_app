@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import { getOneChorister } from "../../../services/choristersServices";
 import { useParams,Link } from "react-router-dom";
 import SpinnerComp from "../../Spinner/Spinner";
+import { useDispatch } from "react-redux";
+import { setError } from "../../../reduxStates/store";
 
 const ChoristerDetail = () => {
 
@@ -14,14 +16,15 @@ const ChoristerDetail = () => {
 
 
     const [chorister, setChorister] = useState({});
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getOneChorister(choristerId)
         .then(data => {
           setChorister(data)
           setSpinner(false)})
-        .catch(err => console.log(err))
-    },[choristerId])
+        .catch(err => dispatch(setError(err.message)))
+    },[choristerId,dispatch])
 
     
    

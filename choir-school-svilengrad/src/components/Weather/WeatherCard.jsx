@@ -22,7 +22,7 @@ const WeatherCard = () => {
 
     useEffect(()=> {
 
-      console.log(data);
+     
      if(data) {
       setSpinner(false)
       setcurrentT( data.current.temperature.current)
