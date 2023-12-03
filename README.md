@@ -52,9 +52,18 @@ The 'User' role provides access to the 'Gallery' section, which includes photos 
 ![scores](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/eadde036-ff78-4ec8-aa69-d3a2e297def7)
 ![arrangement](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/aca0fc55-8400-4eef-8085-a4accb1da89e)
 ![choristers](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/d283fa5d-1d2c-47c6-a5e9-eddd873a2406)
-- 'Admin' role provides:
-  -- create, edit and delete formation
-  -- create, edit and delete chorister
+- 'Admin' role provides via an admin panel:
+  - create, edit and delete formation
+  - create, edit and delete chorister
+  - create and delete scores
+  - create and delete arrangements
+  - create and delete videos and pictures
+  - change the role of the users
+  - mark and edit amount of year and monthly taxes of choristers for each formation
+    ![merged](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/8e2aa1b5-dcf6-42b4-9e19-469d1ffd4778)
+   ![taxes](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/bd816ee9-d3c6-4bc9-8034-1ac2a3e38712)
+   ![users](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/af183c0f-b574-4ba6-a8b4-fa03ca8973dc)
+
 
 
 ## Contributing
