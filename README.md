@@ -24,9 +24,9 @@ To run this project locally, follow these steps:
 
    ```bash
    git clone https://github.com/MiroZe/choir_svilengrad_app.git
-  2. Navigate to the project directory:
+2. Navigate to the project directory:
     cd choir-school-svilengrad
-  3.Install dependencies:
+3.Install dependencies:
 npm install
 
 ## Usage
