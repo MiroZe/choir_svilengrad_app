@@ -40,16 +40,19 @@ npm run dev
    ![home](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/906592bc-8007-432f-a35d-ebf11c2b07b2)
 - In the "Formations" section, you can see all the choir formations participating in the choir school.
   ![formations](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/124d0d9d-9652-482e-a9a5-b3ed8d50afd3)
- When the user clicks on the 'Details' button for a formation, they will be able to view a picture, a brief description, and t the conductor of the selected formation.
+- When the user clicks on the 'Details' button for a formation, they will be able to view a picture, a brief description, and t the conductor of the selected formation.
 ![formation details](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/ed0c868a-b648-4bbc-b6ec-d0e87c94a21d)
 - In the "Weather" section, you can view the current weather in Svilengrad and the weather forecast for the upcoming days.
 ![weather](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/85ae00cb-f6b3-4037-82a3-39d565d7c9c9)
-![register](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/ae3eb6da-3f1a-4ef1-8f1d-38ead548df9b)
 - When the user is registered and logs in or register, there are three types of roles : user, chorister, and admin.
+![register](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/ae3eb6da-3f1a-4ef1-8f1d-38ead548df9b);
+The 'User' role provides access to the 'Gallery' section, which includes photos of the formations, and the 'Video' section, containing a collection of YouTube videos featuring performances by the formations from the choir school. 
+![media](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/9f189656-48f4-4e68-8724-568ca5b28978)
+- The 'Chorister' role grants access to the sections of arrangements  and scores for the respective formation with link to download the resource, as well as a list of all choristers from the choir school with detail option to see full info about each chorister
+![scores](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/eadde036-ff78-4ec8-aa69-d3a2e297def7)
+![arrangement](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/aca0fc55-8400-4eef-8085-a4accb1da89e)
+![choristers](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/d283fa5d-1d2c-47c6-a5e9-eddd873a2406)
 
-    Event Management: Easily organize and manage choir events.
-    Member Directory: Keep track of choir members and their information.
-    Repertoire Tracker: Maintain a list of songs in the choir's repertoire.
 
 
 ## Contributing
