@@ -35,6 +35,9 @@ To start the development server and view the app in your browser, use the follow
 
 npm run dev
 ## Features
+-Home page
+   -- Guest users have access to Home view ,Choir formation sections, Weather, Login and Register options. 
+   ![home](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/906592bc-8007-432f-a35d-ebf11c2b07b2)
 
     Event Management: Easily organize and manage choir events.
     Member Directory: Keep track of choir members and their information.
