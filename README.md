@@ -7,6 +7,7 @@
 ## Description
 
 The Choir Svilengrad App is a Vite-powered React application that helps manage and organize choir-related activities and information for the Svilengrad choir community.
+ ![home](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/906592bc-8007-432f-a35d-ebf11c2b07b2)
 
 ## Table of Contents
 
@@ -37,7 +38,6 @@ npm run dev
 ## Features
 - Home page
   Guest(unauthorized) users have access to Home view ,Choir formation sections, Weather, Login and Register options. 
-   ![home](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/906592bc-8007-432f-a35d-ebf11c2b07b2)
 - In the "Formations" section, you can see all the choir formations participating in the choir school.
   ![formations](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/124d0d9d-9652-482e-a9a5-b3ed8d50afd3)
 - When the user clicks on the 'Details' button for a formation, they will be able to view a picture, a brief description, and t the conductor of the selected formation.
