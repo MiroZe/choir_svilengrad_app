@@ -40,7 +40,7 @@ npm run dev
   Guest(unauthorized) users have access to Home view ,Choir formation sections, Weather, Login and Register options. 
 - In the "Formations" section, you can see all the choir formations participating in the choir school.
   ![formations](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/124d0d9d-9652-482e-a9a5-b3ed8d50afd3)
-- When the user clicks on the 'Details' button for a formation, they will be able to view a picture, a brief description, and t the conductor of the selected formation.
+- When the user clicks on the 'Details' button for a formation, will be able to view a picture, a brief description, and the conductor of the selected formation.
 ![formation details](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/ed0c868a-b648-4bbc-b6ec-d0e87c94a21d)
 - In the "Weather" section, you can view the current weather in Svilengrad and the weather forecast for the upcoming days.
 ![weather](https://github.com/MiroZe/choir_svilengrad_app/assets/114018004/85ae00cb-f6b3-4037-82a3-39d565d7c9c9)
