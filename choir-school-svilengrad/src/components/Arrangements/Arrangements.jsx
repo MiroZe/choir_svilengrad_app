@@ -13,11 +13,11 @@ import { useDispatch } from 'react-redux';
 const Arrangements = () => {
 
     const [arrangements,setArrangements] = useState([]);
-    const {formationName,_id} = useSelector((state) => state.formation);
+    const {formationName ='',_id = ''} = useSelector((state) => state.formation || {});
 
     const [arrangementData, setArrangementData] = useState({})
 
-    const formation = useSelector((state) => state.formation);
+    
     const dispatch = useDispatch()
     const navigate = useNavigate();
 const [modalShow, setModalShow] = useState(false);
@@ -26,8 +26,9 @@ const [modalShow, setModalShow] = useState(false);
     useEffect(() => {
         getArrangements(formationName)
             .then(setArrangements)
+            .catch(error => dispatch(setError(error.message)))
 
-    },[formationName])
+    },[formationName,dispatch])
 
     const showDeleteModal = (_id,firstName,arrangementUrl) => {
   
@@ -56,12 +57,12 @@ const [modalShow, setModalShow] = useState(false);
 return (
    <div className={styles['file-card-container']}>
     {arrangements.length > 0 && 
-        arrangements.map(arrangement => <ScoreItem  key={arrangement._id} {...arrangement} formationId={formation._id} showDeleteModal={showDeleteModal}/>)
+        arrangements.map(arrangement => <ScoreItem  key={arrangement._id} {...arrangement} formationId={_id} showDeleteModal={showDeleteModal}/>)
     }
      {arrangements.length == 0 && 
      <div className={styles['no-content']}>
-        <h3>There is no uploaded arrangements for {formation.formationName} yet!</h3>
-    <Link to={`/formations/${formation._id}`} className={styles['back-link']}>Back</Link>
+        <h3>There is no uploaded arrangements for {formationName} yet!</h3>
+    <Link to={`/formations/${_id}`} className={styles['back-link']}>Back</Link>
 
     </div>
     }

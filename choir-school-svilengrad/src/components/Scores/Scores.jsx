@@ -5,7 +5,6 @@ import styles from './Scores.module.css'
 import ScoreItem from "./ScoreItem";
 import { useSelector } from "react-redux"; 
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConformationModal'
-
 import { setError } from '../../reduxStates/store';
 import { useDispatch } from 'react-redux';
 
@@ -15,19 +14,27 @@ import { useDispatch } from 'react-redux';
 const Scores = () => {
 
     const [scores,setScores] = useState([]);
-    const {formationName,_id} = useSelector((state) => state.formation);
-    const [scoreData, setScoreData] = useState({})
-    const dispatch = useDispatch()
+    const {formationName ='',_id = ''} = useSelector((state) => state.formation || {});
+    const [scoreData, setScoreData] = useState({});
+    
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-const [modalShow, setModalShow] = useState(false);
+    const [modalShow, setModalShow] = useState(false);
+
+   
+   
 
 
 
     useEffect(() => {
         getScores(formationName)
-            .then(setScores)
+            .then(data => {
+            
+              setScores(data)
+            })
+            .catch(error => dispatch(setError(error.message)))
 
-    },[formationName])
+    },[formationName,dispatch,])
 
 
     const showDeleteModal = (_id,firstName,scoreUrl) => {
@@ -57,6 +64,7 @@ const [modalShow, setModalShow] = useState(false);
 
 return (
    <div className={styles['file-card-container']}>
+   
     {scores.length > 0 && 
         scores.map(score => <ScoreItem  key={score._id} {...score} formationId={_id} showDeleteModal={showDeleteModal}/>)
     }
