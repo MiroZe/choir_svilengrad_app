@@ -8,6 +8,8 @@ import logo from '../../../assets/SHKOLA_ZNAK.png'
 import { useNavigate } from 'react-router-dom';
 import { setError } from '../../../reduxStates/store';
 import { useDispatch } from 'react-redux';
+import SearchBar from '../../SearchBar/SearchBar';
+import { useSearch } from '../../../hooks/useSearch';
 
 
 
@@ -18,7 +20,6 @@ const ChoristerList =() => {
   const [choristers, setChoristers] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [userData, setUserData] = useState({});
-  
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
@@ -34,6 +35,9 @@ useEffect(() => {
 , [dispatch]);
 
 
+const {search, updateSearchValue, searchValue} = useSearch(choristers);
+
+
 const showDeleteModal = (_id,firstName,lastName) => {
   
   setUserData({ _id, firstName, lastName })
@@ -45,10 +49,15 @@ const showDeleteModal = (_id,firstName,lastName) => {
 
 const deleteClickHandler = async (id) => {
  
+  try {
     await deleteChorister(id);
     setModalShow(false)
-   setChoristers(state => [...state.filter(ch=> ch._id !== id )])
-    navigate('/choristers')
+    setChoristers(state => [...state.filter(ch=> ch._id !== id )])
+     navigate('/choristers')
+    
+  } catch (error) {
+    dispatch(setError(error.message))
+  }
     
 
 } 
@@ -73,7 +82,7 @@ return (
           <div className={styles['title']}>
           <img src={logo} alt="" />
         <h2>List of choristers</h2>
-        
+        <SearchBar updateSearchValue={updateSearchValue} searchValue={searchValue}/>
           </div>
         <Table  bordered striped responsive="sm">
           <thead>
@@ -87,7 +96,7 @@ return (
             </tr>
           </thead>
           <tbody>
-           {choristers.map( (c, index) => <Chorister key={c._id} {...c} index={index} showDeleteModal={showDeleteModal} />)}
+           {search.map( (c, index) => <Chorister key={c._id} {...c} index={index} showDeleteModal={showDeleteModal} />)}
           </tbody>
         </Table>
         <>

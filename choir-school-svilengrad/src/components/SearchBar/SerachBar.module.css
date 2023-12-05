@@ -1,0 +1,14 @@
+
+.form-control {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
+.form-control:focus{
+    border-color: #c61b2b;
+    box-shadow: 0 0 0 0.1rem #c61b2b;
+
+  }
+
+

@@ -7,7 +7,9 @@ import { useSelector } from "react-redux";
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConformationModal'
 import { setError } from '../../reduxStates/store';
 import { useDispatch } from 'react-redux';
-
+import logo from '../../assets/SHKOLA_ZNAK.png'
+import SearchBar from "../SearchBar/SearchBar";
+import { useSearch } from "../../hooks/useSearch";
 
 
 
@@ -60,14 +62,22 @@ const Scores = () => {
         
       }
 
+  const {search, updateSearchValue, searchValue} = useSearch(scores);
 
 
 return (
    <div className={styles['file-card-container']}>
-   
+   <div className={styles['title']}>
+          <img src={logo} alt="" />
+         <h2>List of scores</h2>
+        
+       <SearchBar updateSearchValue={updateSearchValue} searchValue={searchValue}/> 
+          </div>
+          <div className={styles['list']}>
     {scores.length > 0 && 
-        scores.map(score => <ScoreItem  key={score._id} {...score} formationId={_id} showDeleteModal={showDeleteModal}/>)
+        search.map(score => <ScoreItem  key={score._id} {...score} formationId={_id} showDeleteModal={showDeleteModal}/>)
     }
+    </div>
      {scores.length == 0 && 
       <div className={styles['no-content']}>
       <h3>There is no uploaded arrangements for {formationName} yet!</h3>
