@@ -16,8 +16,9 @@ import logo from '../../assets/SHKOLA_ZNAK.png';
 
 const LoginForm = () => {
   const { setUserFunction } = useContext(Usercontext);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [disabled,setDisabled] = useState(false)
 
   const [formValues, setFormValues] = useState({
     username: "",
@@ -36,6 +37,11 @@ const LoginForm = () => {
   const loginUserHandler = async (e, { username, password }) => {
     e.preventDefault();
     const userData = { username, password };
+
+    if(Object.values(userData).some(f => f === '' )) {
+      setDisabled(true);
+      return;
+    }
 
     try {
       const loggedUser = await userLogin(userData);
@@ -100,7 +106,7 @@ const LoginForm = () => {
           )}
         </FloatingLabel>
 
-        <Button variant="success" type="submit">
+        <Button variant="success" type="submit" disabled={disabled}>
           Log in
         </Button>
       </form>

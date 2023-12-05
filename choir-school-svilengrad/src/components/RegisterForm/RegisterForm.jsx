@@ -19,7 +19,8 @@ const RegisterForm = ()=> {
 
   const {setUserFunction} = useContext(Usercontext)
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [disabled,setDisabled] = useState(false)
 
 
 
@@ -49,6 +50,11 @@ const RegisterForm = ()=> {
   const registerUserHandler = async (e,{username,email,password,rePassword})=> {
     e.preventDefault();
     const userData = {username,email,password,rePassword};
+    if(Object.values(userData).some(f => f === '' )) {
+      setDisabled(true);
+      return;
+    }
+    
 
     try {
       const registeredUser = await userRegister(userData);
@@ -133,7 +139,7 @@ return (
 
    
  
-    <Button variant="success" type='submit'>Submit</Button>
+    <Button variant="success" type='submit' disabled={disabled}>Submit</Button>
     </form>
     </div>
 
