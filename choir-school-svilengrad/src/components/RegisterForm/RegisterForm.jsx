@@ -54,6 +54,11 @@ const RegisterForm = ()=> {
       setDisabled(true);
       return;
     }
+
+    if(userData.password !== userData.rePassword) {
+      dispatch(setError('Passwords mismatch!'));
+      return;
+    }
     
 
     try {
