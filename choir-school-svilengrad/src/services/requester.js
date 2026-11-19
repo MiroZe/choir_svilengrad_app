@@ -1,19 +1,23 @@
-const requester = async (method,url,data) => {
-    const options = {credentials: 'include'};
+
+const requester = async (method, url, data) => {
+    const options = {
+        credentials: 'include'
+    };
 
     if (method !== 'GET') {
         options.method = method;
 
         if (data) {
-            options.headers = {
-                'content-type': 'application/json',
-            };
-
-            options.body = JSON.stringify(data);
+            if (data instanceof FormData) {
+                options.body = data;
+            } else {
+                options.headers = {
+                    'content-type': 'application/json',
+                };
+                options.body = JSON.stringify(data);
+            }
         }
     }
-
-    
 
     const response = await fetch(url, options);
 
@@ -21,19 +25,15 @@ const requester = async (method,url,data) => {
         return {};
     }
 
-    
     const result = await response.json();
 
- 
-   
-
     if (!response.ok) {
-     
         throw result;
     }
-   
+
     return result;
 };
+
 
 export const request =  {
      

@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from './UploadForm.module.css';
 import logo from '../../assets/SHKOLA_ZNAK.png'
-import { geUrlUploadService, uploadFileService } from '../../services/uploadServices';
+import { getUrlUploadService, uploadFileService } from '../../services/uploadServices';
 import { setError } from '../../reduxStates/store';
 import { useDispatch } from 'react-redux';
 
@@ -25,9 +25,7 @@ const UploadForm = () => {
  
   const dispatch = useDispatch();
 
-  const handleUrlChange = () => {
   
-  };
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -55,8 +53,8 @@ const UploadForm = () => {
 
     const formData = new FormData();
 
-    formData.append('file', selectedFile);
     formData.append('category', uploadType);
+    formData.append('file', selectedFile);
     formData.append('formation', formation);
     formData.append('name', fileName);
 
@@ -64,7 +62,7 @@ const UploadForm = () => {
    
     if (selectedFile) {
       try {
-        const url = await geUrlUploadService(formData)
+        const url = await getUrlUploadService(formData)
         setUrl(url.imageUrl);
         setDisabled(false)
         
@@ -158,10 +156,7 @@ const UploadForm = () => {
                 </>)}
               </Form.Control>
             </Form.Group>
-            <Form.Group controlId="imageUrl" className="mb-3">
-              <Form.Label>Url</Form.Label>
-              <Form.Control name="url" type="text" value={url} onChange={handleUrlChange} />
-            </Form.Group>
+            
 
             <Button
             disabled={uploadDisabled}

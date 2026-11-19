@@ -17,17 +17,9 @@ export const uploadPictureService = async(uploadData) => {
 
 }
 
-export const geUrlUploadService = async(uploadData) => {
-    
-    const response = await fetch(
-        `${baseURL}/upload/file` ,
-         {method:'POST',
-          
-           body:uploadData})
-    return await response.json();
-    
-
-}
+export const getUrlUploadService = async (uploadData) => {
+    return await request.post(`${baseURL}/upload/file`, uploadData);
+};
 
 export const uploadFileService = async(uploadType,formation,url,fileName,authorName) => {
    
@@ -42,27 +34,24 @@ export const uploadFileService = async(uploadType,formation,url,fileName,authorN
 
 };
 
-export const getPictures = async () => {
-    const response = await fetch(`${baseURL}/pictures`, {credentials: 'include'});
-    const result = response.json();
-    return result
-}
+export const getPictures = () => request.get(`${baseURL}/pictures`);
 
 export const deletePictureById = (pictureId,pictureUrl) => {
     return request.delete(`${baseURL}/upload/file`, {id:pictureId,fileUrl:pictureUrl,modelName:'picture'})
 }
 
-export const getScores = async (formationName) => {
-    const response = await fetch(`${baseURL}/scores?name=${formationName}`, {credentials: 'include'});
-    const result = response.json();
-    return result
-}
+export const getScores = (formationName) => {
+    return request.get(
+        `${baseURL}/scores?name=${encodeURIComponent(formationName)}`
+    );
+};
 
-export const getArrangements = async (formationName) => {
-    const response = await fetch(`${baseURL}/arrangements?name=${formationName}`, {credentials: 'include'});
-    const result = response.json();
-    return result
-}
+
+export const getArrangements = (formationName) => {
+    return request.get(
+        `${baseURL}/arrangements?name=${encodeURIComponent(formationName)}`
+    );
+};
 
 export const deleteScore = (scoreId,scoreImageUrl)  => {
 

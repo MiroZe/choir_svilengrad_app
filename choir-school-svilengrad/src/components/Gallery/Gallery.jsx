@@ -1,7 +1,7 @@
 import { useState,useEffect,useContext } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
-
+import baseURL from '../../constants/url';
 import { deletePictureById, getPictures } from '../../services/uploadServices';
 import styles from './Gallery.module.css'
 import logo from '../../assets/SHKOLA_ZNAK.png'
@@ -86,7 +86,7 @@ export const Gallery = () => {
                     <img
                       onClick={(e) => pictureClickHandler(e,picture._id )}
                       className="d-block w-100"
-                      src={picture.pictureUrl}
+                     src={`${baseURL}${picture.pictureUrl}`}
                       alt="First slide"
                     />
                    
