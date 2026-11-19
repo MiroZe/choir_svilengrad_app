@@ -1,5 +1,6 @@
+
 const baseURL = import.meta.env.PROD
-  ? 'https://choir-svilengrad-express-server.onrender.com'
+  ? 'https://api.choir-school-svilengrad.eu'
   : 'http://localhost:3000';
 
 export { baseURL };
