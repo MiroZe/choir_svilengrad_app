@@ -9,6 +9,7 @@ import { Usercontext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setError } from "../../reduxStates/store";
+import { useTranslation } from 'react-i18next';
 
 import logo from '../../assets/SHKOLA_ZNAK.png';
 
@@ -18,7 +19,8 @@ const LoginForm = () => {
   const { setUserFunction } = useContext(Usercontext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [disabled,setDisabled] = useState(false)
+  const [disabled,setDisabled] = useState(false);
+    const { t } = useTranslation();
 
   const [formValues, setFormValues] = useState({
     username: "",
@@ -66,13 +68,13 @@ const LoginForm = () => {
       <div className={styles["form-container"]}>
       <div className={styles["header"]}>
         <img src={logo} alt="" />
-        <h2>Login Form</h2>
+        <h2>{t("login.loginform")}</h2>
       </div>
 
       <form action="" onSubmit={(e) => loginUserHandler(e, formValues)}>
         <FloatingLabel
           controlId="floatingInput"
-          label="Username"
+          label={t("login.username")}
           className="mb-3"
         >
           <Form.Control
@@ -91,7 +93,7 @@ const LoginForm = () => {
 
         <FloatingLabel
           controlId="floatingPassword"
-          label="Password"
+          label={t("login.password")}
           className="mb-3"
         >
           <Form.Control
@@ -107,7 +109,7 @@ const LoginForm = () => {
         </FloatingLabel>
 
         <Button variant="success" type="submit" disabled={disabled}>
-          Log in
+          {t("login.loginButton")}
         </Button>
       </form>
       </div>

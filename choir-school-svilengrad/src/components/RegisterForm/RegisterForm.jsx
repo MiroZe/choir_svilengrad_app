@@ -9,6 +9,7 @@ import { errorCheck } from '../../utils/utils';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/SHKOLA_ZNAK.png';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { setError } from "../../reduxStates/store";
 
@@ -20,7 +21,8 @@ const RegisterForm = ()=> {
   const {setUserFunction} = useContext(Usercontext)
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [disabled,setDisabled] = useState(false)
+  const [disabled,setDisabled] = useState(false);
+  const { t } = useTranslation();
 
 
 
@@ -93,13 +95,13 @@ return (
 
 <div className={styles["header"]}>
         <img src={logo} alt="" />
-        <h2>Register Form</h2>
+        <h2>{t("register.registerform")}</h2>
       </div>
 
     <form action="" onSubmit={(e) => registerUserHandler(e,formValues)}>
     <FloatingLabel
       controlId="floatingInput"
-      label="Username"
+      label={t("register.username")}
       className="mb-3"
     >
       <Form.Control type="username" 
@@ -112,7 +114,7 @@ return (
       </FloatingLabel>
     <FloatingLabel
       controlId="floatingInput"
-      label="Email"
+      label={t("register.email")}
       className="mb-3"
     >
       <Form.Control type="email" name='email'
@@ -125,7 +127,7 @@ return (
 
    
 
-    <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3">
+    <FloatingLabel controlId="floatingPassword" label={t("register.password")} className="mb-3">
       <Form.Control type="password"  name='password' 
       onChange={onChangeRegisterFormHandler}
        value={formValues.password}
@@ -134,7 +136,7 @@ return (
        {errors.password && <p className="error">Password should be 6 characters at least</p>}
     </FloatingLabel>
 
-    <FloatingLabel controlId="floatingPassword" label="Repeat password" className="mb-3">
+    <FloatingLabel controlId="floatingPassword" label={t("register.confirmPassword")} className="mb-3">
       <Form.Control type="password" name='rePassword' 
       onChange={onChangeRegisterFormHandler} 
       value={formValues.rePassword}
@@ -144,7 +146,7 @@ return (
 
    
  
-    <Button variant="success" type='submit' disabled={disabled}>Submit</Button>
+    <Button variant="success" type='submit' disabled={disabled}>{t("register.registerButton")}</Button>
     </form>
     </div>
 

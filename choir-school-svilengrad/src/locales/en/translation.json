@@ -1,0 +1,69 @@
+
+{
+    "header": {
+    "welcome": "Welcome,",
+    "guest": "Guest"
+},
+  "navigation": {
+    "home": "Home",
+    "formations": "Formations",
+    "gallery": "Gallery",
+    "videos": "Videos",
+    "choristers": "Choristers",
+    "scores": "Scores",
+    "arrangements": "Arrangements",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "admin": {
+  "createFormation": "Create Formation",
+  "addChorister": "Add Chorister",
+  "uploadFiles": "Upload Files",
+  "addVideoLink": "Add Video Link",
+  "choristers": "Choristers",
+  "taxes": "Taxes",
+  "users": "Users"
+},
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "upload": "Upload",
+    "details": "Details"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation successful"
+  },
+  "footer": {
+    "address": "Our address:",
+    "followUs": "Follow us:",
+    "contactUs": "Contact us",
+    "phone": "Phone",
+    "rights": "All rights reserved."
+},
+"home": {
+    "welcome": "Welcome to the web page of",
+    "schoolName": "Choir School Svilengrad",
+    "description": "Explore the world of music and harmony with our choir school. Join us to enhance your musical skills and be part of a melodious journey."
+},
+"login": {
+    "loginform":"Login Form",
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "Login"
+   
+},
+"register": {
+        "registerform": "Registration Form",
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "registerButton": "Register"
+    }
+}

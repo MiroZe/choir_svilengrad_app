@@ -1,0 +1,99 @@
+{
+    "header": {
+        "welcome": "Добре дошли,",
+        "guest": "Гост"
+    },
+    "navigation": {
+        "home": "Начало",
+        "formations": "Формации",
+        "gallery": "Галерия",
+        "videos": "Видео",
+        "choristers": "Хористи",
+        "scores": "Партитури",
+        "arrangements": "Аранжименти",
+        "login": "Вход",
+        "register": "Регистрация",
+        "logout": "Изход",
+        "weather": "Времето"
+    },
+    "admin": {
+        "createFormation": "Създай формация",
+        "addChorister": "Добави хорист",
+        "uploadFiles": "Качи файлове",
+        "addVideoLink": "Добави видео връзка",
+        "choristers": "Хористи",
+        "taxes": "Такси",
+        "users": "Потребители"
+    },
+    "footer": {
+        "address": "Нашият адрес:",
+        "followUs": "Последвайте ни:",
+        "contactUs": "Свържете се с нас",
+        "phone": "Телефон",
+        "rights": "Всички права запазени."
+    },
+    "buttons": {
+        "save": "Запази",
+        "cancel": "Отказ",
+        "delete": "Изтрий",
+        "edit": "Редактирай",
+        "create": "Създай",
+        "upload": "Качи",
+        "details": "Детайли"
+    },
+    "common": {
+        "loading": "Зареждане...",
+        "error": "Възникна грешка",
+        "success": "Операцията е успешна"
+    },
+    "home": {
+        "welcome": "Добре дошли в уеб страницата на",
+        "schoolName": "Хорова школа – Свиленград",
+        "description": "Открийте света на музиката и хармонията с нашата музикална школа. Присъединете се към нас, за да развиете музикалните си умения и да станете част от едно мелодично пътешествие."
+    },
+    "login": {
+        "loginform": "Форма за вход",
+        "username": "Потребителско име",
+        "password": "Парола",
+        "loginButton": "Вход"
+    },
+    "register": {
+        "registerform": "Форма за регистрация",
+        "username": "Потребителско име",
+        "email": "Имейл",
+        "password": "Парола",
+        "confirmPassword": "Потвърди паролата",
+        "registerButton": "Регистрация"
+    },
+    "createChorister": {
+        "createChoristerForm": "Форма за създаване на хорист",
+        "firstName": "Име",
+        "surname": "Презиме",
+        "lastName": "Фамилия",
+        "chooseGender": "Моля, изберете пол",
+        "male": "Мъжки",
+        "female": "Женски",
+        "chooseSchool": "Моля, изберете училище",
+        "schoolName": "Моля, въведете името на училището",
+        "ivanVazov": "Иван Вазов",
+        "peterBeron": "Др Петър Берон",
+        "hristoBotev": "Христо Ботев",
+        "lubenKaravelov": "Л. Каравелов",
+        "gradeOption": "Моля,изберете клас",
+        "vocalRange": "Гласова партия",
+        "soprano": "Сопран",
+        "alto": "Алт",  
+        "tenor": "Тенор",
+        "baritone": "Баритон",
+        "bass": "Бас",
+        "childVoice1": "Детски глас 1",
+        "childVoice2": "Детски глас 2",
+        "formation": "Формация",
+        "littleOnes":"Хор на малките",
+        "childrensChoir":"Детски хор",
+        "burdenis":"Формация Бурденис",
+        "mixedChoir":"Смесен хор",
+        "submitButton": "Създай",
+        "addChorister":"Добави хорист"
+    }
+}
